@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/layout_frame_subcontent_checklist_theme"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="└"
+            android:textSize="36sp"
+            android:paddingLeft="8dp"
+            android:layout_marginLeft="8dp"/>
+        <CheckBox
+            android:id="@+id/checkbox_subcontent_checklist_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="하위항목내용"
+            android:textSize="16sp"
+            android:paddingLeft="12dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_edit_icon_subcontent_checklist_theme"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_edit"
+            android:layout_margin="4dp"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_delete_icon_subcontent_checklist_theme"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_delete"
+            android:layout_marginVertical="4dp"
+            android:layout_marginRight="24dp"/>
+
+    </LinearLayout>
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/layout_frame_subcontent_checklist_theme"
+        android:layout_weight="1"
+        app:dividerColor="#6E6E6E"/>
+</LinearLayout>

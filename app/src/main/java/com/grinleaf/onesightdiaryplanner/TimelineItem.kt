@@ -16,12 +16,26 @@ data class DailyItem(
     var dayImage:Int
     ):Base(day,content,categoryImage)
 
-data class ChecklistItem(
+//data class ChecklistItem(
+//    override var day:String,
+//    override var content:String,
+//    override var categoryImage:Int,
+//    var subContent:String
+//    ):Base(day,content,categoryImage)
+
+class ChecklistItem(
     override var day:String,
     override var content:String,
     override var categoryImage:Int,
-    var subContent:String
-    ):Base(day,content,categoryImage)
+    private var subItemList: List<SubChecklistItem>
+    ):Base(day,content,categoryImage) {
+
+    fun getSubItemList(): List<SubChecklistItem> { return subItemList }
+    fun setSubItemList(subItemList: List<SubChecklistItem>) { this.subItemList = subItemList }
+}
+class SubChecklistItem(var subContent:String) {
+    var subItemImage = 0
+}
 
 data class LifecycleItem(
     override var day:String,

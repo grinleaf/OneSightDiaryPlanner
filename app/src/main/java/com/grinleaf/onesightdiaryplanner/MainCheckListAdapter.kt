@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class CheckListAdapter(val context:Context, val checkListItems:MutableList<ChecklistItem>):RecyclerView.Adapter<CheckListAdapter.VH>() {
+class MainCheckListAdapter(val context:Context, val checkListItems:MutableList<ChecklistItem>):RecyclerView.Adapter<MainCheckListAdapter.VH>() {
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
         val content:CheckBox by lazy { itemView.findViewById(R.id.checkbox_maincontent_checklist_theme) }
         val day:TextView by lazy { itemView.findViewById(R.id.tv_day_checklist_title) }
@@ -35,7 +36,9 @@ class CheckListAdapter(val context:Context, val checkListItems:MutableList<Check
         holder.content.text= checklistItem.content
         holder.categoryImage.setImageResource(checklistItem.categoryImage)
 //        holder.subContent?.text= checklistItem.subContent
-
+        LinearLayoutManager(
+            holder.
+        )
 
 
     }

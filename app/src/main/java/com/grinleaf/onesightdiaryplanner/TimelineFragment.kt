@@ -19,7 +19,6 @@ class TimelineFragment:Fragment() {
     ): View? {
 
         tlItems.add(TimelineItem("04월 19일","딸기라떼 마시기",R.drawable.ic_test_icon01_foreground,R.drawable.ic_test_icon01_foreground))
-
         return binding.root
     }
 

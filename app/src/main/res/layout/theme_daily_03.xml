@@ -3,16 +3,54 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/iv_image_daily_theme"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:adjustViewBounds="true"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/tutorial_sample01"
+        android:visibility="gone"/>
     <TextView
-        android:id="@+id/tv_daily_theme_03"
+        android:id="@+id/tv_day_daily_theme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="#날짜"
+        android:layout_alignRight="@id/tv_content_daily_theme"
+        android:layout_alignLeft="@id/tv_content_daily_theme"
+        android:layout_alignBottom="@id/tv_content_daily_theme"
+        android:gravity="right"
+        android:layout_marginBottom="8dp"
+        android:layout_marginHorizontal="16dp"/>
+
+    <TextView
+        android:id="@+id/tv_content_daily_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/daily03"
-        android:layout_margin="8dp"
+        android:layout_alignParentRight="true"
+        android:padding="12dp"
         android:text="오늘 일기"
         android:textStyle="bold"
-        android:padding="16dp"
-        android:layout_alignParentRight="true"
-        android:gravity="center_vertical|right"/>
+        android:gravity="right"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_category_daily_theme"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@id/tv_content_daily_theme"
+        android:layout_marginHorizontal="2dp"
+        android:layout_toLeftOf="@id/tv_content_daily_theme"
+        android:src="@mipmap/ic_test_icon01" />
 
 </RelativeLayout>

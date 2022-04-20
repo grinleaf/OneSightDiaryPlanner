@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/tv_image_daily_theme"
+        android:id="@+id/iv_image_daily_theme"
         android:layout_width="220dp"
         android:layout_height="220dp"
         android:layout_alignParentRight="true"

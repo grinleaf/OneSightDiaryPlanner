@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 class MainCheckListAdapter(val context:Context, val checkListItems:MutableList<ChecklistItem>):RecyclerView.Adapter<MainCheckListAdapter.VH>() {
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
         val content:CheckBox by lazy { itemView.findViewById(R.id.checkbox_maincontent_checklist_theme) }
-        val day:TextView by lazy { itemView.findViewById(R.id.tv_day_checklist_title) }
+        lateinit var day:TextView
         val categoryImage:ImageView by lazy { itemView.findViewById(R.id.iv_category_checklist_theme) }
 //        val subContent:CheckBox? by lazy { itemView.findViewById(R.id.checkbox_subcontent_checklist_theme) }
     }
@@ -32,15 +32,12 @@ class MainCheckListAdapter(val context:Context, val checkListItems:MutableList<C
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val checklistItem= checkListItems.get(position)
-        holder.day.text= checklistItem.day
         holder.content.text= checklistItem.content
         holder.categoryImage.setImageResource(checklistItem.categoryImage)
 //        holder.subContent?.text= checklistItem.subContent
-        LinearLayoutManager(
-            holder.
-        )
-
-
+//        LinearLayoutManager(
+//            holder.
+//        )
     }
 
     override fun getItemCount(): Int { return checkListItems.size }

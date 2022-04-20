@@ -11,7 +11,7 @@ class DateAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(frag
     val fragments: MutableList<Fragment> by lazy { mutableListOf() }
         init{
             fragments.add(DailylNoteFragment())
-            fragments.add(DailylNoteFragment())
+            fragments.add(CheckListFragment())
             fragments.add(DailylNoteFragment())
             fragments.add(DailylNoteFragment())
 //        fragments.add(CheckListFragment())

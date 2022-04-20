@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/tv_timeline_title"
+        android:gravity="center">
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="04월 19일"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"/>
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+        <RelativeLayout
+            android:id="@+id/layout_timeline_daily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:background="@drawable/timeline_daily_box"
+            android:layout_margin="8dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_image_timeline_daily"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/tutorial_sample04" />
+            <TextView
+                android:id="@+id/tv_day_timeline_daily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오늘 날짜"
+                android:textColor="#FF888888"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/iv_image_timeline_daily"/>
+
+            <TextView
+                android:id="@+id/tv_detail_timeline_daily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_day_timeline_daily"
+                android:layout_alignLeft="@id/tv_day_timeline_daily"
+                android:text="일정 내용\n\t- 세부내용"
+                android:textSize="16sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_category_timeline_daily"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/tutorial_sample04" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_timeline_checklist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:background="@drawable/timeline_checklist_box"
+            android:layout_margin="8dp">
+
+            <TextView
+                android:id="@+id/tv_day_timeline_checklist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오늘 날짜"
+                android:textColor="#FF888888"
+                android:layout_marginLeft="8dp"/>
+            <TextView
+                android:id="@+id/tv_detail_timeline_checklist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일정 내용\n\t- 하위항목\n\t- 하위항목\n\t- 하위항목\n\t- 하위항목"
+                android:maxLines="5"
+                android:textSize="16sp"
+                android:layout_below="@id/tv_day_timeline_checklist"
+                android:layout_alignLeft="@id/tv_day_timeline_checklist"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_category_timeline_checklist"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/tutorial_sample04" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/layout_timeline_lifecycle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:background="@drawable/timeline_lifecycle_box"
+            android:layout_margin="8dp">
+            <TextView
+                android:id="@+id/tv_day_timeline_lifecycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시작 일자 ~ 종료일자"
+                android:textColor="#FF888888"
+                android:layout_marginLeft="8dp"/>
+
+            <TextView
+                android:id="@+id/tv_detail_timeline_lifecycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_day_timeline_lifecycle"
+                android:layout_alignLeft="@id/tv_day_timeline_lifecycle"
+                android:maxLines="5"
+                android:text="일정 내용"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tv_cycle_timeline_lifecycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_day_timeline_lifecycle"
+                android:text="반복 주기"
+                android:textColor="#FF4343"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_category_timeline_lifecycle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/tutorial_sample04"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

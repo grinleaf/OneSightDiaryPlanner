@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".SignUpActivity">
+
+    <TextView
+        android:id="@+id/tv_signup_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/signup_divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_signup_title"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        app:dividerColor="@color/black" />
+
+    <RelativeLayout
+        android:id="@+id/layout_signup_01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signup_divider"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/tv_signup_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="14dp"
+            android:text="ID"
+            android:textSize="24sp"/>
+        <EditText
+            android:id="@+id/et_signup_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_signup_id"
+            android:ems="10"
+            android:layout_marginRight="14dp"/>
+        <Button
+            android:id="@+id/btn_signup_id_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="중복"
+            android:layout_toRightOf="@id/et_signup_id"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_signup_02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_signup_01"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/tv_signup_pw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="14dp"
+            android:text="PW"
+            android:textSize="24sp"/>
+        <EditText
+            android:id="@+id/et_signup_pw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_signup_pw"
+            android:layout_marginRight="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_signup_03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_signup_02"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/tv_signup_pw_re"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="14dp"
+            android:text="PW/재"
+            android:textSize="24sp"/>
+        <EditText
+            android:id="@+id/et_signup_pw_re"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_signup_pw_re"
+            android:layout_marginRight="14dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*비밀번호-비밀번호확인 검증문구"
+            android:layout_below="@id/et_signup_pw_re"
+            android:layout_alignLeft="@id/et_signup_pw_re"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_signup_04"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_signup_03"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/tv_signup_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="14dp"
+            android:text="닉네임"
+            android:textSize="24sp"/>
+        <EditText
+            android:id="@+id/et_signup_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_signup_nickname"
+            android:layout_marginRight="14dp"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_signup_05"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_signup_04"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/tv_signup_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="14dp"
+            android:text="이메일"
+            android:textSize="24sp"/>
+        <EditText
+            android:id="@+id/et_signup_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_signup_email"
+            android:layout_marginRight="14dp"/>
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="회원가입 완료"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

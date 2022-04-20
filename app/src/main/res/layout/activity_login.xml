@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".LoginActivity">
+
+    <EditText
+        android:id="@+id/et_login_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="16"
+        android:hint="ID"
+        android:inputType="text"
+        android:maxLines="1"
+        android:maxEms="12"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"/>
+    <EditText
+        android:id="@+id/et_login_pw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="16"
+        android:hint="PW"
+        android:inputType="text"
+        android:maxLines="1"
+        android:maxEms="16"
+        android:layout_below="@id/et_login_id"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btn_login_signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/et_login_id"
+        android:layout_alignRight="@id/et_login_id"
+        android:layout_below="@id/et_login_pw"
+        android:text="로그인"/>
+
+    <TextView
+        android:id="@+id/tv_login_to_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_login_signin"
+        android:layout_centerHorizontal="true"
+        android:text="앱이 처음이신가요?"
+        android:clickable="true"/>
+
+    <!-- debug -->
+    <Button
+        android:id="@+id/btn_login_debug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인 넘기기"
+        android:layout_above="@id/btn_login_naver"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/btn_login_naver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Naver로 로그인"
+        android:layout_above="@id/btn_login_Google"/>
+    <Button
+        android:id="@+id/btn_login_Google"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Google로 로그인"
+        android:layout_above="@id/btn_login_Kakao"/>
+    <Button
+        android:id="@+id/btn_login_Kakao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Kakao로 로그인"/>
+
+</RelativeLayout>

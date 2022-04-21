@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_lifecycle"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <LinearLayout
+        android:id="@+id/layout_complete_count_main_lifecycle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#D6FAFF"
+        android:padding="20dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:visibility="visible">
+        <LinearLayout
+            android:id="@+id/layout_complete_count_01_lifecycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="연속 성공"
+                android:layout_marginRight="16dp"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_sequence_count_lifecycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="N"
+                android:textStyle="bold"
+                android:textSize="32sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  일"
+                android:textSize="18sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_complete_count_02_lifecycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="최대 성공"
+                android:layout_marginRight="16dp"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tv_max_count_lifecycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="N"
+                android:textStyle="bold"
+                android:textSize="32sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  일"
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="16dp"
+        android:gravity="center">
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            app:dividerColor="@color/black"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="My Date"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="center"/>
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            app:dividerColor="@color/black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:elevation="15dp"
+            app:cardUseCompatPadding="true"
+            android:layout_marginRight="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_sequence_lifecycle"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tv_sequence_per_01_lifecycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="기한 없는
+                    Lifecycle 유지비율"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_sequence_per_count_lifecycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_sequence_per_01_lifecycle"
+                    android:text="N"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="32sp" />
+                <TextView
+                    android:id="@+id/tv_sequence_per_02_lifecycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_sequence_per_01_lifecycle"
+                    android:layout_toRightOf="@id/tv_sequence_per_count_lifecycle"
+                    android:layout_alignBottom="@id/tv_sequence_per_count_lifecycle"
+                    android:gravity="bottom"
+                    android:text="  %"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:elevation="15dp"
+            android:layout_marginLeft="4dp"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_max_lifecycle"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tv_max_per_01_lifecycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="right"
+                    android:text="기한 없는
+                    Lifecycle 달성비율"
+                    android:textColor="@color/lifecycle_component_color_02"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_max_per_count_lifecycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_max_per_01_lifecycle"
+                    android:layout_toLeftOf="@id/tv_max_per_02_lifecycle"
+                    android:text="N"
+                    android:textColor="@color/lifecycle_component_color_02"
+                    android:textSize="32sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tv_max_per_02_lifecycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_max_per_01_lifecycle"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignBottom="@id/tv_max_per_count_lifecycle"
+                    android:gravity="bottom"
+                    android:text="  %"
+                    android:textColor="@color/lifecycle_component_color_02"
+                    android:textSize="24sp"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="15dp"
+        android:layout_marginTop="8dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_date_count_lifecycle"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_datecount_01_lifecycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="16dp"
+                android:text="등록된 Lifecycle 일정 개수"
+                android:textColor="@color/lifecycle_component_color_03"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_datecount_count_lifecycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_datecount_01_lifecycle"
+                android:layout_toLeftOf="@id/tv_datecount_02_lifecycle"
+                android:text="N"
+                android:textColor="@color/lifecycle_component_color_03"
+                android:textSize="32sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_datecount_02_lifecycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_datecount_01_lifecycle"
+                android:layout_alignBottom="@id/tv_datecount_count_lifecycle"
+                android:layout_alignParentRight="true"
+                android:gravity="bottom"
+                android:text="  개"
+                android:textColor="@color/lifecycle_component_color_03"
+                android:textSize="24sp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

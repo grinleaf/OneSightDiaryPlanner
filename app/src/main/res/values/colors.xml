@@ -9,5 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="daily_color">#FFB59D</color>
     <color name="checklist_color">#CCFFBE</color>
-    <color name="lifecycle_color">#CDB2FF</color>
+    <color name="lifecycle_color">#009688</color>
+    <color name="bucketlist_component_color_01">#CDB2FF</color>
+    <color name="bucketlist_component_color_02">#9861FF</color>
+    <color name="bucketlist_component_color_03">#CCAFFF</color>
+    <color name="lifecycle_component_color_01">#00BCD4</color>
+    <color name="lifecycle_component_color_02">#84CFD8</color>
+    <color name="lifecycle_component_color_03">#007987</color>
+
 </resources>

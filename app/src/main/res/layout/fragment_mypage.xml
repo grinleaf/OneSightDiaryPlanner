@@ -1,12 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/layout_userinfo_mypage"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MyPage"
-        android:layout_centerInParent="true"/>
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingHorizontal="16dp"
+        android:clickable="true">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_userprofile_userinfo_mypage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/tutorial_sample04"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tv_userid_userinfo_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_userprofile_userinfo_mypage"
+            android:layout_alignBottom="@id/iv_userprofile_userinfo_mypage"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="24dp"
+            android:layout_toRightOf="@id/iv_userprofile_userinfo_mypage"
+            android:gravity="center_vertical"
+            android:text="계정명"
+            android:textSize="16sp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_rightpath"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/iv_userprofile_userinfo_mypage"
+            android:layout_alignBottom="@id/iv_userprofile_userinfo_mypage"
+            android:gravity="center_vertical"/>
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="16dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_square_border_box"
+            android:gravity="center"
+            android:padding="26dp">
+
+            <TextView
+                android:id="@+id/tv_level_levelinfo_mypage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/iv_level_image_levelinfo_mypage"
+                android:layout_alignBottom="@id/iv_level_image_levelinfo_mypage"
+                android:layout_marginLeft="36dp"
+                android:gravity="center"
+                android:text="등급 이름"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_level_image_levelinfo_mypage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="24dp"
+                android:src="@drawable/tutorial_sample01" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right">
+        <ImageView
+            android:id="@+id/iv_level_exam_icon_levelinfo_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_alert"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_level_exam_icon_levelinfo_mypage"
+            android:layout_alignTop="@id/iv_level_exam_icon_levelinfo_mypage"
+            android:layout_alignBottom="@id/iv_level_exam_icon_levelinfo_mypage"
+            android:gravity="center"
+            android:layout_marginRight="8dp"
+            android:text="등급이란?"
+            android:textColor="#595959"
+            android:clickable="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:gravity="center">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+
+    </RelativeLayout>
+</LinearLayout>

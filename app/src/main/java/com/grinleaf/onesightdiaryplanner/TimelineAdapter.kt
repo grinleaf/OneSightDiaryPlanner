@@ -24,11 +24,11 @@ class TimelineAdapter(val context:Context, val tlItems:MutableList<TimelineItem>
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        val itemView = tlItems.get(position)
-        holder.tvDay.setText(itemView.day)
-        holder.tvDetail.setText(itemView.content)
-        holder.tvCategoryImage.setImageResource(itemView.categoryImage)
-        holder.tvAddData.setImageResource(itemView.dayImage)
+        val tlItem = tlItems.get(position)
+        holder.tvDay.setText(tlItem.day)
+        holder.tvDetail.setText(tlItem.content)
+        holder.tvCategoryImage.setImageResource(tlItem.categoryImage)
+        holder.tvAddData.setImageResource(tlItem.dayImage)
     }
 
     override fun getItemCount(): Int { return tlItems.size }

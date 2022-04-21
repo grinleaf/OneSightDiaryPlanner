@@ -41,9 +41,18 @@ data class LifecycleItem(
     override var day:String,
     override var content:String,
     override var categoryImage:Int,
-    var repeatCycle:Int
+    var repeatCycle:Int,
+    var startDay:String,
+    var endDay:String
     ):Base(day,content,categoryImage)
 
+data class BucketlistItem(
+    override var day:String,
+    override var content:String,
+    override var categoryImage:Int
+):Base(day,content,categoryImage)
+
+data class GridItem(var gridImage:Int, var gridContent:String)
 
 
 //공통 데이터 클래스(Base)상속

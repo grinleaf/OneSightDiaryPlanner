@@ -1,14 +1,12 @@
 package com.grinleaf.onesightdiaryplanner
 
 import android.content.Context
-import android.util.Range
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.random.Random
 
 class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem>):RecyclerView.Adapter<DailyNoteAdapter.VH>() {
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
@@ -23,12 +21,12 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
         if(true) {//dayImage 값이 입력되지 않았을 경우 조건식 사용할 것
             val random = (0..3).random()    //random 대신 shuffle() 써보기 ! 중복 제거해야함
             when (random) {
-                0 -> { itemView = LayoutInflater.from(context).inflate(R.layout.theme_daily_01, parent, false) }
-                1 -> { itemView = LayoutInflater.from(context).inflate(R.layout.theme_daily_02, parent, false) }
-                2 -> { itemView = LayoutInflater.from(context).inflate(R.layout.theme_daily_03, parent, false) }
-                3 -> { itemView = LayoutInflater.from(context).inflate(R.layout.theme_daily_04, parent, false) }
+                0 -> { itemView = LayoutInflater.from(context).inflate(R.layout.recycler_theme_daily_01, parent, false) }
+                1 -> { itemView = LayoutInflater.from(context).inflate(R.layout.recycler_theme_daily_02, parent, false) }
+                2 -> { itemView = LayoutInflater.from(context).inflate(R.layout.recycler_theme_daily_03, parent, false) }
+                3 -> { itemView = LayoutInflater.from(context).inflate(R.layout.recycler_theme_daily_04, parent, false) }
             }
-        }else itemView = LayoutInflater.from(context).inflate(R.layout.theme_daily_05, parent, false)
+        }else itemView = LayoutInflater.from(context).inflate(R.layout.recycler_theme_daily_05, parent, false)
         return VH(itemView)
     }
 

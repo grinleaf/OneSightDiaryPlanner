@@ -12,11 +12,8 @@ class DateAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(frag
         init{
             fragments.add(DailylNoteFragment())
             fragments.add(CheckListFragment())
-            fragments.add(DailylNoteFragment())
-            fragments.add(DailylNoteFragment())
-//        fragments.add(CheckListFragment())
-//        fragments.add(LifecycleFragment())
-//        fragments.add(BucketListFragment())
+            fragments.add(LifecycleFragment())
+            fragments.add(BucketListFragment())
     }
 
     override fun getItemCount(): Int{ return fragments.size }

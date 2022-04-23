@@ -23,27 +23,31 @@
                 android:id="@+id/tv_title_bucketlist_theme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/iv_category_bucketlist_theme"
+                android:gravity="left"
                 android:text="일정내용"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tv_day_bucketlist_theme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/tv_title_bucketlist_theme"
                 android:layout_alignLeft="@id/tv_title_bucketlist_theme"
                 android:layout_alignRight="@id/tv_title_bucketlist_theme"
-                android:layout_below="@id/tv_title_bucketlist_theme"
                 android:text="2022.04.20"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_category_bucketlist_theme"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/tutorial_sample01"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/tutorial_sample01" />
         </RelativeLayout>
 
         <com.google.android.material.divider.MaterialDivider

@@ -5,6 +5,9 @@
         android:icon="@drawable/ic_timeline"/>
     <item android:id="@+id/date_tab" android:title="Date"
         android:icon="@drawable/ic_date"/>
+    <item android:id="@+id/blank"
+        android:title=""
+        android:enabled="false"/>
     <item android:id="@+id/calendar_tab" android:title="Calendar"
         android:icon="@drawable/ic_calendar"/>
     <item android:id="@+id/mypage_tab" android:title="MyPage"

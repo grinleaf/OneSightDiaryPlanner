@@ -23,6 +23,7 @@ class MypageAdapter(val context: Context, val gridItems:MutableList<GridItem>):R
     override fun onBindViewHolder(holder: VH, position: Int) {
         val gridItem= gridItems.get(position)
         holder.gridImage.setImageResource(gridItem.gridImage)
+        holder.gridImage.setColorFilter(R.color.black)
         holder.gridContent.text= gridItem.gridContent
     }
 

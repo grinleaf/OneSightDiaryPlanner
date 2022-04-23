@@ -53,6 +53,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
+                android:layout_marginRight="16dp"
                 android:src="@drawable/tutorial_sample01" />
         </RelativeLayout>
 

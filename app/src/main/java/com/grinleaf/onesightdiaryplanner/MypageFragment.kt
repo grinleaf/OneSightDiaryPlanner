@@ -25,10 +25,10 @@ class MypageFragment:Fragment() {
 
         gridItems.add(GridItem(R.drawable.ic_alert_grid,"알림 설정"))
         gridItems.add(GridItem(R.drawable.ic_theme_grid,"테마 설정"))
-        gridItems.add(GridItem(R.drawable.ic_baseline_attractions_24,"업적 현황"))
+        gridItems.add(GridItem(R.drawable.ic_award_leaf_star,"업적 현황"))
         gridItems.add(GridItem(R.drawable.ic_alert_grid,"알림 설정"))
         gridItems.add(GridItem(R.drawable.ic_theme_grid,"테마 설정"))
-        gridItems.add(GridItem(R.drawable.ic_baseline_attractions_24,"업적 현황"))
+        gridItems.add(GridItem(R.drawable.ic_award_leaf_star,"업적 현황"))
 
         binding.recyclerMypage.adapter= MypageAdapter(requireContext(),gridItems)
         binding.recyclerMypage.layoutManager = GridLayoutManager(context,3)

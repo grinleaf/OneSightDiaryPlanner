@@ -29,8 +29,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_bucketlist_year"
-            android:layout_marginBottom="16dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginBottom="16dp"
             android:text="usernickname 님의 버킷리스트"
             android:textSize="20sp"
             android:textStyle="bold" />

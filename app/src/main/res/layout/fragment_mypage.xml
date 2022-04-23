@@ -13,6 +13,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:paddingHorizontal="16dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_userprofile_userinfo_mypage"
@@ -62,7 +63,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/iv_level_image_levelinfo_mypage"
                 android:layout_alignBottom="@id/iv_level_image_levelinfo_mypage"
+                android:layout_alignParentLeft="true"
                 android:layout_marginLeft="36dp"
+                android:layout_toLeftOf="@id/iv_level_image_levelinfo_mypage"
                 android:gravity="center"
                 android:text="등급 이름"
                 android:textSize="24sp"

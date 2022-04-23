@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentLifecycleBinding
+
 
 class LifecycleFragment:Fragment() {
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
@@ -23,6 +26,7 @@ class LifecycleFragment:Fragment() {
         lifecycleItems.add(LifecycleItem("2022.04.30","많아용",0,0,"",""))
 
         binding.recyclerLifecycle.adapter= LifecycleAdapter(requireContext(), lifecycleItems)
+       
     }
 
     override fun onResume() {

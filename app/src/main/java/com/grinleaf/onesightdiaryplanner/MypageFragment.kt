@@ -1,9 +1,11 @@
 package com.grinleaf.onesightdiaryplanner
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.LayoutInflaterCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentMypageBinding
@@ -34,4 +36,6 @@ class MypageFragment:Fragment() {
         binding.recyclerMypage.layoutManager = GridLayoutManager(context,3)
 
     }
+
+
 }

@@ -3,16 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cl_calendar"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:elevation="1dp"
     android:paddingHorizontal="60dp"
-    android:background="@drawable/ic_launcher_background"
-    android:visibility="gone"
+    android:visibility="visible"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="parent">
-
     <TextView
         android:id="@+id/tv_calendar_indicator"
         android:layout_width="wrap_content"
@@ -71,7 +69,7 @@
         app:cv_orientation="vertical"
         app:cv_outDateStyle="endOfGrid"
         app:cv_scrollMode="paged"
-        app:layout_constraintTop_toTopOf="@id/btn_monthPrev"
+        app:layout_constraintBottom_toTopOf="@id/btn_monthPrev"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_day_of_weeks" />

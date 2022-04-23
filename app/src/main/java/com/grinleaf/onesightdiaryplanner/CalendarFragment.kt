@@ -16,10 +16,8 @@ import java.util.*
 
 class CalendarFragment:Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        parentFragmentManager.beginTransaction().add(R.id.calendar_container,fragment).commit()
         return binding.root
     }
-    val fragment:Fragment by lazy { CalendarFragment() }
     val binding by lazy { FragmentCalendarMainBinding.inflate(layoutInflater) }
     private val currentMonth = YearMonth.now()
     private val startMonth = currentMonth.minusMonths(1)
@@ -35,6 +33,7 @@ class CalendarFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         with(binding.calendar){
             (itemAnimator as? SimpleItemAnimator)?.supportsChangeAnimations = false
             dayBinder = binder

@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
 
         fragments.add(TimelineFragment())
         fragments.add(DateFragment())
-        fragments.add(CalendarFragment())
+        fragments.add(Fragment())
+        fragments.add(CalendarFrameFragment())
         fragments.add(MypageFragment())
 
         supportFragmentManager.beginTransaction().add(R.id.container,fragments[0]).commit()
@@ -38,12 +39,12 @@ class MainActivity : AppCompatActivity() {
                     tran.show(fragments[1])
                 }
                 R.id.calendar_tab->{
-                    if(!supportFragmentManager.fragments.contains(fragments[2])) tran.add(R.id.container,fragments[2])
-                    tran.show(fragments[2])
-                }
-                R.id.mypage_tab->{
                     if(!supportFragmentManager.fragments.contains(fragments[3])) tran.add(R.id.container,fragments[3])
                     tran.show(fragments[3])
+                }
+                R.id.mypage_tab->{
+                    if(!supportFragmentManager.fragments.contains(fragments[4])) tran.add(R.id.container,fragments[4])
+                    tran.show(fragments[4])
                 }
             }
             tran.commit()

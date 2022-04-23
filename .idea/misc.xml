@@ -30,9 +30,12 @@
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_bucketlist.xml" value="0.30416666666666664" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar.xml" value="0.1" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_container.xml" value="0.14635416666666667" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_day.xml" value="0.30416666666666664" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_frame.xml" value="0.14635416666666667" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_item.xml" value="0.1" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_lib.xml" value="0.1" />
-        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_main.xml" value="0.22" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_main.xml" value="0.25" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_week.xml" value="0.30416666666666664" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_checklist.xml" value="0.16018518518518518" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_dailynote.xml" value="0.22865853658536586" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_date.xml" value="0.16018518518518518" />

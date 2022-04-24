@@ -23,22 +23,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            android:backgroundTint="@color/signature_color_02"
+            app:borderWidth="0dp"
             app:fabSize="mini"
-            android:src="@drawable/ic_award_crown_02"/>
+            android:src="@drawable/ic_edit_01"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_floating_achievement_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fabSize="mini"
-            android:src="@drawable/ic_edit_01"/>
+            android:src="@drawable/ic_award_crown_02"
+            android:backgroundTint="@color/signature_color_02"
+            app:borderWidth="0dp"
+            app:fabSize="mini" />
     </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_floating_top_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_attractions_24"
+        android:src="@drawable/ic_uni_01"
+        android:backgroundTint="@color/signature_color_02"
+        app:borderWidth="0dp"
         app:layout_anchor="@id/bottomAppBar_main"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -46,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:fabCradleMargin="5dp"
+        app:fabCradleMargin="8dp"
         app:fabCradleRoundedCornerRadius="10dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

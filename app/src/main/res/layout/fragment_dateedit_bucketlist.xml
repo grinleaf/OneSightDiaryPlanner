@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="버킷리스트 달성을 위한 세부 플래너"
+        android:textStyle="bold"
+        android:padding="16dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/divider_color_04"
+        android:layout_marginBottom="16dp"
+        android:padding="8dp"
+        android:layout_margin="4dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_bucketlist_dateedit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/et_bucketlist_dateedit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="세부 플랜을 작성하세요."
+                android:textSize="14sp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingVertical="16dp"
+                android:paddingLeft="8dp"
+                android:visibility="visible"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/iv_add_date_bucketlist_dateedit"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_check"
+                android:clickable="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

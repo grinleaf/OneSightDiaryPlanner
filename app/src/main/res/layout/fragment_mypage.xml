@@ -13,7 +13,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:paddingHorizontal="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginVertical="16dp"
         android:clickable="true">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_userprofile_userinfo_mypage"
@@ -48,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="16dp"
+        android:layout_marginTop="16dp"
         app:cardUseCompatPadding="true">
 
         <RelativeLayout
@@ -55,7 +56,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_square_border_box"
             android:gravity="center"
-            android:padding="26dp">
+            android:paddingHorizontal="26dp"
+            android:paddingVertical="38dp">
 
             <TextView
                 android:id="@+id/tv_level_levelinfo_mypage"
@@ -105,6 +107,12 @@
             android:textColor="#595959"
             android:clickable="true"/>
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_line_02"
+        android:layout_marginVertical="8dp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

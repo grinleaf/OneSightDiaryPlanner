@@ -37,16 +37,14 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_datepicker_dailynote"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignTop="@id/tv_bucketlist_title"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
             android:layout_alignBottom="@id/tv_bucketlist_title"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:layout_toRightOf="@id/tv_bucketlist_title"
-            android:src="@drawable/ic_edit" />
+            android:src="@drawable/ic_edit_02" />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -55,5 +53,5 @@
         android:layout_height="match_parent"
         android:layout_below="@id/layout_bucketlist"
         android:padding="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 </RelativeLayout>

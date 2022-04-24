@@ -48,24 +48,36 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_checklist"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/layout_checklist_add_date"
+        android:layout_height="wrap_content"
         android:layout_below="@id/layout_checklist_title"
         android:padding="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/recycler_checklist"
+        app:dividerColor="#AEAEAE"
+        android:layout_marginHorizontal="16dp"/>
     <RelativeLayout
-        android:id="@+id/layout_checklist_add_date"
+        android:id="@+id/layout_add_date_checklist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:padding="16dp"
-        android:clickable="true">
+        android:layout_below="@id/recycler_checklist"
+        android:clickable="true"
+        android:padding="8dp">
         <TextView
+            android:id="@+id/tv_add_date_checklist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+ 일정 추가"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:padding="8dp"
+            android:text="+ 일정 추가" />
     </RelativeLayout>
-
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/layout_add_date_checklist"
+        app:dividerColor="#AEAEAE"
+        android:layout_marginHorizontal="16dp"/>
 </RelativeLayout>

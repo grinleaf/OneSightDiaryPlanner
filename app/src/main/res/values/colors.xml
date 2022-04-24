@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="daily_color">#FFB59D</color>
+    <color name="daily_color_01">#FFB59D</color>
     <color name="checklist_color">#CCFFBE</color>
     <color name="lifecycle_color">#009688</color>
     <color name="bucketlist_component_color_01">#CDB2FF</color>
@@ -16,5 +16,14 @@
     <color name="lifecycle_component_color_01">#00BCD4</color>
     <color name="lifecycle_component_color_02">#84CFD8</color>
     <color name="lifecycle_component_color_03">#007987</color>
+    <color name="divider_color_01">#FF9DC4</color>
+    <color name="divider_color_02">#FFE0D6</color>
+    <color name="divider_color_03">#FDA08F</color>
+    <color name="divider_color_04">#FFEFEA</color>
+    <color name="signature_color_01">#D5DBFF</color>
+    <color name="signature_color_02">#8093FF</color>
+    <color name="signature_color_03">#4964FF</color>
+    <color name="signature_color_04">#3354FF</color>
+
 
 </resources>

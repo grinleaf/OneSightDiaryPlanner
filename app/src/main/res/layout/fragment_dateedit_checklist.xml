@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_today_auto_checklist_date_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="오늘날짜"
+        android:gravity="center"
+        android:padding="32dp"
+        android:clickable="true"/>
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:dividerColor="@color/divider_color_02"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|left"
+        android:text="세부 내용"
+        android:padding="16dp"/>
+    <EditText
+        android:id="@+id/et_content_detail_checklist_date_edit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/divider_color_04"
+        android:layout_marginBottom="16dp"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:maxLines="10"
+        android:padding="8dp"
+        android:layout_margin="4dp"/>
+
+</LinearLayout>

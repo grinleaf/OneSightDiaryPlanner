@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_array">
+        <item>DailyNote</item>
+        <item>CheckList</item>
+        <item>Lifecycle</item>
+        <item>BucketList</item>
+    </string-array>
+</resources>

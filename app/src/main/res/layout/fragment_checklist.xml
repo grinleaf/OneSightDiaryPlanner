@@ -8,7 +8,7 @@
         android:id="@+id/layout_checklist_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/checklist_color"
+        android:background="@color/signature_color_02"
         android:gravity="center"
         android:orientation="horizontal">
 

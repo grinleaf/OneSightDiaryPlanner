@@ -32,8 +32,8 @@
             android:id="@+id/btn_floating_achievement_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_award_crown_02"
             android:backgroundTint="@color/signature_color_02"
+            android:src="@drawable/ic_award_crown_02"
             app:borderWidth="0dp"
             app:fabSize="mini" />
     </RelativeLayout>
@@ -42,7 +42,7 @@
         android:id="@+id/btn_floating_top_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_uni_01"
+        android:src="@drawable/ic_star"
         android:backgroundTint="@color/signature_color_02"
         app:borderWidth="0dp"
         app:layout_anchor="@id/bottomAppBar_main"/>

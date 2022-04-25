@@ -8,12 +8,12 @@
         android:id="@+id/tv_timeline_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/signature_color_02"
         android:gravity="center_horizontal"
         android:padding="12dp"
         android:text="MyTimeLine 2022"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:background="#FF9800"/>
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_timeline"

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".AchievementActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_level_achievement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_square_border_box"
+            android:layout_marginBottom="8dp"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_level_01_achievement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="usernickname"
+                android:textColor="@color/signature_color_03"
+                android:textSize="24sp" />
+            <TextView
+                android:id="@+id/tv_level_02_achievement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_level_01_achievement"
+                android:layout_alignBottom="@id/tv_level_01_achievement"
+                android:text=" 님의 업적 등급"
+                android:textSize="16sp"/>
+
+            <LinearLayout
+                android:id="@+id/layout_level_card_achievement"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/tv_level_01_achievement"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:gravity="bottom">
+
+                <ImageView
+                    android:id="@+id/iv_level_5th_achievement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_achieve_level_05" />
+
+                <ImageView
+                    android:id="@+id/iv_level_4th_achievement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_achieve_level_04" />
+
+                <ImageView
+                    android:id="@+id/iv_level_3rd_achievement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_achieve_level_03" />
+
+                <ImageView
+                    android:id="@+id/iv_level_2nd_achievement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_achieve_level_02" />
+
+                <ImageView
+                    android:id="@+id/iv_level_1st_achievement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_achieve_level_01" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="다음 등급까지 n 점!"
+                android:layout_below="@id/layout_level_card_achievement"
+                android:gravity="right"
+                android:layout_marginTop="16dp"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_complete_count_achievement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:layout_below="@id/cardview_level_achievement">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_square_border_box"
+            android:gravity="center"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_complete_count_achievement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="도전과제 달성 : 3/ALL ( N % )"
+                android:textColor="@color/signature_color_03"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="145dp"
+        android:src="@drawable/ic_binder_clip"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_lank_achievement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardview_complete_count_achievement"
+        android:layout_marginVertical="8dp"
+        android:padding="8dp">
+        <ImageView
+            android:id="@+id/iv_lank_title_achievement"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_achieve_level_02" />
+        <TextView
+            android:id="@+id/tv_lank_title_achievement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_lank_title_achievement"
+            android:layout_alignBottom="@id/iv_lank_title_achievement"
+            android:layout_toRightOf="@id/iv_lank_title_achievement"
+            android:gravity="bottom"
+            android:padding="8dp"
+            android:text="업적 순위"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_achievement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_lank_achievement"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_floating_achievement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/signature_color_02"
+        android:src="@drawable/ic_award_trophy"
+        app:borderWidth="0dp" />
+</RelativeLayout>

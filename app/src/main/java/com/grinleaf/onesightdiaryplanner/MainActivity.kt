@@ -68,7 +68,8 @@ class MainActivity : AppCompatActivity() {
 
         //업적현황화면 전환 버튼
         binding.btnFloatingAchievementMain.setOnClickListener {
-
+            val intent= Intent(this@MainActivity, AchievementActivity::class.java)
+            startActivity(intent)
         }
     }
     
@@ -80,7 +81,7 @@ class MainActivity : AppCompatActivity() {
             fc_animation.start()
             val fe_animation = ObjectAnimator.ofFloat(binding.btnFloatingAchievementMain, "translationY", 0f)
             fe_animation.start()
-            binding.btnFloatingTopMain.setImageResource(R.drawable.ic_uni_01)
+            binding.btnFloatingTopMain.setImageResource(R.drawable.ic_star)
             binding.btnFloatingDateeditMain.isClickable= false
             binding.btnFloatingAchievementMain.isClickable= false
         } else {    // 플로팅 액션 버튼 열기

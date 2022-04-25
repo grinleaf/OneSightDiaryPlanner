@@ -7,6 +7,13 @@
     android:orientation="vertical"
     tools:context=".TutorialActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="#튜토리얼 페이지"
+        android:textSize="24sp"
+        android:layout_marginVertical="16dp"/>
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager_tutorial"
         android:layout_width="match_parent"

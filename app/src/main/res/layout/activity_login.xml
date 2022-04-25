@@ -46,8 +46,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_login_signin"
         android:layout_centerHorizontal="true"
-        android:text="앱이 처음이신가요?"
-        android:clickable="true"/>
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:text="앱이 처음이신가요?" />
 
     <!-- debug -->
     <Button

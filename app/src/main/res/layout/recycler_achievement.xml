@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:paddingHorizontal="16dp"
+    android:gravity="center_vertical"
+    android:background="@drawable/bg_round_square_box"
+    android:layout_margin="2dp">
+
+    <TextView
+        android:id="@+id/tv_lank_achievement_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="순위"
+        android:textSize="20sp"
+        android:textColor="@color/signature_color_02"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="16dp"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_lank_achievement_theme"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_uni_01"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/signature_color_01"
+        app:civ_circle_background_color="@color/white"
+        android:layout_marginHorizontal="16dp"/>
+    <TextView
+        android:id="@+id/tv_usernickname_achievement_theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="usernickname"
+        android:textColor="@color/signature_color_02"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+</LinearLayout>

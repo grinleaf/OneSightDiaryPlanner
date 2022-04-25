@@ -52,11 +52,20 @@ data class BucketlistItem(
     override var categoryImage:Int
 ):Base(day,content,categoryImage)
 
-data class GridItem(var gridImage:Int, var gridContent:String)
+data class MypageGridItem(var mypageImage:Int, var mypageContent:String)
+
+data class RewardGridItem(var rewardImage:Int, var rewardContent:String)
+
+data class UserInformationItem(var userLank:Int, var profileImage:Int, var userNickname:String){
+
+}
 
 
 //공통 데이터 클래스(Base)상속
-//1. daily      : 일정 날짜, 일정 내용, 카테고리 이미지 + 일정 이미지
-//2. checklist  : 일정 날짜, 일정 내용, 카테고리 이미지 + 일정 수행여부, 하위항목내용, 하위항목 수행여부
-//3. lifecycle  : 일정 날짜, 일정 내용, 카테고리 이미지 + 반복주기
-//4. TimeLine   : ...
+//0. base       : 일정 날짜, 일정 내용, 카테고리 이미지
+//1. TimeLine   : ...
+//2. daily      : 일정 날짜, 일정 내용, 카테고리 이미지 + 일정 이미지
+//3. checklist  : 일정 날짜, 일정 내용, 카테고리 이미지 + 일정 수행여부, 하위항목내용, 하위항목 수행여부
+//4. lifecycle  : 일정 날짜, 일정 내용, 카테고리 이미지 + 반복주기
+//5. Bucketlist : 일정 날짜, 일정 내용, 카테고리 이미지
+//6. Userinfo   : 프로필 이미지, 계정 ID, PW, 닉네임, 등급 점수, ...

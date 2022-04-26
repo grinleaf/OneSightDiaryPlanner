@@ -16,7 +16,7 @@ class CalendarFrameFragment:Fragment() {
         return binding.root
     }
     val binding by lazy { FragmentCalendarFrameBinding.inflate(layoutInflater) }
-    val fragment= DateFragment()        //임시. CalendarFragment()로 정상작동 되어야함 (****수정요****)
+    val fragment= CalendarFragment()        //임시. CalendarFragment()로 정상작동 되어야함 (****수정요****)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

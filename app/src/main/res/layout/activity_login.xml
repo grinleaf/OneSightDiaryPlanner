@@ -50,6 +50,21 @@
         android:clickable="true"
         android:text="앱이 처음이신가요?" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Google Login Test"
+        android:layout_below="@id/tv_login_to_signup"
+        android:layout_marginTop="8dp"/>
+    <TextView
+        android:id="@+id/login_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="result"
+        android:textSize="16sp"
+        android:layout_below="@id/tv_login_to_signup"
+        android:layout_marginTop="24dp"/>
+
     <!-- debug -->
     <Button
         android:id="@+id/btn_login_debug"
@@ -65,11 +80,10 @@
         android:layout_height="wrap_content"
         android:text="Naver로 로그인"
         android:layout_above="@id/btn_login_Google"/>
-    <Button
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/btn_login_Google"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Google로 로그인"
         android:layout_above="@id/btn_login_Kakao"/>
     <Button
         android:id="@+id/btn_login_Kakao"

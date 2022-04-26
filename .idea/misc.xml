@@ -7,14 +7,20 @@
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/bg_date_pager_lifecycle.xml" value="0.126" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/bg_item_bucketlist.xml" value="0.126" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/bg_max_lifecycle.xml" value="0.126" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/bg_round_ball.xml" value="0.138" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/bg_round_square_box.xml" value="0.138" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/bg_sequence_lifecycle.xml" value="0.126" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/bg_square_border_box.xml" value="0.126" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/daily05.xml" value="0.126" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/ic_baseline_attractions_24.xml" value="0.126" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/ic_edit.xml" value="0.126" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/indicator_off.xml" value="0.138" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/indicator_on.xml" value="0.138" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/timeline_checklist_box.xml" value="0.126" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/timeline_daily_box.xml" value="0.126" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/timeline_lifecycle_box.xml" value="0.126" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/activity_category.xml" value="0.21296296296296297" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/activity_date_edit.xml" value="0.21296296296296297" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/activity_login.xml" value="0.21296296296296297" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/activity_main.xml" value="0.21296296296296297" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/activity_tutorial_pager.xml" value="0.19074074074074074" />
@@ -22,16 +28,18 @@
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar.xml" value="0.19074074074074074" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_day.xml" value="0.184375" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_frame.xml" value="0.184375" />
-        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_main.xml" value="0.184375" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_main.xml" value="0.25" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_week.xml" value="0.184375" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_dailynote.xml" value="0.19074074074074074" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_date.xml" value="0.19091751621872105" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_dateedit_dailynote.xml" value="0.34739583333333335" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_lifecycle.xml" value="0.22" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_mypage.xml" value="0.19074074074074074" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_bucket.xml" value="0.19074074074074074" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_checklist_maincontent.xml" value="0.3416666666666667" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_checklist_subcontent.xml" value="0.3416666666666667" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_lifecycle.xml" value="0.3416666666666667" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_reward.xml" value="0.34739583333333335" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_theme_bucket_01.xml" value="0.22" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_theme_bucket_02.xml" value="0.22" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_theme_bucket_03.xml" value="0.3416666666666667" />

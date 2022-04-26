@@ -1,5 +1,6 @@
 package com.grinleaf.onesightdiaryplanner
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,8 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -15,10 +18,16 @@ import com.grinleaf.onesightdiaryplanner.databinding.ActivityDateEditBinding
 class DateEditActivity:AppCompatActivity() {
     val binding by lazy { ActivityDateEditBinding.inflate(layoutInflater) }
     val fragments: MutableList<Fragment> by lazy { mutableListOf() }
+    lateinit var resultLauncher:ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        resultLauncher= registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            val selectedImage= it.data?.data
+            binding.ivCategoryMainDateEdit.setImageResource(R.drawable.tutorial_sample04)   //수정요
+        }
 
         fragments.add(DateEditDailyNoteFragment())
         fragments.add(DateEditCheckListFragment())
@@ -53,6 +62,11 @@ class DateEditActivity:AppCompatActivity() {
             override fun onNothingSelected(p0: AdapterView<*>?) {
 
             }
+        }
+
+        binding.ivCategoryMainDateEdit.setOnClickListener {
+            val intent= Intent(this@DateEditActivity, CategoryActivity::class.java)
+            resultLauncher.launch(intent)
         }
 
     }

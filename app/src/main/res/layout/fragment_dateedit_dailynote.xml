@@ -30,11 +30,11 @@
             android:paddingLeft="16dp"
             android:paddingRight="32dp"/>
         <ImageView
-            android:id="@+id/tv_attach_image_dailynote_date_edit"
+            android:id="@+id/iv_attach_image_dailynote_date_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_dateedit_image"
-            android:scaleType="fitStart"
+            android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center_vertical"
             android:padding="16dp"/>

@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         fragments.add(TimelineFragment())
         fragments.add(DateFragment())
         fragments.add(Fragment())
-        fragments.add(CalendarFrameFragment())
+        fragments.add(CalendarFragment())
         fragments.add(MypageFragment())
 
         supportFragmentManager.beginTransaction().add(R.id.container,fragments[0]).commit()

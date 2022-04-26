@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CategoryActivity"
     android:orientation="vertical"
+    android:background="#FFdddddd"
     android:padding="36dp">
 
     <RelativeLayout
@@ -13,87 +14,202 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center_horizontal">
+        android:gravity="center">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Interest"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_interest_catecory_01"
-            android:layout_width="60dp"
+        <LinearLayout
+            android:id="@+id/layout_interest_category_01"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/tutorial_sample04"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_interest_catecory_02"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/tutorial_sample04"
-            android:layout_toRightOf="@id/iv_interest_catecory_01"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_interest_catecory_03"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/tutorial_sample04"
-            android:layout_toRightOf="@id/iv_interest_catecory_02"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_interest_catecory_04"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/tutorial_sample04"
-            android:layout_toRightOf="@id/iv_interest_catecory_03"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_interest_catecory_05"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/tutorial_sample04"
-            android:layout_toRightOf="@id/iv_interest_catecory_04"/>
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_interest_catecory_01"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/ic_car"
+                app:civ_border_color="#FFcccccc"
+                app:civ_border_width="1dp"
+                app:civ_circle_background_color="@color/white"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_interest_catecory_02"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/ic_friends"
+                app:civ_border_color="#FFcccccc"
+                app:civ_border_width="1dp"
+                app:civ_circle_background_color="@color/white" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_interest_catecory_03"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/ic_dog_02"
+                app:civ_border_color="#FFcccccc"
+                app:civ_border_width="1dp"
+                app:civ_circle_background_color="@color/white" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_interest_catecory_04"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_flower"
+                app:civ_border_color="#FFcccccc"
+                app:civ_border_width="1dp"
+                app:civ_circle_background_color="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_interest_category_01"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_interest_catecory_05"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/ic_leaf"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#FFcccccc"
+                app:civ_circle_background_color="@color/white"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_interest_catecory_06"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/ic_bff"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#FFcccccc"
+                app:civ_circle_background_color="@color/white" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_interest_catecory_07"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_award_crown_02"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#FFcccccc"
+                app:civ_circle_background_color="@color/white" />
+
+        </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/layout_category_02"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="top">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Interest"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:text="Achieve"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_interest_catecory_98"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/layout_achieve_category_01"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/tutorial_sample04"
-            />
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_achieve_catecory_01"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/ic_car"
+                app:civ_border_color="#FFcccccc"
+                app:civ_border_width="1dp"
+                app:civ_circle_background_color="@color/white" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_achieve_catecory_02"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/ic_friends"
+                app:civ_border_color="#FFcccccc"
+                app:civ_border_width="1dp"
+                app:civ_circle_background_color="@color/white" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_achieve_catecory_03"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/ic_dog_02"
+                app:civ_border_color="#FFcccccc"
+                app:civ_border_width="1dp"
+                app:civ_circle_background_color="@color/white"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_achieve_catecory_04"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_flower"
+                app:civ_border_color="#FFcccccc"
+                app:civ_border_width="1dp"
+                app:civ_circle_background_color="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_achieve_category_01"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_achieve_catecory_05"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/ic_leaf"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#FFcccccc"
+                app:civ_circle_background_color="@color/white"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_achieve_catecory_06"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="24dp"
+                android:src="@drawable/ic_bff"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#FFcccccc"
+                app:civ_circle_background_color="@color/white" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_achieve_catecory_07"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_award_crown_02"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#FFcccccc"
+                app:civ_circle_background_color="@color/white" />
+
+        </LinearLayout>
     </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout_category_03"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Interest"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_interest_catecory_99"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/tutorial_sample04"
-            />
-
-    </RelativeLayout>
-
-
 </LinearLayout>

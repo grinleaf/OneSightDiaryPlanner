@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginLeft="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,6 +19,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:layout_marginRight="16dp"
             android:layout_weight="1"
             android:background="@drawable/bg_item_bucketlist"
             android:gravity="center_vertical"
@@ -56,20 +56,5 @@
                 android:layout_marginRight="16dp"
                 android:src="@drawable/tutorial_sample01" />
         </RelativeLayout>
-
-
     </LinearLayout>
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        app:dividerColor="@color/bucketlist_component_color_03" />
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="16dp"
-        app:dividerColor="@color/bucketlist_component_color_03"
-        android:visibility="visible"/>
 </RelativeLayout>

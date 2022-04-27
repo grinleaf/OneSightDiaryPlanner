@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentDailynoteBinding
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
 
@@ -19,15 +20,19 @@ class DailylNoteFragment:Fragment() {
     val binding by lazy { FragmentDailynoteBinding.inflate(layoutInflater) }
     var dailyItems= mutableListOf<DailyItem>()
     var dateString= ""
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvDailynoteDay.text= ""+ LocalDate.now()
+        var now = ""+LocalDate.now()
+        val nowDate:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(now)
+        now= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(nowDate)
+        binding.tvDailynoteDay.text= now
         binding.ivDatepickerDailynote.setOnClickListener{
             val cal= Calendar.getInstance()
             val dateSetListener = DatePickerDialog.OnDateSetListener{
                     view, year, month, dayOfMonth -> dateString = "${year}-${month+1}-${dayOfMonth}"
+                val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(dateString)
+                dateString= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(date)
                 binding.tvDailynoteDay.text = dateString
             }
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(

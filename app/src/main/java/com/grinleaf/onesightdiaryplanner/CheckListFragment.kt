@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentChecklistBinding
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
 
@@ -38,13 +39,18 @@ class CheckListFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvDayChecklistTitle.text= ""+LocalDate.now()
+        var now = ""+LocalDate.now()
+        val nowDate:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(now)
+        now= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(nowDate)
+        binding.tvChecklistDay.text= now
 
         binding.ivDatepickerChecklist.setOnClickListener{
             val cal= Calendar.getInstance()
             val dateSetListener = DatePickerDialog.OnDateSetListener{
                     view, year, month, dayOfMonth -> dateString = "${year}-${month+1}-${dayOfMonth}"
-                    binding.tvDayChecklistTitle.text = dateString
+                val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(dateString)
+                dateString= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(date)
+                binding.tvChecklistDay.text = dateString
             }
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }

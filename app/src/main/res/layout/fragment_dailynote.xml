@@ -4,14 +4,27 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_dailynote"
+        android:background="@drawable/bg_flowers_04"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_dailynote"
+        android:background="#59FFFFFF" />
+
     <LinearLayout
         android:id="@+id/layout_dailynote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@color/signature_color_02"
+        android:background="@color/white"
+        android:elevation="16dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp">
 
         <TextView
             android:id="@+id/tv_dailynote_title"
@@ -20,9 +33,8 @@
             android:layout_marginRight="16dp"
             android:layout_weight="1"
             android:gravity="right"
-            android:padding="12dp"
             android:text="Daily Note"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -32,10 +44,10 @@
             android:layout_weight="1"
             android:padding="12dp"
             android:text="2022.04.19"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/iv_datepicker_dailynote"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -43,17 +55,20 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:src="@drawable/ic_calendar" />
+            android:src="@drawable/ic_calendar_02" />
 
     </LinearLayout>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_dailynote"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/layout_dailynote"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
 
 
 </RelativeLayout>

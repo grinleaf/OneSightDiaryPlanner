@@ -9,7 +9,7 @@
         android:title=""
         android:enabled="false"/>
     <item android:id="@+id/calendar_tab" android:title="Calendar"
-        android:icon="@drawable/ic_calendar"/>
+        android:icon="@drawable/ic_calendar_01"/>
     <item android:id="@+id/mypage_tab" android:title="MyPage"
     android:icon="@drawable/ic_mypage"/>
 

@@ -19,7 +19,7 @@
         app:selectionType="single"
         app:weekendDayTextColor="#FF5863"
         android:layout_marginBottom="24dp"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="16dp"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -95,13 +95,14 @@
                         android:gravity="center_vertical"
                         android:text="오늘의 표정"
                         android:textColor="@color/white" />
+
                     <ImageView
                         android:id="@+id/iv_today_emo_calendar"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_alignParentRight="true"
                         android:gravity="center"
-                        android:src="@drawable/ic_leaf" />
+                        android:src="@drawable/ic_emo_01" />
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>

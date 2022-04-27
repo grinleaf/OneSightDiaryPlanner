@@ -2,8 +2,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <solid android:color="@color/bucketlist_component_color_01"/>
+    <solid android:color="#C3D3A0FF"/>
     <corners android:radius="8dp"/>
-    <stroke android:width="2dp" android:color="@color/bucketlist_component_color_02"/>
+    <stroke android:width="2dp" android:color="#E6A778FD"/>
 
 </shape>

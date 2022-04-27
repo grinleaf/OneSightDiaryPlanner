@@ -4,153 +4,189 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".SignUpActivity">
 
-    <TextView
-        android:id="@+id/tv_signup_title"
+    <LinearLayout
+        android:id="@+id/layout_signup_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="회원가입"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"/>
+        android:background="@color/white"
+        android:elevation="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp">
+        <ImageView
+            android:id="@+id/backpress_signup"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_left"
+            android:layout_marginRight="8dp"/>
+        <TextView
+            android:id="@+id/tv_signup_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:text="회원가입"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="16dp"/>
 
-    <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/signup_divider"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_signup_title"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="24dp"
-        app:dividerColor="@color/black" />
+    </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/layout_signup_01"
+        android:id="@+id/layout_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/signup_divider"
+        android:layout_below="@id/layout_signup_title"
+        android:layout_marginTop="32dp"
         android:paddingHorizontal="16dp">
 
         <TextView
             android:id="@+id/tv_signup_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
             android:layout_marginRight="14dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="center_vertical"
             android:text="ID"
-            android:textSize="24sp"/>
+            android:textSize="20sp" />
+
         <EditText
             android:id="@+id/et_signup_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/et_signup_nickname"
+            android:layout_alignTop="@id/tv_signup_id"
+            android:layout_alignBottom="@id/tv_signup_id"
+            android:layout_marginRight="14dp"
             android:layout_toRightOf="@id/tv_signup_id"
             android:ems="10"
-            android:layout_marginRight="14dp"/>
+            android:inputType="text"
+            android:maxLines="1" />
+
         <Button
             android:id="@+id/btn_signup_id_check"
-            android:layout_width="wrap_content"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:text="중복"
-            android:layout_toRightOf="@id/et_signup_id"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout_signup_02"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layout_signup_01"
-        android:paddingHorizontal="16dp">
+            android:layout_alignBottom="@id/tv_signup_id"
+            android:layout_toRightOf="@id/et_signup_id"
+            android:text="중복" />
 
         <TextView
             android:id="@+id/tv_signup_pw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_below="@id/tv_signup_id"
             android:layout_marginRight="14dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="center_vertical"
             android:text="PW"
-            android:textSize="24sp"/>
+            android:textSize="20sp" />
+
         <EditText
             android:id="@+id/et_signup_pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/et_signup_nickname"
+            android:layout_alignTop="@id/tv_signup_pw"
+            android:layout_marginRight="14dp"
             android:layout_toRightOf="@id/tv_signup_pw"
-            android:layout_marginRight="14dp"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout_signup_03"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layout_signup_02"
-        android:paddingHorizontal="16dp">
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tv_signup_pw_re"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:layout_below="@id/tv_signup_pw"
             android:layout_marginRight="14dp"
-            android:text="PW/재"
-            android:textSize="24sp"/>
+            android:layout_marginBottom="32dp"
+            android:gravity="center_vertical"
+            android:text="PW\n확인"
+            android:textSize="18sp" />
+
         <EditText
             android:id="@+id/et_signup_pw_re"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignTop="@id/tv_signup_pw_re"
+            android:layout_marginRight="14dp"
             android:layout_toRightOf="@id/tv_signup_pw_re"
-            android:layout_marginRight="14dp"/>
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:maxLines="1" />
+
         <TextView
+            android:id="@+id/tv_signup_checkpw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*비밀번호-비밀번호확인 검증문구"
             android:layout_below="@id/et_signup_pw_re"
-            android:layout_alignLeft="@id/et_signup_pw_re"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/layout_signup_04"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layout_signup_03"
-        android:paddingHorizontal="16dp">
+            android:layout_alignLeft="@id/et_signup_pw_re"
+            android:layout_marginBottom="16dp"
+            android:paddingLeft="12dp"
+            android:text="*비밀번호-비밀번호확인 검증문구"
+            android:textColor="#FFaaaaaa" />
 
         <TextView
             android:id="@+id/tv_signup_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:layout_below="@id/tv_signup_checkpw"
             android:layout_marginRight="14dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="center_vertical"
             android:text="닉네임"
-            android:textSize="24sp"/>
+            android:textSize="18sp" />
+
         <EditText
             android:id="@+id/et_signup_nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/tv_signup_nickname"
-            android:layout_marginRight="14dp"/>
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/layout_signup_05"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layout_signup_04"
-        android:paddingHorizontal="16dp">
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_alignTop="@id/tv_signup_nickname"
+            android:layout_marginRight="14dp"
+            android:layout_toRightOf="@id/tv_signup_nickname" />
 
         <TextView
             android:id="@+id/tv_signup_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60sp"
+            android:layout_height="40sp"
+            android:layout_below="@id/tv_signup_nickname"
             android:layout_marginRight="14dp"
+            android:gravity="center_vertical"
             android:text="이메일"
-            android:textSize="24sp"/>
+            android:textSize="18sp" />
+
         <EditText
             android:id="@+id/et_signup_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/tv_signup_email"
-            android:layout_marginRight="14dp"/>
+            android:inputType="textEmailAddress"
+            android:layout_alignTop="@id/tv_signup_email"
+            android:layout_marginRight="14dp"
+            android:layout_toRightOf="@id/tv_signup_email" />
+
+        <Button
+            android:id="@+id/btn_signup_email_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_signup_email"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="14dp"
+            android:text="인증메일 전송" />
     </RelativeLayout>
 
     <Button
+        android:id="@+id/btn_signup_regist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:text="회원가입 완료"
-        android:layout_alignParentBottom="true"/>
+        android:paddingVertical="12dp"
+        android:layout_margin="8dp"/>
 
 </RelativeLayout>

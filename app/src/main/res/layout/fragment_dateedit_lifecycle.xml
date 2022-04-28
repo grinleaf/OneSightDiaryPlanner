@@ -88,7 +88,7 @@
             android:orientation="horizontal"
             android:gravity="center_horizontal">
             <RadioButton
-                android:id="@+id/checkbox_everyday_lifecycle_date_edit"
+                android:id="@+id/radio_everyday_lifecycle_date_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
@@ -96,19 +96,19 @@
                 android:checked="true"
                 android:buttonTint="@color/divider_color_03"/>
             <RadioButton
-                android:id="@+id/checkbox_everyweek_lifecycle_date_edit"
+                android:id="@+id/radio_everyweek_lifecycle_date_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:text="매주"/>
             <RadioButton
-                android:id="@+id/checkbox_everymonth_lifecycle_date_edit"
+                android:id="@+id/radio_everymonth_lifecycle_date_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:text="매달"/>
             <RadioButton
-                android:id="@+id/checkbox_everyyear_lifecycle_date_edit"
+                android:id="@+id/radio_everyyear_lifecycle_date_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
@@ -133,7 +133,7 @@
             android:paddingLeft="16dp"
             android:paddingRight="32dp"/>
         <TextView
-            android:id="@+id/tvlife"
+            android:id="@+id/tv_sleeptime_lifecycle_date_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="00 시 00 분"

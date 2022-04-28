@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
@@ -63,7 +64,7 @@ class SignUpActivity : AppCompatActivity() {
         userInfo.put("userEmail",inputEmail)
 
         val firestore= FirebaseFirestore.getInstance()
-        firestore.collection("user").document(inputId).set(userInfo)
+        firestore.collection("user").document(inputEmail).set(userInfo)
 
         firebaseAuth.createUserWithEmailAndPassword(inputEmail,inputPw).addOnCompleteListener { task ->
             if(task.isSuccessful){
@@ -71,6 +72,11 @@ class SignUpActivity : AppCompatActivity() {
                     if(task.isSuccessful) Toast.makeText(this, "이메일을 확인하시고 인증하세요", Toast.LENGTH_SHORT).show()
                     else Toast.makeText(this, "인증되지 않은 사용자입니다.", Toast.LENGTH_SHORT).show()
                 }
+//                G.userId = inputId
+//                G.userNickname = inputNickname
+//                G.userEmail = inputEmail
+//                G.userPassword = inputPw
+                Log.i("aaa", G.userId + "," + G.userNickname + "," + G.userEmail)
                 Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(this, "회원가입 실패!", Toast.LENGTH_SHORT).show()

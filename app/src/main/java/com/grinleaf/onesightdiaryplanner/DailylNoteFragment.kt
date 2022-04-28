@@ -3,6 +3,7 @@ package com.grinleaf.onesightdiaryplanner
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,10 +40,23 @@ class DailylNoteFragment:Fragment() {
                 Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }
 
-        dailyItems.add(DailyItem("2022.04.20","Hello",R.drawable.ic_test_icon01_foreground,R.drawable.tutorial_sample01))
-        dailyItems.add(DailyItem("2022.04.21","Nice",R.drawable.ic_test_icon01_foreground,R.drawable.tutorial_sample01))
-        dailyItems.add(DailyItem("2022.04.30","Kotlin",R.drawable.ic_test_icon01_foreground,R.drawable.tutorial_sample01))
-
+        //DailyItem 데이터 배열 만들기
+        //1. DateEditActivity --> 각 Fragment 로 보낸 값을 받기
+        var dateTitle:String= ""
+        var categoryImage= 0
+        val bundle= arguments
+        if(bundle!=null){
+            dateTitle= bundle.getString("dateTitle","")
+            categoryImage= bundle.getInt("categoryImage",0)
+        }
+        //2. 각 fragment 의 edit fragment (DateEditDailynoteFragment) --> 각 Fragment 로 보낸 값을 받기
+        val todayAuto= arguments?.getString("todayAuto")
+        val attachImage= arguments?.getString("attachImage")
+        val detailContent= arguments?.getString("detailContent")
+        Log.i("aaa",todayAuto+","+dateTitle+","+categoryImage+","+attachImage)
+        //3. 배열 추가
+        dailyItems.add((DailyItem(todayAuto.toString(), dateTitle,categoryImage,attachImage.toString())))
+        
         binding.recyclerDailynote.adapter= DailyNoteAdapter(requireContext(),dailyItems)
     }
 

@@ -13,7 +13,7 @@ data class DailyItem(
     override var day:String,
     override var content:String,
     override var categoryImage:Int,
-    var dayImage:Int
+    var dayImage:String
     ):Base(day,content,categoryImage)
 
 data class ChecklistItem(
@@ -54,12 +54,13 @@ data class BucketlistItem(
 
 data class MypageGridItem(var mypageImage:Int, var mypageContent:String)
 
-data class RewardGridItem(var rewardImage:Int, var rewardContent:String)
+data class RewardGridItem(var rewardImage:Int, var rewardContent:String, var isComplete:Boolean)
 
 data class UserInformationItem(var userLank:Int, var profileImage:Int, var userNickname:String){
 
 }
 
+data class TutorialImage constructor(var imgId:Int)
 
 //공통 데이터 클래스(Base)상속
 //0. base       : 일정 날짜, 일정 내용, 카테고리 이미지

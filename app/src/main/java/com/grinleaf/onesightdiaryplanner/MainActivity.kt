@@ -3,6 +3,7 @@ package com.grinleaf.onesightdiaryplanner
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.grinleaf.onesightdiaryplanner.databinding.ActivityMainBinding
@@ -71,6 +72,19 @@ class MainActivity : AppCompatActivity() {
             val intent= Intent(this@MainActivity, AchievementActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    var backKeyPressedTime: Long= 0L
+    override fun onBackPressed() {
+        if(System.currentTimeMillis()>backKeyPressedTime+2000){
+            backKeyPressedTime= System.currentTimeMillis()
+            Toast.makeText(this@MainActivity, "한 번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if(System.currentTimeMillis()<=backKeyPressedTime+2000){
+            finish()
+        }
+
     }
     
     // 플로팅 액션 버튼 클릭시 애니메이션 효과

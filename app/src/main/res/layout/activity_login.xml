@@ -18,18 +18,22 @@
         android:maxEms="12"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"/>
+
     <EditText
         android:id="@+id/et_login_pw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="16"
-        android:hint="PW"
-        android:inputType="text"
-        android:maxLines="1"
-        android:maxEms="16"
         android:layout_below="@id/et_login_id"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:ems="16"
+        android:hint="PW"
+        android:inputType="textPassword"
+        android:maxEms="16"
+        android:maxLines="1"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/black"
+        app:passwordToggleTintMode="src_atop"/>
 
     <Button
         android:id="@+id/btn_login_signin"
@@ -50,20 +54,20 @@
         android:clickable="true"
         android:text="앱이 처음이신가요?" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Google Login Test"
-        android:layout_below="@id/tv_login_to_signup"
-        android:layout_marginTop="8dp"/>
-    <TextView
-        android:id="@+id/login_test"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="result"
-        android:textSize="16sp"
-        android:layout_below="@id/tv_login_to_signup"
-        android:layout_marginTop="24dp"/>
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/tv_login_to_signup"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:text="Google Login Test" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/login_test"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="result"-->
+<!--        android:textSize="16sp"-->
+<!--        android:layout_below="@id/tv_login_to_signup"-->
+<!--        android:layout_marginTop="24dp"/>-->
 
     <!-- debug -->
     <Button

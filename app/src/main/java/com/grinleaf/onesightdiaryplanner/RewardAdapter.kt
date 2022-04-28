@@ -1,6 +1,8 @@
 package com.grinleaf.onesightdiaryplanner
 
 import android.content.Context
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +24,19 @@ class RewardAdapter(val context: Context, val rewardGridItems: MutableList<Rewar
         val rewardGridItem= rewardGridItems.get(position)
         holder.rewardImage.setImageResource(rewardGridItem.rewardImage)
         holder.rewardContent.text= rewardGridItem.rewardContent
+        
+        //도전과제 달성여부에 따른 이미지 컬러/흑백처리
+        if(rewardGridItem.isComplete) holder.rewardImage.setColorFilter(null)
+        else{
+            val grayscale= floatArrayOf(
+                0.2989f, 0.5870f, 0.1140f, 0f, 0f,
+                0.2989f, 0.5870f, 0.1140f, 0f, 0f,
+                0.2989f, 0.5870f, 0.1140f, 0f, 0f,
+                0.0000f, 0.0000f, 0.0000f, 1f, 0f )
+
+            holder.rewardImage.setColorFilter(ColorMatrixColorFilter(grayscale))
+        }
+
     }
 
     override fun getItemCount(): Int { return rewardGridItems.size }

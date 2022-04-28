@@ -1,7 +1,19 @@
 package com.grinleaf.onesightdiaryplanner
 
-open class G {
-    companion object{
+import android.content.Context
+import com.bumptech.glide.Glide
 
+class G {
+    companion object{
+        var userId= ""
+        var userNickname= ""
+        var userEmail= ""
+        var userProfileImage= "default profileImage"
+        var userPassword= ""
+
+        var editBucketlistTitle= "${G.userNickname} 님의 버킷리스트"
+
+        var isFirst= true
+        var isLogin= false
     }
 }

@@ -44,4 +44,19 @@
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/tway_fly</item>
     </style>
+    <style name="Theme.OneSightDiaryPlanner_sub03" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/signature_color_02</item>
+        <item name="colorPrimaryVariant">@color/signature_color_03</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/signature_color_02</item>
+        <item name="colorSecondaryVariant">@color/signature_color_03</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="l">true</item>
+        <!-- Customize your theme here. -->
+        <item name="fontFamily">@font/tway_fly</item>
+    </style>
 </resources>

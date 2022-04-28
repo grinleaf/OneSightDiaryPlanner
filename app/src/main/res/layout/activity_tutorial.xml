@@ -29,9 +29,16 @@
             android:id="@+id/btn_tutorial_skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="skip"
             android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:text="skip" />
+        <Button
+            android:id="@+id/btn_tutorial_destroy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:text="다시 보지 않음" />
 
     </RelativeLayout>
 </RelativeLayout>

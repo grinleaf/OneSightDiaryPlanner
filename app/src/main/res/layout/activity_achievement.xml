@@ -43,7 +43,7 @@
             android:padding="20dp">
 
             <TextView
-                android:id="@+id/tv_level_01_achievement"
+                android:id="@+id/tv_userNickname_level_achievement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="usernickname"
@@ -53,8 +53,8 @@
                 android:id="@+id/tv_level_02_achievement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/tv_level_01_achievement"
-                android:layout_alignBottom="@id/tv_level_01_achievement"
+                android:layout_toRightOf="@id/tv_userNickname_level_achievement"
+                android:layout_alignBottom="@id/tv_userNickname_level_achievement"
                 android:text=" 님의 업적 등급"
                 android:textSize="16sp"/>
 
@@ -62,7 +62,7 @@
                 android:id="@+id/layout_level_card_achievement"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_below="@id/tv_level_01_achievement"
+                android:layout_below="@id/tv_userNickname_level_achievement"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 android:gravity="bottom">

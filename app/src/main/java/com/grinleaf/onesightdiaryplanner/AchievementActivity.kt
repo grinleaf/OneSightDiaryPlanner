@@ -11,6 +11,8 @@ class AchievementActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.tvUserNicknameLevelAchievement.text= G.userNickname
         
         userInformationItems.add(UserInformationItem(1,R.drawable.store_icon_bee,"검은콩두유"))
         userInformationItems.add(UserInformationItem(2,R.drawable.ic_cat_01,"비타민"))

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CategoryActivity"
     android:orientation="vertical"
-    android:background="#FFdddddd"
+    android:background="#FFeeeeee"
     android:padding="36dp">
 
     <RelativeLayout

@@ -1,12 +1,14 @@
 package com.grinleaf.onesightdiaryplanner
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem>):RecyclerView.Adapter<DailyNoteAdapter.VH>() {
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
@@ -34,8 +36,9 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
         val dailyItem= dailyItems.get(position)
         holder.day.text= dailyItem.day
         holder.content.text= dailyItem.content
-        holder.categoryImage.setImageResource(dailyItem.dayImage)   //요건 int로
-        holder.dayImage.setImageResource(dailyItem.dayImage)    //요건 db 구축 후에 String 으로 바꿔줄 것! (VH 클래스도 마찬가지)
+        holder.categoryImage.setImageResource(dailyItem.categoryImage)   //요건 int로
+//        val uri:Uri= dailyItem.dayImage
+//        Glide.with(context).load(uri).into(holder.dayImage)  //요건 db 구축 후에 String 으로 바꿔줄 것! (VH 클래스도 마찬가지)
     }
 
     override fun getItemCount(): Int { return dailyItems.size }

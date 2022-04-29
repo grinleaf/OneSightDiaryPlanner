@@ -2,11 +2,13 @@ package com.grinleaf.onesightdiaryplanner
 
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -37,6 +39,8 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
         holder.day.text= dailyItem.day
         holder.content.text= dailyItem.content
         holder.categoryImage.setImageResource(dailyItem.categoryImage)   //요건 int로
+        Log.i("aaa",dailyItems.size.toString()+"리사이클러뷰 바인드홀더 안")
+        Toast.makeText(context, dailyItems.size.toString()+"리사이클러뷰 바인드홀더 안 토스트", Toast.LENGTH_SHORT).show()
 //        val uri:Uri= dailyItem.dayImage
 //        Glide.with(context).load(uri).into(holder.dayImage)  //요건 db 구축 후에 String 으로 바꿔줄 것! (VH 클래스도 마찬가지)
     }

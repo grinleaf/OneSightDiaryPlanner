@@ -1,12 +1,16 @@
 package com.grinleaf.onesightdiaryplanner
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentDailynoteBinding
@@ -14,16 +18,37 @@ import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
 
-class DailylNoteFragment:Fragment() {
+class DailyNoteFragment:Fragment() {
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return binding.root
     }
     val binding by lazy { FragmentDailynoteBinding.inflate(layoutInflater) }
-    var dailyItems= mutableListOf<DailyItem>()
     var dateString= ""
+//    lateinit var dailyTitle:String
+//    var categoryImage:Int= 0
+//    lateinit var todayAuto:String
+//    lateinit var attachImage:String
+//    lateinit var detailContent:String
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if(G.dailyNoteItems.size==0){
+//        arguments.let {
+//            dailyTitle = it!!.getString("dateTitle").toString()
+//            categoryImage = it.getInt("categoryImage")
+//            todayAuto = it.getString("todayAuto").toString()
+//            attachImage = it.getString("attachImage").toString()
+//            detailContent = it.getString("detailContent").toString()
+//
+//            Log.i("aaa",dailyTitle + "," + categoryImage + "," + todayAuto + "," + attachImage + "," + detailContent)
+//            dailyItems.add(DailyItem(todayAuto,dailyTitle,categoryImage,attachImage,detailContent))
+//        }
+//        }else{
+            val intent= Intent(requireContext(), DateEditActivity::class.java)
+            startActivity(intent)
+        }
+
         var now = ""+LocalDate.now()
         val nowDate:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(now)
         now= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(nowDate)
@@ -39,25 +64,9 @@ class DailylNoteFragment:Fragment() {
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(
                 Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }
-
-        //DailyItem 데이터 배열 만들기
-        //1. DateEditActivity --> 각 Fragment 로 보낸 값을 받기
-        var dateTitle:String= ""
-        var categoryImage= 0
-        val bundle= arguments
-        if(bundle!=null){
-            dateTitle= bundle.getString("dateTitle","")
-            categoryImage= bundle.getInt("categoryImage",0)
-        }
-        //2. 각 fragment 의 edit fragment (DateEditDailynoteFragment) --> 각 Fragment 로 보낸 값을 받기
-        val todayAuto= arguments?.getString("todayAuto")
-        val attachImage= arguments?.getString("attachImage")
-        val detailContent= arguments?.getString("detailContent")
-        Log.i("aaa",todayAuto+","+dateTitle+","+categoryImage+","+attachImage)
-        //3. 배열 추가
-        dailyItems.add((DailyItem(todayAuto.toString(), dateTitle,categoryImage,attachImage.toString())))
-        
-        binding.recyclerDailynote.adapter= DailyNoteAdapter(requireContext(),dailyItems)
+        Log.i("aaa", G.dailyNoteItems.size.toString()+"G 배열 : dailynote 화면 날짜1")
+        binding.recyclerDailynote.adapter= DailyNoteAdapter(requireContext(),G.dailyNoteItems)
+        Log.i("aaa", G.dailyNoteItems.size.toString()+"G 배열 : dailynote 화면 날짜2")
     }
 
     override fun onResume() {

@@ -3,9 +3,14 @@ package com.grinleaf.onesightdiaryplanner
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.grinleaf.onesightdiaryplanner.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +44,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.date_tab->{
                     if(!supportFragmentManager.fragments.contains(fragments[1])) tran.add(R.id.container,fragments[1])
                     tran.show(fragments[1])
+                    requestEditActivity()
+//                    val bundle= intent.getBundleExtra("dailynoteBundle")
+//                    var fragment= DailyNoteFragment()
+//                    fragment.arguments= bundle
+//                    tran.replace(R.id.container, fragment)
                 }
                 R.id.calendar_tab->{
                     if(!supportFragmentManager.fragments.contains(fragments[3])) tran.add(R.id.container,fragments[3])
@@ -108,5 +118,25 @@ class MainActivity : AppCompatActivity() {
             binding.btnFloatingAchievementMain.isClickable= true
         }
         btnFloatingTop_status = !btnFloatingTop_status  // 플로팅 버튼 상태 변경
+    }
+
+    //MainActivity 에서 DateEditActivity 로 데이터 요청
+    fun requestEditActivity(){
+        val intent= Intent(this@MainActivity, DateEditActivity::class.java)
+        resultLauncher.launch(intent)
+    }
+
+    val resultLauncher= registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if(it.resultCode!= RESULT_CANCELED) {
+            val dailyDatas = it.data?.getBundleExtra("dailyDatas")
+            G.dailyNoteItems.add(DailyItem(
+                dailyDatas?.get("todayAuto").toString(),
+                dailyDatas?.get("dateTitle").toString(),
+                dailyDatas?.get("categoryImage") as Int,
+                dailyDatas?.get("attachImage").toString(),
+                dailyDatas?.get("detailContent").toString())
+            )
+            Log.i("aaa",G.dailyNoteItems.size.toString()+"여기 resultLauncher 값 받은 곳!")
+        }
     }
 }

@@ -13,7 +13,8 @@ data class DailyItem(
     override var day:String,
     override var content:String,
     override var categoryImage:Int,
-    var dayImage:String
+    var dayImage:String,
+    var detailContent:String
     ):Base(day,content,categoryImage)
 
 data class ChecklistItem(

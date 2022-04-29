@@ -14,28 +14,14 @@
         android:paddingHorizontal="16dp">
 
         <TextView
-            android:id="@+id/tv_bucketlist_year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="2022 년"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
             android:id="@+id/tv_bucketlist_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_bucketlist_year"
-            android:layout_alignLeft="@id/tv_bucketlist_year"
-            android:layout_alignRight="@id/tv_bucketlist_year"
+            android:layout_centerInParent="true"
             android:layout_marginBottom="16dp"
+            android:layout_marginRight="24dp"
             android:gravity="center"
+            android:paddingVertical="16dp"
             android:text="usernickname 님의 버킷리스트"
             android:textSize="20sp"
             android:textStyle="bold" />

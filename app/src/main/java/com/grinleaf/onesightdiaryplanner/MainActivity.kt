@@ -44,11 +44,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.date_tab->{
                     if(!supportFragmentManager.fragments.contains(fragments[1])) tran.add(R.id.container,fragments[1])
                     tran.show(fragments[1])
-                    requestEditActivity()
-//                    val bundle= intent.getBundleExtra("dailynoteBundle")
-//                    var fragment= DailyNoteFragment()
-//                    fragment.arguments= bundle
-//                    tran.replace(R.id.container, fragment)
                 }
                 R.id.calendar_tab->{
                     if(!supportFragmentManager.fragments.contains(fragments[3])) tran.add(R.id.container,fragments[3])
@@ -82,6 +77,11 @@ class MainActivity : AppCompatActivity() {
             val intent= Intent(this@MainActivity, AchievementActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 
     var backKeyPressedTime: Long= 0L
@@ -120,23 +120,34 @@ class MainActivity : AppCompatActivity() {
         btnFloatingTop_status = !btnFloatingTop_status  // 플로팅 버튼 상태 변경
     }
 
-    //MainActivity 에서 DateEditActivity 로 데이터 요청
-    fun requestEditActivity(){
-        val intent= Intent(this@MainActivity, DateEditActivity::class.java)
-        resultLauncher.launch(intent)
-    }
+    //MainActivity 에서 DateEditActivity 로 데이터 요청/////////////////////////////////////////////////////////////////
+//    fun requestEditActivity(){
+//        val intent= Intent(this@MainActivity, DateEditActivity::class.java)
+//        resultLauncher.launch(intent)
+//    }
+//
+//    val resultLauncher= registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+//        if(it.resultCode==RESULT_OK) {
+//            val dailyDatas = it.data?.getBundleExtra("dailyDatas")  //DateEditAc --> MainAc 으로 데이터 전달
+//            //데이터 최초 입력 시
+//            if(G.dailyNoteItems.size==0) {
+//                G.dailyNoteItems.add(DailyItem(
+//                        dailyDatas?.get("todayAuto").toString(),
+//                        dailyDatas?.get("dateTitle").toString(),
+//                        dailyDatas?.get("categoryImage") as Int,
+//                        dailyDatas?.get("attachImage").toString(),
+//                        dailyDatas?.get("detailContent").toString())
+//                )
+//                Log.i("aaa",G.dailyNoteItems.size.toString()+"resultLauncher 값 받은 곳! if")
+//            }else{
+//                //프래그먼트로 값 전달하는 코드
+//                val fragment= DailyNoteFragment()
+//                fragment.arguments= dailyDatas
+//                Log.i("aaa",G.dailyNoteItems.size.toString()+"resultLauncher 값 받은 곳! else")
+//            }
+//
+//        }
+//  }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    val resultLauncher= registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-        if(it.resultCode!= RESULT_CANCELED) {
-            val dailyDatas = it.data?.getBundleExtra("dailyDatas")
-            G.dailyNoteItems.add(DailyItem(
-                dailyDatas?.get("todayAuto").toString(),
-                dailyDatas?.get("dateTitle").toString(),
-                dailyDatas?.get("categoryImage") as Int,
-                dailyDatas?.get("attachImage").toString(),
-                dailyDatas?.get("detailContent").toString())
-            )
-            Log.i("aaa",G.dailyNoteItems.size.toString()+"여기 resultLauncher 값 받은 곳!")
-        }
-    }
 }

@@ -16,8 +16,8 @@
         android:background="@drawable/daily05"
         android:padding="16dp"
         android:scaleType="fitStart"
-        android:src="@drawable/tutorial_sample01"
-        android:visibility="visible"/>
+        android:src="@null"
+        android:visibility="visible" />
     <TextView
         android:id="@+id/tv_day_daily_theme"
         android:layout_width="wrap_content"

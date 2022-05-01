@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "893247241219-167srqrndabf595kkb4b9ic4ts2rjkan.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grinleaf.onesightdiaryplanner",
+            "certificate_hash": "0d5c49510f5c6346cd93495d457a8b3d5c5a8d3c"
+          }
+        },
+        {
           "client_id": "893247241219-i3fgpg74u1avlagujo75233np373gj1v.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

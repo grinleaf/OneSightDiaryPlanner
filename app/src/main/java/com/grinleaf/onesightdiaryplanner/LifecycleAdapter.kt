@@ -12,6 +12,7 @@ class LifecycleAdapter(val context: Context, val lifecycleItems:MutableList<Life
         val content: TextView by lazy { itemView.findViewById(R.id.tv_title_pager_lifecycle) }
         val startDay: TextView by lazy { itemView.findViewById(R.id.tv_start_day_pager_lifecycle) }
         val endDay: TextView by lazy { itemView.findViewById(R.id.tv_end_day_pager_lifecycle) }
+        val repeatCycle: TextView by lazy { itemView.findViewById(R.id.tv_repeat_pager_lifecycle) }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val itemView= LayoutInflater.from(context).inflate(R.layout.recycler_lifecycle,parent,false)
@@ -22,6 +23,8 @@ class LifecycleAdapter(val context: Context, val lifecycleItems:MutableList<Life
         val lifecycleItem= lifecycleItems.get(position)
         holder.content.text= lifecycleItem.content
         holder.startDay.text= lifecycleItem.day
+        holder.endDay.text= lifecycleItem.endDay
+        holder.repeatCycle.text= lifecycleItem.repeatCycle
     }
 
     override fun getItemCount(): Int { return lifecycleItems.size }

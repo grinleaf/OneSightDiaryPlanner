@@ -64,6 +64,7 @@ class DateEditDailyNoteFragment:Fragment() {
             if(it.resultCode!=RESULT_CANCELED){
                 var uri= it.data?.data!!
                 imageUri= uri.toString()
+                // DB 업로드 코드 작성하기
                 Glide.with(requireContext()).load(uri).into(binding.ivAttachImageDailynoteDateEdit)
             }
         }

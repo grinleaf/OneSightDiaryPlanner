@@ -23,18 +23,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical|left"
-        android:text="세부 내용"
+        android:text="하위 리스트"
         android:padding="16dp"/>
-    <EditText
-        android:id="@+id/et_content_detail_checklist_date_edit"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="@color/divider_color_04"
         android:layout_marginBottom="16dp"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:maxLines="10"
         android:padding="8dp"
-        android:layout_margin="4dp"/>
-
+        android:layout_margin="4dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_checklist_dateedit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/et_checklist_dateedit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="하위 리스트 내용을 작성하세요."
+                android:textSize="14sp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingVertical="16dp"
+                android:paddingLeft="8dp"
+                android:visibility="visible"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/iv_add_date_checklist_dateedit"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_check"
+                android:clickable="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

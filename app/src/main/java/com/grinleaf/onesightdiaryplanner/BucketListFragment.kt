@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.annotation.RequiresApi
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.marginLeft
 import androidx.fragment.app.Fragment
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentBucketlistBinding
@@ -24,7 +25,7 @@ class BucketListFragment:Fragment() {
         return binding.root
     }
     val binding by lazy { FragmentBucketlistBinding.inflate(layoutInflater) }
-    val bucketlistItems= mutableListOf<BucketlistItem>()
+    val adapter by lazy { BucketlistAdapter(requireContext(),G.bucketlistItems) }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,13 +48,14 @@ class BucketListFragment:Fragment() {
                 }
             ).create().show()
         }
-        
-        bucketlistItems.add(BucketlistItem("2022.04.21","야호",R.drawable.tutorial_sample04))
-        bucketlistItems.add(BucketlistItem("2022.04.21","야야호",R.drawable.tutorial_sample01))
-        bucketlistItems.add(BucketlistItem("2022.04.21","ㅇ3ㅇ",R.drawable.tutorial_sample02))
-        bucketlistItems.add(BucketlistItem("2022.04.21","집보내줘",R.drawable.tutorial_sample03))
 
-        binding.recyclerBucketlist.adapter= BucketlistAdapter(requireContext(),bucketlistItems)
+        binding.recyclerBucketlist.adapter= adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        adapter.notifyDataSetChanged()
     }
 
 }

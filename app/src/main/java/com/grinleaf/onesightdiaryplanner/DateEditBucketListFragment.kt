@@ -43,5 +43,7 @@ class DateEditBucketListFragment:Fragment() {
             false
         })
         binding.recyclerBucketlistDateedit.adapter= adapter
+
+        adapter.notifyDataSetChanged()
     }
 }

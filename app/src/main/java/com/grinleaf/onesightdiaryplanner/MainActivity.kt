@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.timeline_tab->{
                     tran.show(fragments[0])
+
                 }
                 R.id.date_tab->{
                     if(!supportFragmentManager.fragments.contains(fragments[1])) tran.add(R.id.container,fragments[1])

@@ -3,77 +3,98 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:background="@drawable/bg_date_pager_lifecycle"
-    android:padding="16dp"
-    android:gravity="center">
+    >
 
     <TextView
-        android:id="@+id/tv_title_pager_lifecycle"
+        android:id="@+id/tv_repeat_pager_lifecycle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lifecycle 일정 제목"
-        android:textSize="24sp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/tv_start_day_pager_lifecycle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_title_pager_lifecycle"
-        android:layout_marginBottom="46dp"
-        android:text="시작일"
-        android:textColor="#595959"
-        android:visibility="visible" />
-    <TextView
-        android:id="@+id/tv_flowtag_pager_lifecycle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" ~ "
-        android:textColor="#595959"
-        android:layout_toRightOf="@id/tv_start_day_pager_lifecycle"
-        android:layout_alignTop="@id/tv_start_day_pager_lifecycle"/>
-    <TextView
-        android:id="@+id/tv_end_day_pager_lifecycle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="종료일"
-        android:textColor="#595959"
-        android:layout_toRightOf="@id/tv_flowtag_pager_lifecycle"
-        android:layout_alignTop="@id/tv_start_day_pager_lifecycle"
-        android:visibility="visible"/>
-
-    <TextView
-        android:id="@+id/tv_per_01_pager_lifecycle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_start_day_pager_lifecycle"
-        android:text="달성비율( "
-        android:layout_marginBottom="8dp"/>
-
-    <TextView
-        android:id="@+id/tv_per_main_pager_lifecycle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/tv_per_01_pager_lifecycle"
-        android:layout_toRightOf="@id/tv_per_01_pager_lifecycle"
-        android:text="n"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="반복주기"
         android:textStyle="bold"
-        android:textSize="18sp" />
-    <TextView
-        android:id="@+id/tv_per_02_pager_lifecycle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/tv_per_01_pager_lifecycle"
-        android:layout_toRightOf="@id/tv_per_main_pager_lifecycle"
-        android:text=" % )"/>
+        android:textSize="26sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:textColor="#8A22AA9D"/>
 
-    <ProgressBar
-        android:id="@+id/progressbar_pager_lifecycle"
-        style="@android:style/Widget.ProgressBar.Horizontal"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:layout_below="@id/tv_per_01_pager_lifecycle"
-        android:progressTint="@color/lifecycle_component_color_01"
-        android:progressBackgroundTint="#9CD2D8"
-        android:progress="70" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="16dp">
 
+        <TextView
+            android:id="@+id/tv_title_pager_lifecycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@null"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_start_day_pager_lifecycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title_pager_lifecycle"
+            android:layout_marginBottom="46dp"
+            android:text="시작일"
+            android:textColor="#595959"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_flowtag_pager_lifecycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/tv_start_day_pager_lifecycle"
+            android:layout_toRightOf="@id/tv_start_day_pager_lifecycle"
+            android:text=" ~ "
+            android:textColor="#595959" />
+
+        <TextView
+            android:id="@+id/tv_end_day_pager_lifecycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/tv_start_day_pager_lifecycle"
+            android:layout_toRightOf="@id/tv_flowtag_pager_lifecycle"
+            android:text="종료일"
+            android:textColor="#595959"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_per_01_pager_lifecycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_start_day_pager_lifecycle"
+            android:layout_marginBottom="8dp"
+            android:text="달성비율( " />
+
+        <TextView
+            android:id="@+id/tv_per_main_pager_lifecycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_per_01_pager_lifecycle"
+            android:layout_toRightOf="@id/tv_per_01_pager_lifecycle"
+            android:text="n"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_per_02_pager_lifecycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_per_01_pager_lifecycle"
+            android:layout_toRightOf="@id/tv_per_main_pager_lifecycle"
+            android:text=" % )" />
+
+        <ProgressBar
+            android:id="@+id/progressbar_pager_lifecycle"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_below="@id/tv_per_01_pager_lifecycle"
+            android:progress="70"
+            android:progressBackgroundTint="#9CD2D8"
+            android:progressTint="@color/lifecycle_component_color_01" />
+    </RelativeLayout>
 </RelativeLayout>

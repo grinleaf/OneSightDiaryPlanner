@@ -1,9 +1,11 @@
 package com.grinleaf.onesightdiaryplanner
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,21 +18,26 @@ class LifecycleFragment:Fragment() {
         return binding.root
     }
     val binding by lazy { FragmentLifecycleBinding.inflate(layoutInflater) }
-    val lifecycleItems= mutableListOf<LifecycleItem>()
+    val adapter by lazy { LifecycleAdapter(requireContext(), G.lifecycleItems) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(G.lifecycleItems.size==0) {
+            binding.recyclerLifecycle.visibility = View.GONE
+            binding.layoutCompleteCountMainLifecycle.visibility = View.GONE
+        }
 
-        lifecycleItems.add(LifecycleItem("2022.04.21","안녕하세용",0,0,"",""))
-        lifecycleItems.add(LifecycleItem("2022.04.24","반가워용",0,0,"",""))
-        lifecycleItems.add(LifecycleItem("2022.04.25","할게 너무",0,0,"",""))
-        lifecycleItems.add(LifecycleItem("2022.04.30","많아용",0,0,"",""))
-
-        binding.recyclerLifecycle.adapter= LifecycleAdapter(requireContext(), lifecycleItems)
-       
+        binding.recyclerLifecycle.adapter= adapter
     }
 
     override fun onResume() {
         super.onResume()
+        if(G.lifecycleItems.size!=0) {
+            binding.recyclerLifecycle.visibility= View.VISIBLE
+            binding.layoutCompleteCountMainLifecycle.visibility= View.VISIBLE
+        }
+        binding.tvDatecountCountLifecycle.text= (G.lifecycleItems.size).toString()
+
+        adapter.notifyDataSetChanged()
     }
 }

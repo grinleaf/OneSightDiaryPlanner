@@ -22,8 +22,8 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         lateinit var itemView:View
-        Log.i("aaa",dailyItems.get(dailyItems.size-1).dayImage )
-        if(dailyItems.get(dailyItems.size-1).dayImage==null) {
+        Log.i("aaa", dailyItems.get(dailyItems.size-1).dayImage.toString())
+        if(dailyItems.get(dailyItems.size-1).dayImage==null) {  //이미지가 등록되지 않았을 때
             val random = (0..3).random()
             when (random) {
                 0 -> { itemView = LayoutInflater.from(context).inflate(R.layout.recycler_theme_daily_01, parent, false) }
@@ -31,7 +31,7 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
                 2 -> { itemView = LayoutInflater.from(context).inflate(R.layout.recycler_theme_daily_03, parent, false) }
                 3 -> { itemView = LayoutInflater.from(context).inflate(R.layout.recycler_theme_daily_04, parent, false) }
             }
-        }else{
+        }else{  //이미지가 등록되었을 때
             val random = (0..1).random()
             when(random){
                 0 -> itemView = LayoutInflater.from(context).inflate(R.layout.recycler_theme_daily_05, parent, false)
@@ -46,6 +46,7 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
         holder.day.text= dailyItem.day
         holder.content.text= dailyItem.content
         holder.categoryImage.setImageResource(dailyItem.categoryImage)   //요건 int로
+        holder.dayImage.setImageDrawable(dailyItem.dayImage)
 //        val uri:Uri= dailyItem.dayImage
 //        Glide.with(context).load(uri).into(holder.dayImage)  //요건 db 구축 후에 String 으로 바꿔줄 것! (VH 클래스도 마찬가지)
     }

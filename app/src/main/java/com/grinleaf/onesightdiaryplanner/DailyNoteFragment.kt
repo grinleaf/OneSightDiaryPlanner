@@ -26,12 +26,6 @@ class DailyNoteFragment:Fragment() {
     }
     val binding by lazy { FragmentDailynoteBinding.inflate(layoutInflater) }
     val adapter by lazy { DailyNoteAdapter(requireContext(),G.dailyNoteItems) }
-    var dateString= ""
-    lateinit var dailyTitle:String
-    var categoryImage:Int= 0
-    lateinit var todayAuto:String
-    lateinit var attachImage:String
-    lateinit var detailContent:String
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,44 +38,33 @@ class DailyNoteFragment:Fragment() {
         binding.ivDatepickerDailynote.setOnClickListener{
             val cal= Calendar.getInstance()
             val dateSetListener = DatePickerDialog.OnDateSetListener{
-                    view, year, month, dayOfMonth -> dateString = "${year}-${month+1}-${dayOfMonth}"
-                val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(dateString)
-                dateString= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(date)
-                binding.tvDailynoteDay.text = dateString
+                    view, year, month, dayOfMonth -> G.dayOfDailyNote = "${year}-${month+1}-${dayOfMonth}"
+                val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(G.dayOfDailyNote)
+                G.dayOfDailyNote= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(date)
+                binding.tvDailynoteDay.text = G.dayOfDailyNote
             }
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(
                 Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }
         binding.recyclerDailynote.adapter= adapter
-        Log.i("aaa", G.dailyNoteItems.size.toString()+"G 배열 : dailynote 화면 날짜")
 
         binding.refresherDailynote.setOnRefreshListener {
             binding.refresherDailynote.isRefreshing= false
             adapter.notifyDataSetChanged()
         }
+
     }
 
     override fun onResume() {
         super.onResume()
-//        if(G.dailyNoteItems.size==0) {
-//            arguments.let {
-//                todayAuto = it?.getString("todayAuto").toString()
-//                dailyTitle = it?.getString("dateTitle").toString()
-//                if (it != null) {
-//                    categoryImage = it.getInt("categoryImage")
-//                }
-//                attachImage = it?.getString("attachImage").toString()
-//                detailContent = it?.getString("detailContent").toString()
-//
-//                Log.i(
-//                    "aaa",
-//                    dailyTitle + "," + categoryImage + "," + todayAuto + "," + attachImage + "," + detailContent+" DailynoteFragment onPause 안"
-//                )
-//                G.dailyNoteItems.add(
-//                    DailyItem(todayAuto,dailyTitle,categoryImage,attachImage,detailContent)
-//                )
-//            }
-//        }
+        if(G.dailyNoteItems.size==0) {
+            binding.firstAddDateDailynote.setOnClickListener {
+                val intent = Intent(requireContext(), DateEditActivity::class.java)
+                startActivity(intent)
+            }
+        }else{
+            binding.firstAddDateDailynote.visibility= View.GONE
+        }
         adapter.notifyDataSetChanged()
     }
 

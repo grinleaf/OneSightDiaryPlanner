@@ -16,7 +16,7 @@
             android:layout_weight="1"
             android:background="@drawable/bg_item_bucketlist"
             android:gravity="center_vertical"
-            android:padding="20dp"
+            android:padding="8dp"
             android:layout_marginLeft="16dp">
 
             <TextView
@@ -29,7 +29,19 @@
                 android:text="일정내용"
                 android:textColor="@color/white"
                 android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_subcontent_bucketlist_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_day_bucketlist_theme"
+                android:layout_alignLeft="@id/tv_title_bucketlist_theme"
+                android:layout_alignRight="@id/tv_title_bucketlist_theme"
+                android:text="세부 플랜 n 개"
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/tv_day_bucketlist_theme"
@@ -39,14 +51,14 @@
                 android:layout_alignLeft="@id/tv_title_bucketlist_theme"
                 android:layout_alignRight="@id/tv_title_bucketlist_theme"
                 android:text="2022.04.20"
-                android:textColor="@color/white" />
+                android:textColor="#A8FFFFFF" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_category_bucketlist_theme"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="16dp"
+                android:layout_margin="12dp"
                 android:src="@drawable/tutorial_sample01" />
         </RelativeLayout>
 

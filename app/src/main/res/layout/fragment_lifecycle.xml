@@ -234,7 +234,7 @@
                 android:text="N"
                 android:textColor="@color/lifecycle_component_color_03"
                 android:textSize="32sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_datecount_02_lifecycle"

@@ -1,49 +1,51 @@
 package com.grinleaf.onesightdiaryplanner
 
+import android.graphics.drawable.Drawable
+
 abstract class Base(open var day:String,open var content:String,open var categoryImage:Int)
 
 data class TimelineItem(
-    override var day:String,
-    override var content:String,
-    override var categoryImage:Int,
-    var dayImage:Int
-    ):Base(day,content,categoryImage)
+    //dailynote
+    var titleDailyNote:String,
+    var dayDailyNote:String,
+    var categoryDailyNote:Int,
+    var attachImageDailyNote:Int,
+    var contentDailyNote:String,
+    //checklist
+    var titleCheckList:String,
+    var contentCheckList:String,
+    var categoryCheckList:Int,
+    //checklist-sub
+    var subContentCheckList:String,
+    //lifecycle
+    var titleLifecycle:String,
+    var startDayLifecycle:String,
+    var endDayLifecycle:String,
+    var repeatCycle:String,
+    var categoryLifecycle:Int,
+    )
 
 data class DailyItem(
     override var day:String,
     override var content:String,
     override var categoryImage:Int,
-    var dayImage:String,
+    var dayImage:Drawable,
     var detailContent:String
     ):Base(day,content,categoryImage)
 
 data class ChecklistItem(
     override var day:String,
     override var content:String,
-    override var categoryImage:Int,
-//    var subContent:String
+    override var categoryImage:Int
     ):Base(day,content,categoryImage)
 
-//class ChecklistItem(
-//    override var day:String,
-//    override var content:String,
-//    override var categoryImage:Int,
-//    private var subItemList: List<SubChecklistItem>
-//    ):Base(day,content,categoryImage) {
-//
-//    fun getSubItemList(): List<SubChecklistItem> { return subItemList }
-//    fun setSubItemList(subItemList: List<SubChecklistItem>) { this.subItemList = subItemList }
-//}
-//class SubChecklistItem(var subContent:String) {
-//    var subItemImage = 0
-//}
+data class ChecklistSubItem(var subContent:String)
 
 data class LifecycleItem(
     override var day:String,
     override var content:String,
     override var categoryImage:Int,
-    var repeatCycle:Int,
-    var startDay:String,
+    var repeatCycle:String,
     var endDay:String
     ):Base(day,content,categoryImage)
 
@@ -60,7 +62,6 @@ data class RewardGridItem(var rewardImage:Int, var rewardContent:String, var isC
 data class UserInformationItem(var userLank:Int, var profileImage:Int, var userNickname:String){
 
 }
-
 data class TutorialImage constructor(var imgId:Int)
 
 //공통 데이터 클래스(Base)상속

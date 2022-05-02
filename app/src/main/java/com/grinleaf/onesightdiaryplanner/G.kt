@@ -1,6 +1,9 @@
 package com.grinleaf.onesightdiaryplanner
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import androidx.core.graphics.drawable.toDrawable
 import com.bumptech.glide.Glide
 
 class G {
@@ -18,7 +21,14 @@ class G {
 
         var dailyNoteItems= mutableListOf<DailyItem>()
         var checklistItems= mutableListOf<ChecklistItem>()
+        var checklistSubItems= mutableListOf<ChecklistSubItem>()
         var lifecycleItems= mutableListOf<LifecycleItem>()
-        var bucketlistItem= mutableListOf<BucketlistItem>()
+        var bucketlistItems= mutableListOf<BucketlistItem>()
+        var timelineItems= mutableListOf<TimelineItem>()
+
+        var selectedCategoryImage:Int= R.drawable.tutorial_sample04
+
+        var dayOfDailyNote= ""
+        var dayOfCheckList= ""
     }
 }

@@ -24,16 +24,41 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/ic_arrow_right"/>
-        <TextView
-            android:id="@+id/tv_end_day_lifecycle_date_edit"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="종료일자"
-            android:gravity="center"
-            android:padding="32dp"
-            android:clickable="true"
-            android:layout_weight="1"/>
-
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/tv_end_day_lifecycle_date_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="종료일자"
+                android:gravity="center"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="4dp"
+                android:clickable="true"
+                android:padding="8dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="종료일자 설정 안함"
+                    android:textSize="10sp"
+                    android:gravity="center_vertical"/>
+                <CheckBox
+                    android:id="@+id/checkbox_no_endday_lifecycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-8dp"
+                    android:layout_marginBottom="-8dp"
+                    android:layout_marginRight="-16dp"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
@@ -83,6 +108,7 @@
             android:paddingLeft="16dp"
             android:paddingRight="32dp"/>
         <RadioGroup
+            android:id="@+id/radio_group_lifecycle_date_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -93,8 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:text="매일"
-                android:checked="true"
-                android:buttonTint="@color/divider_color_03"/>
+                android:checked="true"/>
             <RadioButton
                 android:id="@+id/radio_everyweek_lifecycle_date_edit"
                 android:layout_width="wrap_content"

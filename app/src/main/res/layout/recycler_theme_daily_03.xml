@@ -4,11 +4,23 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <RelativeLayout
+        android:id="@+id/layout_daily_theme"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/layout_tv_daily_theme"
+        android:layout_alignBottom="@id/layout_tv_daily_theme"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/daily03" />
+
     <ImageView
         android:id="@+id/iv_image_daily_theme"
         android:layout_width="220dp"
         android:layout_height="220dp"
-        android:layout_alignParentRight="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -19,42 +31,47 @@
         android:scaleType="fitStart"
         android:src="@drawable/tutorial_sample01"
         android:visibility="gone"/>
-    <TextView
-        android:id="@+id/tv_content_daily_theme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/daily03"
-        android:layout_alignParentRight="true"
-        android:padding="12dp"
-        android:text="오늘 일기"
-        android:textStyle="bold"
-        android:gravity="right"/>
-    <TextView
-        android:id="@+id/tv_day_daily_theme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="#날짜"
-        android:layout_alignRight="@id/tv_content_daily_theme"
-        android:layout_alignLeft="@id/tv_content_daily_theme"
-        android:layout_alignBottom="@id/tv_content_daily_theme"
-        android:gravity="right"
-        android:layout_marginBottom="8dp"
-        android:layout_marginHorizontal="16dp"/>
 
+    <LinearLayout
+        android:id="@+id/layout_tv_daily_theme"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_alignRight="@id/layout_daily_theme">
+
+        <TextView
+            android:id="@+id/tv_day_daily_theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:text="#날짜"
+            android:textColor="#FFaaaaaa"/>
+
+        <TextView
+            android:id="@+id/tv_title_daily_theme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="오늘 일기"
+            android:textStyle="bold"
+            android:gravity="right"/>
+        <TextView
+            android:id="@+id/tv_content_daily_theme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="세부 내용"
+            android:gravity="right"/>
+    </LinearLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_category_daily_theme"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_alignBottom="@id/tv_content_daily_theme"
+        android:layout_alignBottom="@id/layout_daily_theme"
         android:layout_marginHorizontal="2dp"
-        android:layout_toLeftOf="@id/tv_content_daily_theme"
+        android:layout_toLeftOf="@id/layout_daily_theme"
         android:src="@mipmap/ic_test_icon01"
         app:civ_border_color="#FFaaaaaa"
-        app:civ_border_width="1dp"/>
+        app:civ_border_width="1dp" />
 
 </RelativeLayout>

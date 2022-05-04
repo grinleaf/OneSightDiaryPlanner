@@ -7,7 +7,7 @@ import java.util.ArrayList
 
 interface RetrofitService {
 
-    //dailyNote 데이터 업로드ㅇ
+    //dailyNote 데이터 업로드
     @GET("OneSightDiaryPlanner/dailyNoteUpload.php")
     fun getDailyNoteItem(
         @Query("email") email:String,
@@ -21,7 +21,7 @@ interface RetrofitService {
     //사진앱 이미지 업로드
     @Multipart
     @POST("OneSightDiaryPlanner/attachImages.php")
-    fun uploadImage(@Part file:MultipartBody.Part):Call<String>
+    fun uploadImage(@PartMap dataPart:Map<String, String>, @Part filePart:MultipartBody.Part):Call<String>
 
     //카테고리 이미지 다운로드
     @GET("OneSightDiaryPlanner/loadCategory.php")

@@ -24,10 +24,12 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
         val dayImage:ImageView by lazy { itemView.findViewById(R.id.iv_image_daily_theme) }
     }
 
+    lateinit var itemUri:Uri
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         lateinit var itemView:View
         val item= dailyItems.get(dailyItems.size-1).dayImage
-        val itemUri = item.toUri()
+        itemUri = item.toUri()
         Log.i("aaa",itemUri.toString())
 
         if(itemUri.equals("")) {  //이미지가 등록되지 않았을 때
@@ -54,21 +56,8 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
         holder.content.text= dailyItem.content
         Glide.with(context).load(dailyItem.categoryImage).into(holder.categoryImage)
         holder.dayImage.setImageResource(R.drawable.tutorial_sample04)
-//        val uri:Uri= dailyItem.dayImage
-//        Glide.with(context).load(uri).into(holder.dayImage)  //요건 db 구축 후에 String 으로 바꿔줄 것! (VH 클래스도 마찬가지)
+        Glide.with(context).load(itemUri).into(holder.dayImage)
     }
 
     override fun getItemCount(): Int { return dailyItems.size }
-
-    //Uri -- > 절대경로로 바꿔서 리턴시켜주는 메소드
-//    fun getRealPathFromUri(uri: Uri?): String? {
-//        val proj = arrayOf(MediaStore.Images.Media.DATA)
-//        val loader = CursorLoader(context, uri, proj, null, null, null)
-//        val cursor: Cursor = loader.loadInBackground()
-//        val column_index: Int = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-//        cursor.moveToFirst()
-//        val result: String = cursor.getString(column_index)
-//        cursor.close()
-//        return result
-//    }
 }

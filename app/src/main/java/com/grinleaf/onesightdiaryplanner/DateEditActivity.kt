@@ -1,11 +1,8 @@
 package com.grinleaf.onesightdiaryplanner
 
 import android.content.Intent
-import android.database.Cursor
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -13,9 +10,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.loader.content.CursorLoader
 import com.bumptech.glide.Glide
 import com.grinleaf.onesightdiaryplanner.databinding.ActivityDateEditBinding
 import okhttp3.MediaType
@@ -24,23 +19,22 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 import java.io.File
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 class DateEditActivity:AppCompatActivity() {
     val binding by lazy { ActivityDateEditBinding.inflate(layoutInflater) }
     val fragments: MutableList<Fragment> by lazy { mutableListOf() }
     lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        //선택한 카테고리 이미지를 가져오는 런처
         resultLauncher= registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             Glide.with(this).load(G.selectedCategoryImage).into(binding.ivCategoryMainDateEdit)
         }
@@ -114,11 +108,18 @@ class DateEditActivity:AppCompatActivity() {
         }else{
             val retrofitDayImage= RetrofitHelper.getRetrofitInstance()
             val retrofitServiceDayImage= retrofitDayImage.create(RetrofitService::class.java)
-            val file= File(dayImage)
-            val requestBody= RequestBody.create(MediaType.parse("image/*"),file)
-            val part= MultipartBody.Part.createFormData("dayImage",file.name,requestBody)
+            //filePart 구성 : 이미지 요소(uri)
+            lateinit var filePart: MultipartBody.Part
+            if(dayImage!=null) {
+                val file = File(dayImage)
+                val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
+                filePart = MultipartBody.Part.createFormData("dayImage", file.name, requestBody)
+            }
+            //dataPart 구성 : 나머지 문자열 데이터 요소
+            val dataPart= HashMap<String,String>()
+            dataPart.put("email",email)
 
-            val callDayImage= retrofitServiceDayImage.uploadImage(part)
+            val callDayImage= retrofitServiceDayImage.uploadImage(dataPart,filePart)
             callDayImage.enqueue(object: Callback<String>{
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     val s= response.body()
@@ -215,7 +216,6 @@ class DateEditActivity:AppCompatActivity() {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 val item = response.body()
                 G.selectedCategoryImage = ""
-                G.selectedattachImage = ""
             }
             override fun onFailure(call: Call<String>, t: Throwable) {
                 Log.i("aaa", "error: ${t.message}")

@@ -18,10 +18,12 @@ import com.bumptech.glide.Glide
 
 class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem>):RecyclerView.Adapter<DailyNoteAdapter.VH>() {
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
-        val content:TextView by lazy { itemView.findViewById(R.id.tv_content_daily_theme) }
+        val content:TextView by lazy { itemView.findViewById(R.id.tv_title_daily_theme) }
+        val detailContent:TextView by lazy { itemView.findViewById(R.id.tv_content_daily_theme) }
         val day:TextView by lazy { itemView.findViewById(R.id.tv_day_daily_theme) }
         val categoryImage:ImageView by lazy { itemView.findViewById(R.id.iv_category_daily_theme) }
         val dayImage:ImageView by lazy { itemView.findViewById(R.id.iv_image_daily_theme) }
+
     }
 
     lateinit var itemUri:Uri
@@ -30,9 +32,8 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
         lateinit var itemView:View
         val item= dailyItems.get(dailyItems.size-1).dayImage
         itemUri = item.toUri()
-        Log.i("aaa",itemUri.toString())
 
-        if(itemUri.equals("")) {  //이미지가 등록되지 않았을 때
+        if(false) {  //이미지가 등록되지 않았을 때
             val random = (0..3).random()
             when (random) {
                 0 -> { itemView = LayoutInflater.from(context).inflate(R.layout.recycler_theme_daily_01, parent, false) }
@@ -54,8 +55,8 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
         val dailyItem= dailyItems.get(position)
         holder.day.text= dailyItem.day
         holder.content.text= dailyItem.content
+//        holder.detailContent.text= dailyItem.detailContent
         Glide.with(context).load(dailyItem.categoryImage).into(holder.categoryImage)
-        holder.dayImage.setImageResource(R.drawable.tutorial_sample04)
         Glide.with(context).load(itemUri).into(holder.dayImage)
     }
 

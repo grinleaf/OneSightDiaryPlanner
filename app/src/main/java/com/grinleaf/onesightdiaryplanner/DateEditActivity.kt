@@ -1,8 +1,11 @@
 package com.grinleaf.onesightdiaryplanner
 
 import android.content.Intent
+import android.database.Cursor
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -10,17 +13,23 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.loader.content.CursorLoader
 import com.bumptech.glide.Glide
 import com.grinleaf.onesightdiaryplanner.databinding.ActivityDateEditBinding
+import okhttp3.MediaType
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.create
 import java.io.File
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 class DateEditActivity:AppCompatActivity() {
@@ -92,22 +101,40 @@ class DateEditActivity:AppCompatActivity() {
 
     //dailyNoteFragment 로 데이터 전달하는 함수
     fun clickRegistDailyNoteDate(){
+        val email= G.userEmail
         val day= binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_dailynote_date_edit).text.toString()
         val content= binding.tvTitleMainDateEdit.text.toString()
         val categoryImage= G.selectedCategoryImage
-        val dayImage= G.selectedattachImage
+        var dayImage= G.selectedattachImage
+        var dayImageUri= ""
         val detailContent= binding.dateEditContainer.findViewById<TextView>(R.id.et_content_detail_dailynote_date_edit).text.toString()
 
-        if(binding.tvTitleMainDateEdit.text==null&&binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_dailynote_date_edit).text==null) {
+        if(binding.tvTitleMainDateEdit.text.isBlank()) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
         }else{
-            G.dailyNoteItems.add(DailyItem(day, content,categoryImage, dayImage, detailContent))
-            finish()
+            val retrofitDayImage= RetrofitHelper.getRetrofitInstance()
+            val retrofitServiceDayImage= retrofitDayImage.create(RetrofitService::class.java)
+            val file= File(dayImage)
+            val requestBody= RequestBody.create(MediaType.parse("image/*"),file)
+            val part= MultipartBody.Part.createFormData("dayImage",file.name,requestBody)
+
+            val callDayImage= retrofitServiceDayImage.uploadImage(part)
+            callDayImage.enqueue(object: Callback<String>{
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    val s= response.body()
+                    Log.i("aaa", s.toString())
+                    dayImageUri= "http://grinleaf.dothome.co.kr/OneSightDiaryPlanner/$s"
+                    dailyNoteCallback(email,day,content,categoryImage,dayImageUri,detailContent)
+                }
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    Log.i("aaa",t.message.toString())
+                }
+            })
         }
     }
 
     fun clickRegistCheckListDate(){
-        if(binding.tvTitleMainDateEdit.text==null&&binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_checklist_date_edit).text==null) {
+        if(binding.tvTitleMainDateEdit.text.isBlank()&&binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_checklist_date_edit).text==null) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
         }else{
             G.checklistItems.add(
@@ -131,7 +158,7 @@ class DateEditActivity:AppCompatActivity() {
     }
 
     fun clickRegistLifecycleDate(){
-        if(binding.tvTitleMainDateEdit.text==null) {
+        if(binding.tvTitleMainDateEdit.text.isBlank()) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
         }else if (binding.dateEditContainer.findViewById<TextView>(R.id.tv_start_day_lifecycle_date_edit).text=="시작일자") {
             Toast.makeText(this, "시작일자를 선택해주세요.", Toast.LENGTH_SHORT).show()
@@ -161,7 +188,7 @@ class DateEditActivity:AppCompatActivity() {
     }
     @RequiresApi(Build.VERSION_CODES.O)
     fun clickRegistBucketListDate(){
-        if(binding.tvTitleMainDateEdit.text==null) {
+        if(binding.tvTitleMainDateEdit.text.isBlank()) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
         }else{
             var now = ""+ LocalDate.now()
@@ -176,28 +203,25 @@ class DateEditActivity:AppCompatActivity() {
             finish()
         }
     }
-    // 이미지를 DB에 업로드
-//    fun dbUpload(){
-//        val retrofit= RetrofitHelper.getRetrofitInstance()
-//        val retrofitService= retrofit.create(RetrofitService::class.java)
-//        val file= File(imageUriPath)
-//
-//        val requestBody= okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/*"),file)
-//        val part= MultipartBody.Part.createFormData("img",file.name,requestBody)
-//
-//        val call= retrofitService.uploadImage(part)
-//        call.enqueue(object : Callback<String>{
-//            override fun onResponse(call: Call<String>, response: Response<String>) {
-//                val s=response.body()
-//                Log.i("aaa",s.toString())
-//            }
-//
-//            override fun onFailure(call: Call<String>, t: Throwable) {
-//                Log.i("aaa","이미지 업로드 실패. attachImage 부분")
-//            }
-//        })
-//    }
 
-
+    fun dailyNoteCallback(email:String,day:String,content:String,categoryImage:String,dayImageUri:String,detailContent:String) {
+        G.dailyNoteItems.add(DailyItem(day, content, categoryImage, dayImageUri, detailContent))
+        Log.i("aaa", dayImageUri)
+        //입력받은 데이터를 서버에 업로드하는 코드
+        val retrofit = RetrofitHelper.getRetrofitInstance()
+        val retrofitService = retrofit.create(RetrofitService::class.java)
+        val call = retrofitService.getDailyNoteItem(email,day,content,categoryImage,dayImageUri,detailContent)
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                val item = response.body()
+                G.selectedCategoryImage = ""
+                G.selectedattachImage = ""
+            }
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.i("aaa", "error: ${t.message}")
+            }
+        })
+        finish()
+    }
 }
 

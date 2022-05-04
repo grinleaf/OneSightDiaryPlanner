@@ -1,16 +1,20 @@
 package com.grinleaf.onesightdiaryplanner
 
 import android.content.Context
+import android.content.CursorLoader
+import android.database.Cursor
 import android.net.Uri
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+
 
 class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem>):RecyclerView.Adapter<DailyNoteAdapter.VH>() {
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
@@ -22,8 +26,11 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         lateinit var itemView:View
-        Log.i("aaa", dailyItems.get(dailyItems.size-1).dayImage.toString())
-        if(dailyItems.get(dailyItems.size-1).dayImage==null) {  //이미지가 등록되지 않았을 때
+        val item= dailyItems.get(dailyItems.size-1).dayImage
+        val itemUri = item.toUri()
+        Log.i("aaa",itemUri.toString())
+
+        if(itemUri.equals("")) {  //이미지가 등록되지 않았을 때
             val random = (0..3).random()
             when (random) {
                 0 -> { itemView = LayoutInflater.from(context).inflate(R.layout.recycler_theme_daily_01, parent, false) }
@@ -52,4 +59,16 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
     }
 
     override fun getItemCount(): Int { return dailyItems.size }
+
+    //Uri -- > 절대경로로 바꿔서 리턴시켜주는 메소드
+//    fun getRealPathFromUri(uri: Uri?): String? {
+//        val proj = arrayOf(MediaStore.Images.Media.DATA)
+//        val loader = CursorLoader(context, uri, proj, null, null, null)
+//        val cursor: Cursor = loader.loadInBackground()
+//        val column_index: Int = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+//        cursor.moveToFirst()
+//        val result: String = cursor.getString(column_index)
+//        cursor.close()
+//        return result
+//    }
 }

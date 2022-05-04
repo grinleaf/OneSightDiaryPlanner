@@ -1,17 +1,19 @@
 package com.grinleaf.onesightdiaryplanner
 
+import android.Manifest
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.grinleaf.onesightdiaryplanner.databinding.ActivityMainBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +23,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        //1. 외부저장소 사용에 대한 동적퍼미션 + 퍼미션을 허가받은 상태인지 여부 확인(받지 않았을 경우 다이얼로그를 띄우는 requestPermissions();
+        val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (checkSelfPermission(permissions[0]) == PackageManager.PERMISSION_DENIED) requestPermissions(permissions,0)
 
         fragments.add(TimelineFragment())
         fragments.add(DateFragment())
@@ -77,6 +83,19 @@ class MainActivity : AppCompatActivity() {
         binding.btnFloatingAchievementMain.setOnClickListener {
             val intent= Intent(this@MainActivity, AchievementActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode==0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
+            Toast.makeText(this, "외부저장소 허용", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(this, "이미지 업로드 실패", Toast.LENGTH_SHORT).show()
         }
     }
 

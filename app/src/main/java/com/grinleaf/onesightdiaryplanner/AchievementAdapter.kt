@@ -23,7 +23,7 @@ class AchievementAdapter(val context: Context, val userInformationItems: Mutable
     override fun onBindViewHolder(holder: VH, position: Int) {
         val userInformationItem= userInformationItems.get(position)
         holder.userLank.text= userInformationItem.userLank.toString()
-        holder.userProfile.setImageResource(userInformationItem.profileImage)
+        holder.userProfile.setImageResource(R.drawable.tutorial_sample04)
         holder.userNickname.text= userInformationItem.userNickname
     }
 

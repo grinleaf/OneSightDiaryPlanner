@@ -11,7 +11,7 @@ class G {
         var userId= ""
         var userNickname= ""
         var userEmail= ""
-        var userProfileImage= R.drawable.tutorial_sample04
+        var userProfileImage= ""
         var userPassword= ""
 
         var editBucketlistTitle= "${G.userNickname} 님의 버킷리스트"
@@ -25,10 +25,14 @@ class G {
         var lifecycleItems= mutableListOf<LifecycleItem>()
         var bucketlistItems= mutableListOf<BucketlistItem>()
         var timelineItems= mutableListOf<TimelineItem>()
+        var categoryImages= mutableListOf<String>()
 
-        var selectedCategoryImage:Int= R.drawable.tutorial_sample04
+        var selectedCategoryImage:String= ""
+        var selectedattachImage:String= ""
 
         var dayOfDailyNote= ""
         var dayOfCheckList= ""
+
+
     }
 }

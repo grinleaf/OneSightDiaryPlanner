@@ -35,7 +35,7 @@ class BucketlistAdapter(val context: Context, val bucketlistItems:MutableList<Bu
     override fun onBindViewHolder(holder: VH, position: Int) {
         val bucketlistItem= bucketlistItems.get(position)
         holder.day.text= bucketlistItem.day
-        holder.categoryImage.setImageResource(bucketlistItem.categoryImage)
+//        holder.categoryImage.setImageResource(bucketlistItem.categoryImage)
         holder.content.text= bucketlistItem.content
     }
 

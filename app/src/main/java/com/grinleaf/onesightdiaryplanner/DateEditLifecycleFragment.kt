@@ -58,15 +58,15 @@ class DateEditLifecycleFragment:Fragment() {
         }
 
         //버킷리스트 등록 체크된 경우 버킷리스트 G 아이템에 add 하기
-        binding.checkboxCheckbucketLifecycleDateEdit.setOnCheckedChangeListener { compoundButton, b ->
-            if(binding.checkboxCheckbucketLifecycleDateEdit.isChecked){
-                G.bucketlistItems.add(BucketlistItem(
-                    binding.tvStartDayLifecycleDateEdit.text.toString(),
-                    parentFragment?.view?.findViewById<TextView>(R.id.tv_title_main_date_edit)?.text.toString(),
-                    R.drawable.ic_flower
-                ))
-        }
-        }
+//        binding.checkboxCheckbucketLifecycleDateEdit.setOnCheckedChangeListener { compoundButton, b ->
+//            if(binding.checkboxCheckbucketLifecycleDateEdit.isChecked){
+//                G.bucketlistItems.add(BucketlistItem(
+//                    binding.tvStartDayLifecycleDateEdit.text.toString(),
+//                    parentFragment?.view?.findViewById<TextView>(R.id.tv_title_main_date_edit)?.text.toString(),
+////                    R.drawable.ic_flower
+//                ))
+//        }
+//        }
 
         binding.tvSleeptimeLifecycleDateEdit.setOnClickListener {
             val cal= Calendar.getInstance()

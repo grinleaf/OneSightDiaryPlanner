@@ -37,7 +37,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="24dp"
-                android:src="@drawable/ic_car"
+                android:src="@drawable/tutorial_sample04"
                 app:civ_border_color="#FFcccccc"
                 app:civ_border_width="1dp"
                 app:civ_circle_background_color="@color/white"/>
@@ -47,7 +47,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="24dp"
-                android:src="@drawable/ic_friends"
+                android:src="@drawable/tutorial_sample04"
                 app:civ_border_color="#FFcccccc"
                 app:civ_border_width="1dp"
                 app:civ_circle_background_color="@color/white" />
@@ -57,7 +57,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="24dp"
-                android:src="@drawable/ic_dog_02"
+                android:src="@drawable/tutorial_sample04"
                 app:civ_border_color="#FFcccccc"
                 app:civ_border_width="1dp"
                 app:civ_circle_background_color="@color/white" />
@@ -66,7 +66,7 @@
                 android:id="@+id/iv_interest_catecory_04"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_flower"
+                android:src="@drawable/tutorial_sample04"
                 app:civ_border_color="#FFcccccc"
                 app:civ_border_width="1dp"
                 app:civ_circle_background_color="@color/white" />
@@ -84,7 +84,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="24dp"
-                android:src="@drawable/ic_leaf"
+                android:src="@drawable/tutorial_sample04"
                 app:civ_border_width="1dp"
                 app:civ_border_color="#FFcccccc"
                 app:civ_circle_background_color="@color/white"/>
@@ -94,7 +94,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="24dp"
-                android:src="@drawable/ic_bff"
+                android:src="@drawable/tutorial_sample04"
                 app:civ_border_width="1dp"
                 app:civ_border_color="#FFcccccc"
                 app:civ_circle_background_color="@color/white" />
@@ -103,7 +103,7 @@
                 android:id="@+id/iv_interest_catecory_07"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_award_crown_02"
+                android:src="@drawable/tutorial_sample04"
                 app:civ_border_width="1dp"
                 app:civ_border_color="#FFcccccc"
                 app:civ_circle_background_color="@color/white" />

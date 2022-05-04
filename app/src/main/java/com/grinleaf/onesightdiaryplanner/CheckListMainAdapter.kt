@@ -39,7 +39,7 @@ class CheckListMainAdapter(val context:Context, val checkListItems:MutableList<C
         val checklistItem = checkListItems.get(position)
 //        if (checklistItem.day.equals(G.dayOfCheckList)) {
             holder.content.text = checklistItem.content
-            holder.categoryImage.setImageResource(checklistItem.categoryImage)
+//            holder.categoryImage.setImageResource(checklistItem.categoryImage)
             Log.i("aaa", "checklistmain bindviewholder if")
 //        }else{
 //            holder.layout.visibility= View.GONE

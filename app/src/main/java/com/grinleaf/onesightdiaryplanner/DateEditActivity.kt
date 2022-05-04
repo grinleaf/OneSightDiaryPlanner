@@ -6,21 +6,35 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.grinleaf.onesightdiaryplanner.databinding.ActivityDateEditBinding
+import okhttp3.MultipartBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.File
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
+import kotlin.collections.HashMap
 
 class DateEditActivity:AppCompatActivity() {
     val binding by lazy { ActivityDateEditBinding.inflate(layoutInflater) }
     val fragments: MutableList<Fragment> by lazy { mutableListOf() }
+    lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        resultLauncher= registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            Glide.with(this).load(G.selectedCategoryImage).into(binding.ivCategoryMainDateEdit)
+        }
 
         fragments.add(DateEditDailyNoteFragment())
         fragments.add(DateEditCheckListFragment())
@@ -28,6 +42,8 @@ class DateEditActivity:AppCompatActivity() {
         fragments.add(DateEditBucketListFragment())
 
         supportFragmentManager.beginTransaction().add(R.id.date_edit_container,fragments[0]).commit()
+
+        binding.ivCategoryMainDateEdit.setOnClickListener { clickCategory() }
 
         val spinnerItems= resources.getStringArray(R.array.spinner_array)
         val adapter= ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,spinnerItems)
@@ -67,29 +83,25 @@ class DateEditActivity:AppCompatActivity() {
 
             }
         }
-        binding.ivCategoryMainDateEdit.setOnClickListener { clickCategory() }
     }
 
     private fun clickCategory(){
-        binding.ivCategoryMainDateEdit.setImageResource(R.drawable.tutorial_sample04)
         val intent= Intent(this, CategoryActivity::class.java)
-        startActivity(intent)
+        resultLauncher.launch(intent)
     }
 
     //dailyNoteFragment 로 데이터 전달하는 함수
     fun clickRegistDailyNoteDate(){
+        val day= binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_dailynote_date_edit).text.toString()
+        val content= binding.tvTitleMainDateEdit.text.toString()
+        val categoryImage= G.selectedCategoryImage
+        val dayImage= G.selectedattachImage
+        val detailContent= binding.dateEditContainer.findViewById<TextView>(R.id.et_content_detail_dailynote_date_edit).text.toString()
+
         if(binding.tvTitleMainDateEdit.text==null&&binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_dailynote_date_edit).text==null) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
         }else{
-            G.dailyNoteItems.add(
-                DailyItem(
-                    binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_dailynote_date_edit).text.toString(),
-                    binding.tvTitleMainDateEdit.text.toString(),
-                    G.selectedCategoryImage,
-                    binding.dateEditContainer.findViewById<ImageView>(R.id.iv_attach_image_dailynote_date_edit).drawable,
-                    binding.dateEditContainer.findViewById<TextView>(R.id.et_content_detail_dailynote_date_edit).text.toString()
-                )
-            )
+            G.dailyNoteItems.add(DailyItem(day, content,categoryImage, dayImage, detailContent))
             finish()
         }
     }
@@ -164,6 +176,28 @@ class DateEditActivity:AppCompatActivity() {
             finish()
         }
     }
+    // 이미지를 DB에 업로드
+//    fun dbUpload(){
+//        val retrofit= RetrofitHelper.getRetrofitInstance()
+//        val retrofitService= retrofit.create(RetrofitService::class.java)
+//        val file= File(imageUriPath)
+//
+//        val requestBody= okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/*"),file)
+//        val part= MultipartBody.Part.createFormData("img",file.name,requestBody)
+//
+//        val call= retrofitService.uploadImage(part)
+//        call.enqueue(object : Callback<String>{
+//            override fun onResponse(call: Call<String>, response: Response<String>) {
+//                val s=response.body()
+//                Log.i("aaa",s.toString())
+//            }
+//
+//            override fun onFailure(call: Call<String>, t: Throwable) {
+//                Log.i("aaa","이미지 업로드 실패. attachImage 부분")
+//            }
+//        })
+//    }
+
 
 }
 

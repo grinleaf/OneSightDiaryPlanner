@@ -39,7 +39,7 @@ class TimelineAdapter(val context:Context, val timelineItems:MutableList<Timelin
         holder.titleDailyNote.text= timelineItem.titleDailyNote
         holder.dayDailyNote.text= timelineItem.dayDailyNote
         holder.categoryDailyNote.setImageResource(timelineItem.categoryDailyNote)
-        holder.attachImageDailyNote.setImageResource(timelineItem.attachImageDailyNote) //일단 int..
+//        holder.attachImageDailyNote.setImageResource(timelineItem.attachImageDailyNote) //일단 int..
         holder.contentDailyNote.text= timelineItem.contentDailyNote
 
         holder.titleCheckList.text= timelineItem.titleCheckList

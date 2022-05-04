@@ -45,8 +45,8 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
         val dailyItem= dailyItems.get(position)
         holder.day.text= dailyItem.day
         holder.content.text= dailyItem.content
-        holder.categoryImage.setImageResource(dailyItem.categoryImage)   //요건 int로
-        holder.dayImage.setImageDrawable(dailyItem.dayImage)
+        Glide.with(context).load(dailyItem.categoryImage).into(holder.categoryImage)
+        holder.dayImage.setImageResource(R.drawable.tutorial_sample04)
 //        val uri:Uri= dailyItem.dayImage
 //        Glide.with(context).load(uri).into(holder.dayImage)  //요건 db 구축 후에 String 으로 바꿔줄 것! (VH 클래스도 마찬가지)
     }

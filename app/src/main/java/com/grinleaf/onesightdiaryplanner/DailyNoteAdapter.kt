@@ -55,7 +55,7 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
         val dailyItem= dailyItems.get(position)
         holder.day.text= dailyItem.day
         holder.content.text= dailyItem.content
-//        holder.detailContent.text= dailyItem.detailContent
+        holder.detailContent.text= dailyItem.detailContent
         Glide.with(context).load(dailyItem.categoryImage).into(holder.categoryImage)
         Glide.with(context).load(itemUri).into(holder.dayImage)
     }

@@ -142,7 +142,7 @@ class DateEditActivity:AppCompatActivity() {
         val content= binding.tvTitleMainDateEdit.text.toString()
         val categoryImage= G.selectedCategoryImage
         //세부항목 내용 데이터 가져오는 코드 영역
-        val detailContent= binding.dateEditContainer.findViewById<TextView>(R.id.et_content_detail_dailynote_date_edit).text.toString() //수정
+        val detailContent= binding.dateEditContainer.findViewById<TextView>(R.id.et_content_detail_dailynote_date_edit).text.toString()
 
         if(binding.tvTitleMainDateEdit.text.isBlank()&&binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_checklist_date_edit).text==null) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
@@ -252,7 +252,7 @@ class DateEditActivity:AppCompatActivity() {
                 }
             })
             G.bucketlistItems.add(BucketlistItem(day,content, categoryImage,detailContent))
-            //하위리스트 추가할 것
+            //세부플랜 추가할 것
 //            G.bucketlistItems.add(
 //                BucketlistSubItem(binding.dateEditContainer.findViewById<RecyclerView>(R.id.recycler_bucketlist_dateedit_dateedit)
 //                    .findViewHolderForAdapterPosition(0).toString())
@@ -273,6 +273,7 @@ class DateEditActivity:AppCompatActivity() {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 val item = response.body()
                 G.selectedCategoryImage = ""
+                G.selectedattachImage = ""
             }
             override fun onFailure(call: Call<String>, t: Throwable) {
                 Log.i("aaa", "error: ${t.message}")

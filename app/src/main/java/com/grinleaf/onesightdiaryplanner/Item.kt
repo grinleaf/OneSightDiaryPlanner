@@ -8,13 +8,13 @@ data class TimelineItem(
     //dailynote
     var titleDailyNote:String,
     var dayDailyNote:String,
-    var categoryDailyNote:Int,
+    var categoryDailyNote:String,
     var attachImageDailyNote:String,
     var contentDailyNote:String,
     //checklist
     var titleCheckList:String,
     var contentCheckList:String,
-    var categoryCheckList:Int,
+    var categoryCheckList:String,
     //checklist-sub
     var subContentCheckList:String,
     //lifecycle
@@ -22,7 +22,7 @@ data class TimelineItem(
     var startDayLifecycle:String,
     var endDayLifecycle:String,
     var repeatCycle:String,
-    var categoryLifecycle:Int,
+    var categoryLifecycle:String,
     )
 
 data class DailyItem(

@@ -18,6 +18,39 @@ interface RetrofitService {
         @Query("detailContent") detailContent:String
     ): Call<String>
 
+    //checklist 데이터 업로드
+    @GET("OneSightDiaryPlanner/checkListUpload.php")
+    fun getCheckListItem(
+        @Query("email") email:String,
+        @Query("day") day: String,
+        @Query("content") content: String,
+        @Query("categoryImage") categoryImage:String,
+        @Query("detailContent") detailContent:String
+    ): Call<String>
+
+    //lifecycle 데이터 업로드
+    @GET("OneSightDiaryPlanner/lifecycleUpload.php")
+    fun getLifecycleItem(
+        @Query("email") email:String,
+        @Query("content") content: String,
+        @Query("startday") startday: String,
+        @Query("endday") endday: String,
+        @Query("cycle") cycle: String,
+        @Query("categoryImage") categoryImage:String,
+        @Query("exportother") isBucket: String
+    ): Call<String>
+
+    //bucketlist 데이터 업로드
+    @GET("OneSightDiaryPlanner/bucketlistUpload.php")
+    fun getBucketListItem(
+        @Query("email") email:String,
+        @Query("content") content: String,
+        @Query("day") day: String,
+        @Query("categoryImage") categoryImage:String,
+        @Query("detailContent") detailContent:String,
+//        @Query("importother") isCycle: String
+    ): Call<String>
+
     //사진앱 이미지 업로드
     @Multipart
     @POST("OneSightDiaryPlanner/attachImages.php")

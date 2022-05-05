@@ -1,5 +1,6 @@
 package com.grinleaf.onesightdiaryplanner
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.timepicker.TimeFormat
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentDateeditDailynoteBinding
@@ -29,6 +31,7 @@ class DateEditLifecycleFragment:Fragment() {
     var timeString=""
     var isCheckedBucket= false
 
+    @SuppressLint("ResourceAsColor")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -44,7 +47,26 @@ class DateEditLifecycleFragment:Fragment() {
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(
                 Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }
-        //종료일자 설정
+
+        //종료일자 설정 : 체크박스 on/off 별 설정
+        binding.checkboxNoEnddayLifecycle.setOnCheckedChangeListener { compoundButton, b ->
+            if(b){
+                binding.tvEndDayLifecycleDateEdit.isClickable= false
+                binding.tvEndDayLifecycleDateEdit.setTextColor(R.color.divider_color_03)
+                binding.tvEndDayLifecycleDateEdit.text= "9999-12-31"
+                //버킷리스트 등록 체크된 경우 버킷리스트 G 아이템에 add 하기
+//                G.bucketlistItems.add(BucketlistItem(
+//                    binding.tvStartDayLifecycleDateEdit.text.toString(),
+//                    parentFragment?.view?.findViewById<TextView>(R.id.tv_title_main_date_edit)?.text.toString(),
+////                    R.drawable.ic_flower
+//                ))
+        }else{
+                binding.tvEndDayLifecycleDateEdit.isClickable= true
+                binding.tvEndDayLifecycleDateEdit.setTextColor(R.color.default_gray)
+                binding.tvEndDayLifecycleDateEdit.text= "종료일자"
+            }
+        }
+
         binding.tvEndDayLifecycleDateEdit.setOnClickListener {
             val cal= Calendar.getInstance()
             val dateSetListener = DatePickerDialog.OnDateSetListener{
@@ -56,17 +78,6 @@ class DateEditLifecycleFragment:Fragment() {
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(
                 Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }
-
-        //버킷리스트 등록 체크된 경우 버킷리스트 G 아이템에 add 하기
-//        binding.checkboxCheckbucketLifecycleDateEdit.setOnCheckedChangeListener { compoundButton, b ->
-//            if(binding.checkboxCheckbucketLifecycleDateEdit.isChecked){
-//                G.bucketlistItems.add(BucketlistItem(
-//                    binding.tvStartDayLifecycleDateEdit.text.toString(),
-//                    parentFragment?.view?.findViewById<TextView>(R.id.tv_title_main_date_edit)?.text.toString(),
-////                    R.drawable.ic_flower
-//                ))
-//        }
-//        }
 
         binding.tvSleeptimeLifecycleDateEdit.setOnClickListener {
             val cal= Calendar.getInstance()

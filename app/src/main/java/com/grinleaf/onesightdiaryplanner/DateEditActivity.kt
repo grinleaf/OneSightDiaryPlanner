@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.grinleaf.onesightdiaryplanner.databinding.ActivityDateEditBinding
 import okhttp3.MediaType
@@ -125,6 +126,7 @@ class DateEditActivity:AppCompatActivity() {
                     val s= response.body()
                     Log.i("aaa", s.toString())
                     dayImageUri= "http://grinleaf.dothome.co.kr/OneSightDiaryPlanner/$s"
+                    //콜백처리 메소드
                     dailyNoteCallback(email,day,content,categoryImage,dayImageUri,detailContent)
                 }
                 override fun onFailure(call: Call<String>, t: Throwable) {
@@ -135,19 +137,31 @@ class DateEditActivity:AppCompatActivity() {
     }
 
     fun clickRegistCheckListDate(){
+        val email= G.userEmail
+        val day= binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_checklist_date_edit).text.toString()
+        val content= binding.tvTitleMainDateEdit.text.toString()
+        val categoryImage= G.selectedCategoryImage
+        //세부항목 내용 데이터 가져오는 코드 영역
+        val detailContent= binding.dateEditContainer.findViewById<TextView>(R.id.et_content_detail_dailynote_date_edit).text.toString() //수정
+
         if(binding.tvTitleMainDateEdit.text.isBlank()&&binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_checklist_date_edit).text==null) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
         }else{
-            G.checklistItems.add(
-                ChecklistItem(
-                    binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_checklist_date_edit).text.toString(),
-                    binding.tvTitleMainDateEdit.text.toString(),
-                    G.selectedCategoryImage
-                )
-            )
-            G.checklistSubItems.add(ChecklistSubItem("안녕!"))
-            G.checklistSubItems.add(ChecklistSubItem("방가웡!"))
-            G.checklistSubItems.add(ChecklistSubItem("ㅎㅣ히!"))
+            val retrofit = RetrofitHelper.getRetrofitInstance()
+            val retrofitService = retrofit.create(RetrofitService::class.java)
+            val call = retrofitService.getCheckListItem(email,day,content,categoryImage,detailContent)
+            call.enqueue(object : Callback<String> {
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    val item = response.body()
+                    G.selectedCategoryImage = ""
+                }
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    Log.i("aaa", "error: ${t.message}")
+                }
+            })
+
+            //SharedPreference 코드 영역(예정)
+            G.checklistItems.add(ChecklistItem(day, content,categoryImage,detailContent))
             //하위리스트 추가할 것
 //            G.checklistSubItems.add(
 //                ChecklistSubItem(binding.dateEditContainer.findViewById<RecyclerView>(R.id.recycler_checklist_dateedit)
@@ -159,6 +173,28 @@ class DateEditActivity:AppCompatActivity() {
     }
 
     fun clickRegistLifecycleDate(){
+        val email= G.userEmail
+        val startday= binding.dateEditContainer.findViewById<TextView>(R.id.tv_start_day_lifecycle_date_edit).text.toString()
+        val endday=
+            if(binding.dateEditContainer.findViewById<CheckBox>(R.id.checkbox_no_endday_lifecycle).isChecked) {
+                binding.dateEditContainer.findViewById<TextView>(R.id.tv_end_day_lifecycle_date_edit).text
+            }else{
+                binding.dateEditContainer.findViewById<TextView>(R.id.tv_end_day_lifecycle_date_edit).text.toString()
+            }.toString()
+        val content= binding.tvTitleMainDateEdit.text.toString()
+        val cycle= when(binding.dateEditContainer.findViewById<RadioGroup>(R.id.radio_group_lifecycle_date_edit).checkedRadioButtonId){
+            R.id.radio_everyday_lifecycle_date_edit-> binding.dateEditContainer.findViewById<RadioButton>(R.id.radio_everyday_lifecycle_date_edit).text
+            R.id.radio_everyweek_lifecycle_date_edit-> binding.dateEditContainer.findViewById<RadioButton>(R.id.radio_everyweek_lifecycle_date_edit).text
+            R.id.radio_everymonth_lifecycle_date_edit-> binding.dateEditContainer.findViewById<RadioButton>(R.id.radio_everymonth_lifecycle_date_edit).text
+            R.id.radio_everyyear_lifecycle_date_edit-> binding.dateEditContainer.findViewById<RadioButton>(R.id.radio_everyyear_lifecycle_date_edit).text
+            else-> {}
+        }.toString()
+        val categoryImage= G.selectedCategoryImage
+        val isBucket= when(binding.dateEditContainer.findViewById<CheckBox>(R.id.checkbox_checkbucket_lifecycle_date_edit).isChecked){
+                true -> "true"
+                false -> "false"
+            }
+
         if(binding.tvTitleMainDateEdit.text.isBlank()) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
         }else if (binding.dateEditContainer.findViewById<TextView>(R.id.tv_start_day_lifecycle_date_edit).text=="시작일자") {
@@ -166,41 +202,61 @@ class DateEditActivity:AppCompatActivity() {
         }else if(binding.dateEditContainer.findViewById<TextView>(R.id.tv_end_day_lifecycle_date_edit).text=="종료일자" && !binding.dateEditContainer.findViewById<CheckBox>(R.id.checkbox_no_endday_lifecycle).isChecked){
             Toast.makeText(this, "종료일자를 선택해주세요.", Toast.LENGTH_SHORT).show()
         }else{
-            G.lifecycleItems.add(
-                LifecycleItem(
-                    binding.dateEditContainer.findViewById<TextView>(R.id.tv_start_day_lifecycle_date_edit).text.toString(),
-                    binding.tvTitleMainDateEdit.text.toString(),
-                    G.selectedCategoryImage,
-                    when(binding.dateEditContainer.findViewById<RadioGroup>(R.id.radio_group_lifecycle_date_edit).checkedRadioButtonId){
-                        R.id.radio_everyday_lifecycle_date_edit-> binding.dateEditContainer.findViewById<RadioButton>(R.id.radio_everyday_lifecycle_date_edit).text
-                        R.id.radio_everyweek_lifecycle_date_edit-> binding.dateEditContainer.findViewById<RadioButton>(R.id.radio_everyweek_lifecycle_date_edit).text
-                        R.id.radio_everymonth_lifecycle_date_edit-> binding.dateEditContainer.findViewById<RadioButton>(R.id.radio_everymonth_lifecycle_date_edit).text
-                        R.id.radio_everyyear_lifecycle_date_edit-> binding.dateEditContainer.findViewById<RadioButton>(R.id.radio_everyyear_lifecycle_date_edit).text
-                        else-> {}
-                    }.toString(),
-                    if(binding.dateEditContainer.findViewById<CheckBox>(R.id.checkbox_no_endday_lifecycle).isChecked) {
-                        "9999-12-31"
-                    }else{
-                        binding.dateEditContainer.findViewById<TextView>(R.id.tv_end_day_lifecycle_date_edit).text.toString()
-                    }.toString()
-                ))
+            val retrofit = RetrofitHelper.getRetrofitInstance()
+            val retrofitService = retrofit.create(RetrofitService::class.java)
+            val call = retrofitService.getLifecycleItem(email,content,startday,endday,cycle,categoryImage,isBucket)
+            call.enqueue(object : Callback<String> {
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    val item = response.body()
+                    //isBucket 이 true 일 때 버킷리스트에 데이터 추가하는 콜백처리 메소드 영역
+                    Log.i("aaa","isBucket: "+isBucket)
+                    G.selectedCategoryImage = ""
+                }
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    Log.i("aaa", "error: ${t.message}")
+                }
+            })
+            //SharedPreference 코드 영역(예정)
+            G.lifecycleItems.add(LifecycleItem(startday, content,categoryImage,cycle,endday,isBucket))
             finish()
         }
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
     fun clickRegistBucketListDate(){
+        val email= G.userEmail
+
+        var now = ""+ LocalDate.now()
+        val nowDate: Date = SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(now) as Date
+        now= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(nowDate)
+        val day= now
+
+        val content= binding.tvTitleMainDateEdit.text.toString()
+        val categoryImage= G.selectedCategoryImage
+        //세부항목 내용 데이터 가져오는 코드 영역
+        val detailContent= binding.dateEditContainer.findViewById<TextView>(R.id.et_content_detail_dailynote_date_edit).text.toString() //수정
+
         if(binding.tvTitleMainDateEdit.text.isBlank()) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
         }else{
-            var now = ""+ LocalDate.now()
-            val nowDate: Date = SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(now)
-            now= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(nowDate)
-            G.bucketlistItems.add(
-                BucketlistItem(
-                    now,
-                    binding.tvTitleMainDateEdit.text.toString(),
-                    G.selectedCategoryImage
-                ))
+            val retrofit = RetrofitHelper.getRetrofitInstance()
+            val retrofitService = retrofit.create(RetrofitService::class.java)
+            val call = retrofitService.getBucketListItem(email,day,content,categoryImage,detailContent)
+            call.enqueue(object : Callback<String> {
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    val item = response.body()
+                    G.selectedCategoryImage = ""
+                }
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    Log.i("aaa", "error: ${t.message}")
+                }
+            })
+            G.bucketlistItems.add(BucketlistItem(day,content, categoryImage,detailContent))
+            //하위리스트 추가할 것
+//            G.bucketlistItems.add(
+//                BucketlistSubItem(binding.dateEditContainer.findViewById<RecyclerView>(R.id.recycler_bucketlist_dateedit_dateedit)
+//                    .findViewHolderForAdapterPosition(0).toString())
+//            )
             finish()
         }
     }
@@ -208,6 +264,7 @@ class DateEditActivity:AppCompatActivity() {
     fun dailyNoteCallback(email:String,day:String,content:String,categoryImage:String,dayImageUri:String,detailContent:String) {
         G.dailyNoteItems.add(DailyItem(day, content, categoryImage, dayImageUri, detailContent))
         Log.i("aaa", dayImageUri)
+
         //입력받은 데이터를 서버에 업로드하는 코드
         val retrofit = RetrofitHelper.getRetrofitInstance()
         val retrofitService = retrofit.create(RetrofitService::class.java)

@@ -39,16 +39,28 @@
             android:text="#날짜" />
 
         <TextView
-            android:id="@+id/tv_content_daily_theme"
+            android:id="@+id/tv_title_daily_theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_day_daily_theme"
             android:layout_alignLeft="@id/iv_image_daily_theme"
             android:layout_alignRight="@id/iv_image_daily_theme"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_horizontal"
+            android:text="#일정제목" />
+        <TextView
+            android:id="@+id/tv_content_daily_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title_daily_theme"
+            android:layout_alignLeft="@id/iv_image_daily_theme"
+            android:layout_alignRight="@id/iv_image_daily_theme"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
             android:gravity="center_horizontal"
             android:text="#일정내용" />
+
     </RelativeLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView

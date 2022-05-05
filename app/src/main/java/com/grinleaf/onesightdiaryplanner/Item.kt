@@ -36,7 +36,8 @@ data class DailyItem(
 data class ChecklistItem(
     override var day:String,
     override var content:String,
-    override var categoryImage:String
+    override var categoryImage:String,
+    var detailContent:String
     ):Base(day,content,categoryImage)
 
 data class ChecklistSubItem(var subContent:String)
@@ -46,13 +47,15 @@ data class LifecycleItem(
     override var content:String,
     override var categoryImage:String,
     var repeatCycle:String,
-    var endDay:String
+    var endDay:String,
+    var isBucket:String
     ):Base(day,content,categoryImage)
 
 data class BucketlistItem(
     override var day:String,
     override var content:String,
-    override var categoryImage:String
+    override var categoryImage:String,
+    var detailContent:String
 ):Base(day,content,categoryImage)
 
 data class MypageGridItem(var mypageImage:Int, var mypageContent:String)

@@ -19,16 +19,10 @@ class CheckListMainAdapter(val context:Context, val checkListItems:MutableList<C
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
         val content:CheckBox by lazy { itemView.findViewById(R.id.checkbox_maincontent_checklist_theme) }
         val categoryImage:ImageView by lazy { itemView.findViewById(R.id.iv_category_checklist_theme) }
-        val layout:LinearLayout by lazy { itemView.findViewById(R.id.layout_frame_maincontent_checklist_theme) }
+        val recycler:RecyclerView by lazy { itemView.findViewById(R.id.recycler_sub) }
     }
-    lateinit var subItem:MutableList<ChecklistSubItem>
-//    val TYPE_MAIN = 0
-//    val TYPE_SUB = 1
-//
-//    override fun getItemViewType(position: Int): Int {
-//        return if (checkListItems.get(position).subContent==null) TYPE_MAIN
-//        else TYPE_SUB
-//    }
+    val subItems= mutableListOf<ChecklistSubItem>()
+    val adapter= CheckListSubAdapter(context, subItems)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         var itemView:View = LayoutInflater.from(context).inflate(R.layout.recycler_checklist_maincontent, parent, false)
@@ -42,9 +36,15 @@ class CheckListMainAdapter(val context:Context, val checkListItems:MutableList<C
 //            holder.categoryImage.setImageResource(checklistItem.categoryImage)
             Log.i("aaa", "checklistmain bindviewholder if")
 //        }else{
+        //if subcontent 내용이 있을 경우 recycler 의 visibility= visible 로 바꾸는 코드 영역
 //            holder.layout.visibility= View.GONE
 //            Log.i("aaa", "checklistmain bindviewholder else")
+//            holder.recycler.adapter= adapter
 //        }
+
+
+
+
     }
 
     override fun getItemCount(): Int { return checkListItems.size }

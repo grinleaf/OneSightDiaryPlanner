@@ -48,10 +48,10 @@ class DailyNoteFragment:Fragment() {
         }
         binding.recyclerDailynote.adapter= adapter
 
-        binding.refresherDailynote.setOnRefreshListener {
-            binding.refresherDailynote.isRefreshing= false
-            adapter.notifyDataSetChanged()
-        }
+//        binding.refresherDailynote.setOnRefreshListener {
+//            binding.refresherDailynote.isRefreshing= false
+//            adapter.notifyDataSetChanged()
+//        }
 
     }
 

@@ -7,6 +7,26 @@ import java.util.ArrayList
 
 interface RetrofitService {
 
+    //dailyNote 데이터 다운로드
+    @GET("OneSightDiaryPlanner/dailyNoteDownload.php")
+    fun getDailyNoteDownload(): Call<ArrayList<DailyItem>>
+
+    //checklist 데이터 다운로드
+    @GET("OneSightDiaryPlanner/checklistDownload.php")
+    fun getChecklistDownload(): Call<ArrayList<ChecklistItem>>
+
+    //lifecycle 데이터 다운로드
+    @GET("OneSightDiaryPlanner/lifecycleDownload.php")
+    fun getLifecycleDownload(): Call<ArrayList<LifecycleItem>>
+
+    //bucketlist 데이터 다운로드
+    @GET("OneSightDiaryPlanner/bucketlistDownload.php")
+    fun getBucketlistDownload(): Call<ArrayList<BucketlistItem>>
+
+    //timeline 데이터 다운로드
+    @GET("OneSightDiaryPlanner/timelineDownload.php")
+    fun getTimelineDownload(): Call<ArrayList<TimelineItem>>
+
     //dailyNote 데이터 업로드
     @GET("OneSightDiaryPlanner/dailyNoteUpload.php")
     fun getDailyNoteItem(
@@ -19,7 +39,7 @@ interface RetrofitService {
     ): Call<String>
 
     //checklist 데이터 업로드
-    @GET("OneSightDiaryPlanner/checkListUpload.php")
+    @GET("OneSightDiaryPlanner/checklistUpload.php")
     fun getCheckListItem(
         @Query("email") email:String,
         @Query("day") day: String,

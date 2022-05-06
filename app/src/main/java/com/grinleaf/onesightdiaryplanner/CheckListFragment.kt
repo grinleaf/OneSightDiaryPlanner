@@ -39,17 +39,17 @@ class CheckListFragment:Fragment() {
 
         var now = ""+LocalDate.now()
         val nowDate:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(now)
-        now= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(nowDate)
+        now= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(nowDate)
         binding.tvChecklistDay.text= now
-
+        G.dayOfCheckList= now
         binding.ivDatepickerChecklist.setOnClickListener{
             val cal= Calendar.getInstance()
             val dateSetListener = DatePickerDialog.OnDateSetListener{
                     view, year, month, dayOfMonth -> G.dayOfCheckList = "${year}-${month+1}-${dayOfMonth}"
                 val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(G.dayOfCheckList)
-
-                G.dayOfCheckList= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(date)
+                G.dayOfCheckList= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(date)
                 binding.tvChecklistDay.text = G.dayOfCheckList
+                adapter.notifyDataSetChanged()
             }
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }

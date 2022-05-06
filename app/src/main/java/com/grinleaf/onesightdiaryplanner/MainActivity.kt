@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -46,18 +47,22 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.timeline_tab->{
                     tran.show(fragments[0])
+                    binding.mainBgColor.visibility= View.VISIBLE
                 }
                 R.id.date_tab->{
                     if(!supportFragmentManager.fragments.contains(fragments[1])) tran.add(R.id.container,fragments[1])
                     tran.show(fragments[1])
+                    binding.mainBgColor.visibility= View.GONE
                 }
                 R.id.calendar_tab->{
                     if(!supportFragmentManager.fragments.contains(fragments[3])) tran.add(R.id.container,fragments[3])
                     tran.show(fragments[3])
+                    binding.mainBgColor.visibility= View.GONE
                 }
                 R.id.mypage_tab->{
                     if(!supportFragmentManager.fragments.contains(fragments[4])) tran.add(R.id.container,fragments[4])
                     tran.show(fragments[4])
+                    binding.mainBgColor.visibility= View.GONE
                 }
             }
             tran.commit()

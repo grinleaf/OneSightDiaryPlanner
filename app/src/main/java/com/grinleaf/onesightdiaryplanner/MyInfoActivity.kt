@@ -43,6 +43,7 @@ class MyInfoActivity : AppCompatActivity() {
     }
 
     fun clickLogout(){
+        G.isLogin= false
         G.userId= ""
         G.userEmail= ""
         G.userNickname= ""
@@ -59,7 +60,7 @@ class MyInfoActivity : AppCompatActivity() {
 
         firebaseAuth= FirebaseAuth.getInstance()
         firebaseAuth.signOut()
-        val intent= Intent(this@MyInfoActivity, LoginActivity::class.java)
+        val intent= Intent(this@MyInfoActivity, TutorialActivity::class.java)
         startActivity(intent)
         finish()
     }

@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:id="@+id/main_bg_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_timeline"
+        android:background="@color/signature_color_01" />
+
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"

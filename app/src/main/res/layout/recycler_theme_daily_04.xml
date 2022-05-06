@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_visible"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
@@ -71,7 +72,8 @@
         android:layout_marginHorizontal="2dp"
         android:layout_toRightOf="@id/layout_daily_theme"
         android:src="@mipmap/ic_test_icon01"
+        android:background="@color/white"
         app:civ_border_color="#FFaaaaaa"
-        app:civ_border_width="1dp"/>
+        app:civ_border_width="1dp" />
 
 </RelativeLayout>

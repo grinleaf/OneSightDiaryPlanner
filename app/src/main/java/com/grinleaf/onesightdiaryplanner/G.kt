@@ -16,7 +16,7 @@ class G {
 
         var editBucketlistTitle= "${G.userNickname} 님의 버킷리스트"
 
-        var isFirst= true
+        var isFirst= true   //튜토리얼 스킵
         var isLogin= false
 
         var dailyNoteItems= mutableListOf<DailyItem>()

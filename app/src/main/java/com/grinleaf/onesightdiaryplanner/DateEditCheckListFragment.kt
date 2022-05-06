@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentDateeditChecklistBinding
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentDateeditDailynoteBinding
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
 
@@ -36,6 +37,8 @@ class DateEditCheckListFragment:Fragment() {
             val cal= Calendar.getInstance()
             val dateSetListener = DatePickerDialog.OnDateSetListener{
                     view, year, month, dayOfMonth -> dateString = "${year}-${month+1}-${dayOfMonth}"
+                val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(dateString)
+                dateString= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(date)
                 binding.tvTodayAutoChecklistDateEdit.text = dateString
             }
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(

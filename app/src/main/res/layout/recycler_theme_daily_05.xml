@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_visible"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
-        android:id="@+id/layout_05_daily_theme"
+        android:id="@+id/layout_daily_theme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/daily05">
 
         <ImageView
@@ -48,6 +52,7 @@
             android:layout_marginBottom="8dp"
             android:gravity="center_horizontal"
             android:text="#일정제목" />
+
         <TextView
             android:id="@+id/tv_content_daily_theme"
             android:layout_width="wrap_content"
@@ -66,11 +71,12 @@
         android:id="@+id/iv_category_daily_theme"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_alignBottom="@id/layout_05_daily_theme"
+        android:layout_alignBottom="@id/layout_daily_theme"
         android:layout_marginHorizontal="2dp"
-        android:layout_toLeftOf="@id/layout_05_daily_theme"
+        android:layout_toLeftOf="@id/layout_daily_theme"
         android:src="@mipmap/ic_test_icon01"
+        android:background="@color/white"
         app:civ_border_color="#FFaaaaaa"
-        app:civ_border_width="1dp"/>
+        app:civ_border_width="1dp" />
 
 </RelativeLayout>

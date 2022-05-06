@@ -161,7 +161,7 @@ class DateEditActivity:AppCompatActivity() {
             })
 
             //SharedPreference 코드 영역(예정)
-            G.checklistItems.add(ChecklistItem(day, content,categoryImage,detailContent))
+            G.checklistItems.add(ChecklistItem("",email,day, content,categoryImage,detailContent))
             //하위리스트 추가할 것
 //            G.checklistSubItems.add(
 //                ChecklistSubItem(binding.dateEditContainer.findViewById<RecyclerView>(R.id.recycler_checklist_dateedit)
@@ -217,7 +217,7 @@ class DateEditActivity:AppCompatActivity() {
                 }
             })
             //SharedPreference 코드 영역(예정)
-            G.lifecycleItems.add(LifecycleItem(startday, content,categoryImage,cycle,endday,isBucket))
+            G.lifecycleItems.add(LifecycleItem("",email,startday, content,categoryImage,cycle,endday,isBucket))
             finish()
         }
     }
@@ -230,7 +230,6 @@ class DateEditActivity:AppCompatActivity() {
         val nowDate: Date = SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(now) as Date
         now= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(nowDate)
         val day= now
-
         val content= binding.tvTitleMainDateEdit.text.toString()
         val categoryImage= G.selectedCategoryImage
         //세부항목 내용 데이터 가져오는 코드 영역
@@ -241,7 +240,7 @@ class DateEditActivity:AppCompatActivity() {
         }else{
             val retrofit = RetrofitHelper.getRetrofitInstance()
             val retrofitService = retrofit.create(RetrofitService::class.java)
-            val call = retrofitService.getBucketListItem(email,day,content,categoryImage,detailContent)
+            val call = retrofitService.getBucketListItem(email,content,day,categoryImage,detailContent)
             call.enqueue(object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     val item = response.body()
@@ -251,7 +250,7 @@ class DateEditActivity:AppCompatActivity() {
                     Log.i("aaa", "error: ${t.message}")
                 }
             })
-            G.bucketlistItems.add(BucketlistItem(day,content, categoryImage,detailContent))
+            G.bucketlistItems.add(BucketlistItem("",email,day,content, categoryImage,detailContent))
             //세부플랜 추가할 것
 //            G.bucketlistItems.add(
 //                BucketlistSubItem(binding.dateEditContainer.findViewById<RecyclerView>(R.id.recycler_bucketlist_dateedit_dateedit)
@@ -262,7 +261,7 @@ class DateEditActivity:AppCompatActivity() {
     }
 
     fun dailyNoteCallback(email:String,day:String,content:String,categoryImage:String,dayImageUri:String,detailContent:String) {
-        G.dailyNoteItems.add(DailyItem(day, content, categoryImage, dayImageUri, detailContent))
+        G.dailyNoteItems.add(DailyItem("",email,day, content, categoryImage, dayImageUri, detailContent))
         Log.i("aaa", dayImageUri)
 
         //입력받은 데이터를 서버에 업로드하는 코드

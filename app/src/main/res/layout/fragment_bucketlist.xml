@@ -5,6 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_bucketlist"
+        android:background="@drawable/bg_flowers_05_small"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_bucketlist"
+        android:background="#45FFFFFF" />
+
+    <RelativeLayout
         android:id="@+id/layout_bucketlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,15 +56,5 @@
         android:paddingVertical="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/layout_bucketlist"
-        android:background="@drawable/bg_flowers_05_small"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/layout_bucketlist"
-        android:background="#45FFFFFF" />
 </RelativeLayout>

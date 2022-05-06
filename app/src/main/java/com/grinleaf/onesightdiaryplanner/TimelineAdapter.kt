@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 
 class TimelineAdapter(val context:Context, val timelineItems:MutableList<TimelineItem>):RecyclerView.Adapter<TimelineAdapter.VH>() {
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
@@ -37,23 +36,23 @@ class TimelineAdapter(val context:Context, val timelineItems:MutableList<Timelin
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val timelineItem = timelineItems.get(position)
-        holder.titleDailyNote.text= timelineItem.titleDailyNote
-        holder.dayDailyNote.text= timelineItem.dayDailyNote
-        Glide.with(context).load(timelineItem.categoryDailyNote).into(holder.categoryDailyNote)
-//        holder.attachImageDailyNote.setImageResource(timelineItem.attachImageDailyNote) //일단 int..
-        holder.contentDailyNote.text= timelineItem.contentDailyNote
-
-        holder.titleCheckList.text= timelineItem.titleCheckList
-        holder.contentCheckList.text= timelineItem.contentCheckList
-        Glide.with(context).load(timelineItem.categoryCheckList).into(holder.categoryCheckList)
-
-//        holder.subContentCheckList.text= timelineItem.subContentCheckList
-
-        holder.titleLifecycle.text= timelineItem.titleLifecycle
-        holder.startDayLifecycle.text= timelineItem.startDayLifecycle
-        holder.endDayLifecycle.text= timelineItem.endDayLifecycle
-        holder.repeatCycle.text= timelineItem.repeatCycle
-        Glide.with(context).load(timelineItem.categoryLifecycle).into(holder.categoryLifecycle)
+//        holder.titleDailyNote.text= timelineItem.titleDailyNote
+//        holder.dayDailyNote.text= timelineItem.dayDailyNote
+//        Glide.with(context).load(timelineItem.categoryDailyNote).into(holder.categoryDailyNote)
+//        Glide.with(context).load(timelineItem.attachImageDailyNote).into(holder.attachImageDailyNote)
+//        holder.contentDailyNote.text= timelineItem.contentDailyNote
+//
+//        holder.titleCheckList.text= timelineItem.titleCheckList
+//        holder.contentCheckList.text= timelineItem.contentCheckList
+//        Glide.with(context).load(timelineItem.categoryCheckList).into(holder.categoryCheckList)
+//
+////        holder.subContentCheckList.text= timelineItem.subContentCheckList
+//
+//        holder.titleLifecycle.text= timelineItem.titleLifecycle
+//        holder.startDayLifecycle.text= timelineItem.startDayLifecycle
+//        holder.endDayLifecycle.text= timelineItem.endDayLifecycle
+//        holder.repeatCycle.text= timelineItem.repeatCycle
+//        Glide.with(context).load(timelineItem.categoryLifecycle).into(holder.categoryLifecycle)
     }
 
     override fun getItemCount(): Int { return timelineItems.size }

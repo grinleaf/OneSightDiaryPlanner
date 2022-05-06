@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_visible"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:visibility="visible"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -45,6 +47,12 @@
             android:layout_height="20dp"
             android:src="@drawable/ic_delete"
             android:layout_margin="4dp"/>
+        <TextView
+            android:id="@+id/tv_day_checklist_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:visibility="gone"/>
     </LinearLayout>
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"

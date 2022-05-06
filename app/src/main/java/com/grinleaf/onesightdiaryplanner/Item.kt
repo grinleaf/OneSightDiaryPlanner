@@ -1,62 +1,84 @@
 package com.grinleaf.onesightdiaryplanner
 
-import android.graphics.drawable.Drawable
-
-abstract class Base(open var day:String,open var content:String,open var categoryImage:String)
+import com.google.gson.annotations.SerializedName
 
 data class TimelineItem(
     //dailynote
+    var noDailyNote:String,
+    var emailDailyNote:String,
     var titleDailyNote:String,
     var dayDailyNote:String,
     var categoryDailyNote:String,
     var attachImageDailyNote:String,
     var contentDailyNote:String,
     //checklist
+    var noChecklist:String,
+    var emailChecklist:String,
     var titleCheckList:String,
-    var contentCheckList:String,
+    var dayChecklist:String,
     var categoryCheckList:String,
+    var contentCheckList:String,
     //checklist-sub
     var subContentCheckList:String,
     //lifecycle
+    var noLifecycle:String,
+    var emailLifecycle:String,
     var titleLifecycle:String,
     var startDayLifecycle:String,
     var endDayLifecycle:String,
     var repeatCycle:String,
     var categoryLifecycle:String,
+    var exportOther:String,
+    //bucketlist
+    var noBucketlist:String,
+    var emailBucketlist:String,
+    var titleBucketlist:String,
+    var dayBucketlist:String,
+    var categoryBucketlist:String,
+    var contentBucketlist:String,
     )
 
 data class DailyItem(
-    override var day:String,
-    override var content:String,
-    override var categoryImage:String,
-    var dayImage:String,
-    var detailContent:String
-    ):Base(day,content,categoryImage)
+    var no: String,
+    var email: String,
+    var day:String,
+    @SerializedName("title") var content:String,
+    @SerializedName("categoryImage") var categoryImage:String,
+    @SerializedName("attachImage") var dayImage:String,
+    @SerializedName("content") var detailContent:String,
+    )
+//    :Base(day,content,categoryImage2)
 
 data class ChecklistItem(
-    override var day:String,
-    override var content:String,
-    override var categoryImage:String,
-    var detailContent:String
-    ):Base(day,content,categoryImage)
+    var no: String,
+    var email:String,
+    var day:String,
+    @SerializedName("title") var content:String,
+    var categoryImage:String,
+    @SerializedName("content") var detailContent:String
+    )
 
 data class ChecklistSubItem(var subContent:String)
 
 data class LifecycleItem(
-    override var day:String,
-    override var content:String,
-    override var categoryImage:String,
-    var repeatCycle:String,
-    var endDay:String,
-    var isBucket:String
-    ):Base(day,content,categoryImage)
+    var no: String,
+    var email:String,
+    @SerializedName("startday") var day:String,
+    @SerializedName("title") var content:String,
+    var categoryImage:String,
+    @SerializedName("cycle") var repeatCycle:String,
+    @SerializedName("endday") var endDay:String,
+    @SerializedName("exportother") var isBucket:String
+    )
 
 data class BucketlistItem(
-    override var day:String,
-    override var content:String,
-    override var categoryImage:String,
-    var detailContent:String
-):Base(day,content,categoryImage)
+    var no: String,
+    var email:String,
+    var day:String,
+    @SerializedName("title") var content:String,
+    var categoryImage:String,
+    @SerializedName("content") var detailContent:String
+)
 
 data class MypageGridItem(var mypageImage:Int, var mypageContent:String)
 

@@ -36,14 +36,15 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //앱 재실행 시 로그인 이력 확인 (로그아웃을 누르지 않은 상태)
-        val pref= getSharedPreferences("user", MODE_PRIVATE)
-        G.userId= pref.getString("userId","").toString()
-        G.userEmail= pref.getString("userEmail","").toString()
-        G.userNickname= pref.getString("userNickname","").toString()
-        G.userPassword= pref.getString("userPw","").toString()
-        Log.i("aaa",G.userId+","+G.userEmail+","+G.userNickname+","+G.userPassword)
-        if(G.userEmail!=""){
-            val intent= Intent(this@LoginActivity,MainActivity::class.java)
+        val pref = getSharedPreferences("user", MODE_PRIVATE)
+        G.userId = pref.getString("userId", "").toString()
+        G.userEmail = pref.getString("userEmail", "").toString()
+        G.userNickname = pref.getString("userNickname", "").toString()
+        G.userPassword = pref.getString("userPw", "").toString()
+        Log.i("aaa", G.userId + "," + G.userEmail + "," + G.userNickname + "," + G.userPassword)
+        if (G.userEmail != "") {
+            G.isLogin= true
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
             Toast.makeText(this, "${G.userNickname} 님, 환영합니다.", Toast.LENGTH_SHORT).show()
@@ -54,7 +55,8 @@ class LoginActivity : AppCompatActivity() {
             val intent = it.data
             val task = GoogleSignIn.getSignedInAccountFromIntent(intent)
             val account = task.result
-            G.userEmail = account.email!!
+            Log.i("aaa","account.email : ${account.email}")
+            G.userEmail = account.email.toString()
             G.userId = account.id!!
             G.userPassword = ""  //구글 로그인은 패스워드 지원 x
             val userNicknameEdit = EditText(this)
@@ -68,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
                     userInfo.put("userPw", G.userPassword)
                     userInfo.put("userNickname", G.userNickname)
                     userInfo.put("userEmail", G.userEmail)
+                    G.isLogin= true
                     val firestore = FirebaseFirestore.getInstance()
                     firestore.collection("user").document(G.userEmail).set(userInfo)
 
@@ -79,7 +82,7 @@ class LoginActivity : AppCompatActivity() {
                     editor.putString("userPw",G.userPassword)
                     editor.commit()
 
-                    val intent= Intent(this@LoginActivity,MainActivity::class.java)
+                    val intent= Intent(this@LoginActivity,TutorialActivity::class.java)
                     startActivity(intent)
                     finish()
                     Toast.makeText(this, "${G.userNickname} 님, 환영합니다.", Toast.LENGTH_SHORT).show()
@@ -131,7 +134,7 @@ class LoginActivity : AppCompatActivity() {
                                 G.userEmail= userEmail
                                 G.userPassword= userPw
                                 G.userNickname= userNickname
-                                G.isLogin= false
+                                G.isLogin= true
 
                                 val pref:SharedPreferences= getSharedPreferences("user", MODE_PRIVATE)
                                 val editor= pref.edit()
@@ -142,7 +145,7 @@ class LoginActivity : AppCompatActivity() {
                                 Log.i("aaa",G.userId+","+G.userEmail+","+G.userNickname+","+G.userPassword)
                                 editor.commit()
 
-                                val intent= Intent(this@LoginActivity,MainActivity::class.java)
+                                val intent= Intent(this@LoginActivity,TutorialActivity::class.java)
                                 startActivity(intent)
                                 finish()
                                 Toast.makeText(this, "$inputId 님, 환영합니다.", Toast.LENGTH_SHORT).show()

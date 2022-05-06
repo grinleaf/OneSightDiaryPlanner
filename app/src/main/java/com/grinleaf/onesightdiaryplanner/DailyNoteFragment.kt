@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -33,21 +34,22 @@ class DailyNoteFragment:Fragment() {
 
         var now = ""+LocalDate.now()
         val nowDate:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(now)
-        now= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(nowDate)
+        now= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(nowDate)
         binding.tvDailynoteDay.text= now
+        G.dayOfDailyNote=now
         binding.ivDatepickerDailynote.setOnClickListener{
             val cal= Calendar.getInstance()
             val dateSetListener = DatePickerDialog.OnDateSetListener{
                     view, year, month, dayOfMonth -> G.dayOfDailyNote = "${year}-${month+1}-${dayOfMonth}"
                 val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(G.dayOfDailyNote)
-                G.dayOfDailyNote= SimpleDateFormat("yyyy. MM. dd.", Locale("ko","KR")).format(date)
+                G.dayOfDailyNote= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(date)
                 binding.tvDailynoteDay.text = G.dayOfDailyNote
+                adapter.notifyDataSetChanged()
             }
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(
                 Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }
         binding.recyclerDailynote.adapter= adapter
-
         binding.refresherDailynote.setOnRefreshListener {
             binding.refresherDailynote.isRefreshing= false
             adapter.notifyDataSetChanged()

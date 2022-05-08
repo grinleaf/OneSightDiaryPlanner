@@ -28,12 +28,8 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
         val categoryLayout:ImageView by lazy { itemView.findViewById(R.id.iv_category_daily_theme) }
     }
 
-    lateinit var itemUri:Uri
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         lateinit var itemView:View
-        val item= dailyItems.get(dailyItems.size-1).dayImage
-        itemUri = item.toUri()
         if(false) {  //이미지가 등록되지 않았을 때
             val random = (0..3).random()
             when (random) {
@@ -61,8 +57,9 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
             holder.content.text= dailyItem.content
             holder.detailContent.text= dailyItem.detailContent
             Glide.with(context).load(dailyItem.categoryImage).into(holder.categoryImage)
-            Glide.with(context).load(itemUri).into(holder.dayImage)
+            Glide.with(context).load(dailyItem.dayImage).into(holder.dayImage)
             Log.i("aaa","dailynoteAdapter bindvh if 문")
+            Log.i("aaa","dayImage:"+dailyItem.dayImage)
         }else{
             holder.layout.visibility= View.GONE
             holder.categoryLayout.visibility= View.GONE

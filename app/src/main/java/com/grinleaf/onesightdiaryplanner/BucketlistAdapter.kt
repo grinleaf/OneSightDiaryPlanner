@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class BucketlistAdapter(val context: Context, val bucketlistItems:MutableList<BucketlistItem>):RecyclerView.Adapter<BucketlistAdapter.VH>() {
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
@@ -35,7 +36,7 @@ class BucketlistAdapter(val context: Context, val bucketlistItems:MutableList<Bu
     override fun onBindViewHolder(holder: VH, position: Int) {
         val bucketlistItem= bucketlistItems.get(position)
         holder.day.text= bucketlistItem.day
-//        holder.categoryImage.setImageResource(bucketlistItem.categoryImage)
+        Glide.with(context).load(bucketlistItem.categoryImage).into(holder.categoryImage)
         holder.content.text= bucketlistItem.content
     }
 

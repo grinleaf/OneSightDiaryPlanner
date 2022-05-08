@@ -30,7 +30,6 @@ class DateEditActivity:AppCompatActivity() {
     val fragments: MutableList<Fragment> by lazy { mutableListOf() }
     lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -100,22 +99,23 @@ class DateEditActivity:AppCompatActivity() {
         val day= binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_dailynote_date_edit).text.toString()
         val content= binding.tvTitleMainDateEdit.text.toString()
         val categoryImage= G.selectedCategoryImage
-        var dayImage= G.selectedattachImage
+        var dayImage= G.selectedattachImage //uri
         var dayImageUri= ""
         val detailContent= binding.dateEditContainer.findViewById<TextView>(R.id.et_content_detail_dailynote_date_edit).text.toString()
 
         if(binding.tvTitleMainDateEdit.text.isBlank()) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
-        }else{
+        }else if(dayImage==""){    //이미지 선택되지 않은 경우
+            G.selectedattachImage= ""
+            dailyNoteCallback(email,day,content,categoryImage,dayImageUri,detailContent)
+        }else{  // 이미지 선택된 경우
             val retrofitDayImage= RetrofitHelper.getRetrofitInstance()
             val retrofitServiceDayImage= retrofitDayImage.create(RetrofitService::class.java)
             //filePart 구성 : 이미지 요소(uri)
             lateinit var filePart: MultipartBody.Part
-            if(dayImage!=null) {
-                val file = File(dayImage)
-                val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
-                filePart = MultipartBody.Part.createFormData("dayImage", file.name, requestBody)
-            }
+            val file = File(dayImage)
+            val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
+            filePart = MultipartBody.Part.createFormData("dayImage", file.name, requestBody)
             //dataPart 구성 : 나머지 문자열 데이터 요소
             val dataPart= HashMap<String,String>()
             dataPart.put("email",email)
@@ -159,8 +159,6 @@ class DateEditActivity:AppCompatActivity() {
                     Log.i("aaa", "error: ${t.message}")
                 }
             })
-
-            //SharedPreference 코드 영역(예정)
             G.checklistItems.add(ChecklistItem("",email,day, content,categoryImage,detailContent))
             //하위리스트 추가할 것
 //            G.checklistSubItems.add(
@@ -193,7 +191,7 @@ class DateEditActivity:AppCompatActivity() {
         val isBucket= when(binding.dateEditContainer.findViewById<CheckBox>(R.id.checkbox_checkbucket_lifecycle_date_edit).isChecked){
                 true -> "true"
                 false -> "false"
-            }
+        }
 
         if(binding.tvTitleMainDateEdit.text.isBlank()) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
@@ -216,7 +214,6 @@ class DateEditActivity:AppCompatActivity() {
                     Log.i("aaa", "error: ${t.message}")
                 }
             })
-            //SharedPreference 코드 영역(예정)
             G.lifecycleItems.add(LifecycleItem("",email,startday, content,categoryImage,cycle,endday,isBucket))
             finish()
         }
@@ -273,12 +270,12 @@ class DateEditActivity:AppCompatActivity() {
                 val item = response.body()
                 G.selectedCategoryImage = ""
                 G.selectedattachImage = ""
+                finish()
             }
             override fun onFailure(call: Call<String>, t: Throwable) {
                 Log.i("aaa", "error: ${t.message}")
             }
         })
-        finish()
     }
 }
 

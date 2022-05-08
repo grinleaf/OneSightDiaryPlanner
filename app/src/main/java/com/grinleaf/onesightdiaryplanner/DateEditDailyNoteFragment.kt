@@ -64,6 +64,8 @@ class DateEditDailyNoteFragment:Fragment() {
                 var uri= it.data?.data!!
                 G.selectedattachImage= getRealPathFromUri(uri)
                 Glide.with(requireContext()).load(uri).into(binding.ivAttachImageDailynoteDateEdit)
+            }else{
+                G.selectedattachImage= ""
             }
         }
 

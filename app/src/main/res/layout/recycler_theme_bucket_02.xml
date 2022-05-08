@@ -66,8 +66,12 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="12dp"
-                android:src="@drawable/tutorial_sample01" />
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp"
+                android:src="@drawable/tutorial_sample01"
+                app:civ_circle_background_color="@color/white"/>
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

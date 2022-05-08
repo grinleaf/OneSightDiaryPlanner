@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_timeline_checklist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/timeline_checklist_box"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/tv_day_timeline_checklist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="오늘 날짜"
+            android:textColor="#FF888888" />
+
+        <TextView
+            android:id="@+id/tv_title_timeline_checklist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_day_timeline_checklist"
+            android:layout_alignLeft="@id/tv_day_timeline_checklist"
+            android:layout_marginBottom="4dp"
+            android:maxLines="5"
+            android:text="일정 내용"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_detail_timeline_checklist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title_timeline_checklist"
+            android:layout_alignLeft="@id/tv_day_timeline_checklist"
+            android:layout_marginBottom="8dp"
+            android:text="- 하위항목"
+            android:textSize="12sp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_category_timeline_checklist"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/tutorial_sample04"
+            app:civ_circle_background_color="@color/white"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

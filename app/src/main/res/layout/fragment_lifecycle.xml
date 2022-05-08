@@ -239,7 +239,7 @@
             <TextView
                 android:id="@+id/tv_datecount_02_lifecycle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@id/tv_datecount_01_lifecycle"
                 android:layout_alignBottom="@id/tv_datecount_count_lifecycle"
                 android:layout_alignParentRight="true"

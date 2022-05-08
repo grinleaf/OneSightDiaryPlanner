@@ -1,5 +1,7 @@
 package com.grinleaf.onesightdiaryplanner
 
+import android.widget.Adapter
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.annotations.SerializedName
 
 data class TimelineItem(

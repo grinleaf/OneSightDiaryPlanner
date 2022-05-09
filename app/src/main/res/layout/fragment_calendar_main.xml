@@ -27,7 +27,7 @@
         android:elevation="16dp"
         app:cardUseCompatPadding="true"
         android:layout_margin="8dp"
-        android:visibility="gone">
+        android:visibility="visible">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

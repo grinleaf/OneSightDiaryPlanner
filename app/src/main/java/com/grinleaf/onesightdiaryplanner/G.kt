@@ -34,6 +34,7 @@ class G {
         var dayOfDailyNote= ""
         var dayOfCheckList= ""
         var dayOfTimeline= ""
+        var dayOfCalendar= ""
 
 
     }

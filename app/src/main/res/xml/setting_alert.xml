@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreference android:title="전체 알림"
+        android:key="setting_alert"
+        app:defaultValue="true"
+        app:iconSpaceReserved="false"
+        android:defaultValue="true"/>
+
+    <PreferenceCategory android:title="일정 알림" app:dependency="setting_alert" app:iconSpaceReserved="false">
+        <SwitchPreference
+            android:key="popup"
+            android:title="팝업 메시지"
+            android:summary="일정 알림을 팝업 메시지로 받기"
+            app:iconSpaceReserved="false"
+            app:defaultValue="true"/>
+        <SwitchPreference
+            android:key="sound_alert"
+            android:title="소리 알림"
+            app:iconSpaceReserved="false"
+            app:dependency="popup"/>
+        <SwitchPreference
+            android:key="vib_alert"
+            android:title="진동 알림"
+            app:iconSpaceReserved="false"
+            app:dependency="popup"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="수면 시간 설정" app:dependency="setting_alert" app:iconSpaceReserved="false">
+        <SwitchPreference
+            android:key="message_sleep"
+            android:title="메시지 알림"
+            android:summary="수면 시간에 맞춰 Today's Emoticon 메시지 받기"
+            app:iconSpaceReserved="false"
+            app:defaultValue="true"/>
+        <SwitchPreference
+            android:key="time_sleep"
+            android:title="수면 시간"
+            android:summary="00 시 00 분"
+            app:iconSpaceReserved="false"
+            app:dependency="message_sleep"/>
+    </PreferenceCategory>
+</PreferenceScreen>

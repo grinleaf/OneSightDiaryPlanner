@@ -22,7 +22,8 @@
             android:exported="false" />
         <activity
             android:name=".AlertSettingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.OneSightDiaryPlanner_sub03"/>
         <activity
             android:name=".RewardActivity"
             android:exported="false" />

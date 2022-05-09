@@ -30,6 +30,7 @@ class TimelineDailyAdapter(val context:Context, val dailyItems:MutableList<Daily
         val dailyItem = dailyItems.get(position)
         holder.dayDailyNote.text= dailyItem.day
         if (G.dayOfTimeline == holder.dayDailyNote.text) {
+            holder.layout.visibility= View.VISIBLE
             holder.titleDailyNote.text = dailyItem.content
             Glide.with(context).load(dailyItem.categoryImage).into(holder.categoryDailyNote)
             Glide.with(context).load(dailyItem.dayImage).into(holder.attachImageDailyNote)

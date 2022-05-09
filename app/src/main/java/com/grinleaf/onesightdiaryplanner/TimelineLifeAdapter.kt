@@ -29,6 +29,7 @@ class TimelineLifeAdapter(val context:Context, val lifecycleItems:MutableList<Li
         val lifecycleItem = lifecycleItems.get(position)
         holder.startDayLifecycle.text= lifecycleItem.day
         if (G.dayOfTimeline == holder.startDayLifecycle.text) {
+            holder.layout.visibility= View.VISIBLE
             holder.titleLifecycle.text = lifecycleItem.content
             holder.endDayLifecycle.text = lifecycleItem.endDay
             holder.repeatCycle.text = lifecycleItem.repeatCycle

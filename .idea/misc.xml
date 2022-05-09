@@ -11,6 +11,8 @@
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/bg_round_square_box.xml" value="0.138" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/bg_sequence_lifecycle.xml" value="0.126" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/bg_square_border_box.xml" value="0.126" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/calendar_todayemo_box.xml" value="0.1185" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/calendar_todayrate_box.xml" value="0.1185" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/daily05.xml" value="0.126" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/ic_add_circle.xml" value="0.129" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/drawable/ic_baseline_attractions_24.xml" value="0.126" />
@@ -68,6 +70,9 @@
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_theme_daily_06.xml" value="0.1962962962962963" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_theme_mypage.xml" value="0.22" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_timeline.xml" value="0.19074074074074074" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_timeline_check.xml" value="0.17685185185185184" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_timeline_daily.xml" value="0.1" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_timeline_life.xml" value="0.17685185185185184" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/theme_daily_01.xml" value="0.25" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/theme_daily_02.xml" value="0.3416666666666667" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/theme_daily_05.xml" value="0.25" />

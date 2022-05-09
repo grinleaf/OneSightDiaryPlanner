@@ -26,7 +26,8 @@
         android:layout_height="wrap_content"
         android:elevation="16dp"
         app:cardUseCompatPadding="true"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        android:visibility="gone">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:layout_weight="1"
-                    android:background="@drawable/timeline_checklist_box"
+                    android:background="@drawable/calendar_todayrate_box"
                     android:padding="16dp">
 
                     <TextView
@@ -83,7 +84,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="4dp"
                     android:layout_weight="1"
-                    android:background="@drawable/timeline_lifecycle_box"
+                    android:background="@drawable/calendar_todayemo_box"
                     android:padding="16dp">
 
                     <TextView

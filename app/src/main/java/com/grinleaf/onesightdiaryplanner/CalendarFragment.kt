@@ -1,9 +1,11 @@
 package com.grinleaf.onesightdiaryplanner
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import com.applikeysolutions.cosmocalendar.dialog.CalendarDialog
 import com.applikeysolutions.cosmocalendar.dialog.OnDaysSelectionListener
@@ -25,6 +27,7 @@ class CalendarFragment:Fragment() {
         binding.calendarView.selectionManager= SingleSelectionManager(OnDaySelectedListener {
 
         })
+//        binding.calendarView.setonclick
     }
 
 

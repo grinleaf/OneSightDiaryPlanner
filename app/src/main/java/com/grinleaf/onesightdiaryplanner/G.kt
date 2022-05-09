@@ -25,7 +25,7 @@ class G {
         var lifecycleItems= mutableListOf<LifecycleItem>()
         var bucketlistItems= mutableListOf<BucketlistItem>()
         var bucketlistSubItems= mutableListOf<ChecklistSubItem>()
-        var timelineItems= mutableListOf<TimelineItem>()
+//        var timelineItems= mutableListOf<TimelineItem>()
         var categoryImages= mutableListOf<String>()
 
         var selectedCategoryImage:String= ""

@@ -44,10 +44,13 @@ class TimelineFragment:Fragment() {
         binding.todayOfTimeline.setOnClickListener{
             val cal= Calendar.getInstance()
             val dateSetListener = DatePickerDialog.OnDateSetListener{
-                    view, year, month, dayOfMonth -> G.dayOfDailyNote = "${year}-${month+1}-${dayOfMonth}"
-                val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(G.dayOfDailyNote)
-                G.dayOfDailyNote= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(date)
-                binding.todayOfTimeline.text = G.dayOfDailyNote
+                    view, year, month, dayOfMonth -> G.dayOfTimeline = "${year}-${month+1}-${dayOfMonth}"
+                val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(G.dayOfTimeline)
+                G.dayOfTimeline= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(date)
+                binding.todayOfTimeline.text = G.dayOfTimeline
+                dailyAdapter.notifyDataSetChanged()
+                checkAdapter.notifyDataSetChanged()
+                lifeAdapter.notifyDataSetChanged()
             }
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(
                 Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
@@ -57,16 +60,11 @@ class TimelineFragment:Fragment() {
         binding.recyclerTimelineDaily.adapter= dailyAdapter
         binding.recyclerTimelineCheck.adapter= checkAdapter
         binding.recyclerTimelineLife.adapter= lifeAdapter
-
-        dailyAdapter.notifyDataSetChanged()
-        checkAdapter.notifyDataSetChanged()
-        lifeAdapter.notifyDataSetChanged()
     }
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
-        Log.i("aaa","타임라인아이템 사이즈: "+G.timelineItems.size)
 
         dailyAdapter.notifyDataSetChanged()
         checkAdapter.notifyDataSetChanged()

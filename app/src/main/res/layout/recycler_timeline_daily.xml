@@ -67,7 +67,9 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:src="@drawable/tutorial_sample04"
-                app:civ_circle_background_color="@color/white"/>
+                app:civ_circle_background_color="@color/white"
+                app:civ_border_color="@color/daily_color_01"
+                app:civ_border_width="1dp"/>
 
         </RelativeLayout>
     </LinearLayout>

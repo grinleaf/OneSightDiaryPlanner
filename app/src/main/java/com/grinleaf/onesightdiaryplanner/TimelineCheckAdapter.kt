@@ -30,6 +30,7 @@ class TimelineCheckAdapter(val context:Context, val checklistItems:MutableList<C
         val checklistItem = checklistItems.get(position)
         holder.dayCheckList.text= checklistItem.day
         if (G.dayOfTimeline == holder.dayCheckList.text) { //상단 선택날짜와 day 값이 동일한 경우 출력
+            holder.layout.visibility= View.VISIBLE
             holder.titleCheckList.text = checklistItem.content
             holder.contentCheckList.text = checklistItem.detailContent
             holder.dayCheckList.text = checklistItem.day

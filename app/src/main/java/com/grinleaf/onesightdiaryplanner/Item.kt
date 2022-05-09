@@ -4,41 +4,41 @@ import android.widget.Adapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.annotations.SerializedName
 
-data class TimelineItem(
-    //dailynote
-    var noDailyNote:String,
-    var emailDailyNote:String,
-    var titleDailyNote:String,
-    var dayDailyNote:String,
-    var categoryDailyNote:String,
-    var attachImageDailyNote:String,
-    var contentDailyNote:String,
-    //checklist
-    var noChecklist:String,
-    var emailChecklist:String,
-    var titleCheckList:String,
-    var dayChecklist:String,
-    var categoryCheckList:String,
-    var contentCheckList:String,
-    //checklist-sub
-    var subContentCheckList:String,
-    //lifecycle
-    var noLifecycle:String,
-    var emailLifecycle:String,
-    var titleLifecycle:String,
-    var startDayLifecycle:String,
-    var endDayLifecycle:String,
-    var repeatCycle:String,
-    var categoryLifecycle:String,
-    var exportOther:String,
-    //bucketlist
-    var noBucketlist:String,
-    var emailBucketlist:String,
-    var titleBucketlist:String,
-    var dayBucketlist:String,
-    var categoryBucketlist:String,
-    var contentBucketlist:String,
-    )
+//data class TimelineItem(
+//    //dailynote
+//    var noDailyNote:String,
+//    var emailDailyNote:String,
+//    var titleDailyNote:String,
+//    var dayDailyNote:String,
+//    var categoryDailyNote:String,
+//    var attachImageDailyNote:String,
+//    var contentDailyNote:String,
+//    //checklist
+//    var noChecklist:String,
+//    var emailChecklist:String,
+//    var titleCheckList:String,
+//    var dayChecklist:String,
+//    var categoryCheckList:String,
+//    var contentCheckList:String,
+//    //checklist-sub
+//    var subContentCheckList:String,
+//    //lifecycle
+//    var noLifecycle:String,
+//    var emailLifecycle:String,
+//    var titleLifecycle:String,
+//    var startDayLifecycle:String,
+//    var endDayLifecycle:String,
+//    var repeatCycle:String,
+//    var categoryLifecycle:String,
+//    var exportOther:String,
+//    //bucketlist
+//    var noBucketlist:String,
+//    var emailBucketlist:String,
+//    var titleBucketlist:String,
+//    var dayBucketlist:String,
+//    var categoryBucketlist:String,
+//    var contentBucketlist:String,
+//    )
 
 data class DailyItem(
     var no: String,

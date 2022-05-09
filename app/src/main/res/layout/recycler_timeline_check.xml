@@ -44,7 +44,7 @@
             android:layout_alignLeft="@id/tv_day_timeline_checklist"
             android:layout_marginBottom="8dp"
             android:text="- 하위항목"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_category_timeline_checklist"
@@ -56,7 +56,9 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:src="@drawable/tutorial_sample04"
-            app:civ_circle_background_color="@color/white"/>
+            app:civ_circle_background_color="@color/white"
+            app:civ_border_color="@color/checklist_color"
+            app:civ_border_width="1dp"/>
 
     </RelativeLayout>
 

@@ -23,9 +23,9 @@ interface RetrofitService {
     @GET("OneSightDiaryPlanner/bucketlistDownload.php")
     fun getBucketlistDownload(): Call<ArrayList<BucketlistItem>>
 
-    //timeline 데이터 다운로드
-    @GET("OneSightDiaryPlanner/timelineDownload.php")
-    fun getTimelineDownload(): Call<ArrayList<TimelineItem>>
+//    //timeline 데이터 다운로드
+//    @GET("OneSightDiaryPlanner/timelineDownload.php")
+//    fun getTimelineDownload(): Call<ArrayList<TimelineItem>>
 
     //dailyNote 데이터 업로드
     @GET("OneSightDiaryPlanner/dailyNoteUpload.php")

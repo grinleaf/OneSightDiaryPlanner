@@ -24,8 +24,8 @@ class TutorialActivity : AppCompatActivity() {
         if(!G.isFirst) skipActivity()
 
         loadCategoryImage()
+        loadEmoImage()
         loadData()
-        loadTimelineData()
 
         //샘플 튜토리얼 이미지
         imgIds.add(TutorialImage(R.drawable.tutorial_sample01))
@@ -52,6 +52,31 @@ class TutorialActivity : AppCompatActivity() {
         finish()
     }
 
+    fun loadEmoImage(){
+        val retrofit= RetrofitHelper.getRetrofitInstance()
+        val retrofitService= retrofit.create(RetrofitService::class.java)
+        val call= retrofitService.getemoImage()
+        call.enqueue(object : Callback<ArrayList<emoImage>>{
+            override fun onResponse(
+                call: retrofit2.Call<ArrayList<emoImage>>,
+                response: Response<ArrayList<emoImage>>
+            ) {
+                G.loadEmoImages.clear()
+                val list= response.body()
+                for(i in list!!){
+                    val fileUri= "http://grinleaf.dothome.co.kr/OneSightDiaryPlanner/${i.image}"
+                    G.loadEmoImages.add(fileUri)
+                }
+                Log.i("aaa","DB -> 이모티콘 이미지 가져오기 성공!")
+                Log.i("aaa",G.loadEmoImages[0])
+            }
+
+            override fun onFailure(call: retrofit2.Call<ArrayList<emoImage>>, t: Throwable) {
+                Log.i("aaa","error: ${t.message}")
+            }
+        })
+    }
+
     fun loadCategoryImage(){
         val retrofit= RetrofitHelper.getRetrofitInstance()
         val retrofitService= retrofit.create(RetrofitService::class.java)
@@ -74,7 +99,6 @@ class TutorialActivity : AppCompatActivity() {
             override fun onFailure(call: retrofit2.Call<ArrayList<CategoryImage>>, t: Throwable) {
                 Log.i("aaa","error: ${t.message}")
             }
-
         })
     }
 
@@ -261,12 +285,5 @@ class TutorialActivity : AppCompatActivity() {
 
             }
         })
-    }
-
-    fun loadTimelineData(){
-//        G.timelineItems.add(
-//            TimelineItem(
-////            G.dailyNoteItems.get())
-//        )
     }
 }

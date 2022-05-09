@@ -79,4 +79,8 @@ interface RetrofitService {
     //카테고리 이미지 다운로드
     @GET("OneSightDiaryPlanner/loadCategory.php")
     fun getCategoryImage(): Call<ArrayList<CategoryImage>>
+
+    //today's emo 이미지 다운로드
+    @GET("OneSightDiaryPlanner/loadEmoImage.php")
+    fun getemoImage(): Call<ArrayList<emoImage>>
 }

@@ -26,5 +26,6 @@
     <color name="signature_color_04">#3354FF</color>
     <color name="inactivate_gray">#CCCCCC</color>
     <color name="default_gray">#FF737373</color>
+    <color name="transparent">#1A000000</color>
 
 </resources>

@@ -1,10 +1,16 @@
 package com.grinleaf.onesightdiaryplanner
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import com.applikeysolutions.cosmocalendar.dialog.CalendarDialog
@@ -12,6 +18,7 @@ import com.applikeysolutions.cosmocalendar.dialog.OnDaysSelectionListener
 import com.applikeysolutions.cosmocalendar.selection.OnDaySelectedListener
 import com.applikeysolutions.cosmocalendar.selection.RangeSelectionManager
 import com.applikeysolutions.cosmocalendar.selection.SingleSelectionManager
+import com.bumptech.glide.Glide
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentCalendarMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -53,7 +60,6 @@ class CalendarFragment:Fragment() {
                 "Dec" -> "12"
                 else -> ""
             }
-
             val selectedDay= "$year-$month-$dayMultiWord"
             Log.i("aaa", "selectedDay: $selectedDay")
             Log.i("aaa", "dayOfWeek : $dayOfWeek  month: $month  day: $daySingleWord  year: $year")
@@ -63,5 +69,15 @@ class CalendarFragment:Fragment() {
                 binding.tvTodayStateCalendar.visibility= View.GONE
             }
         })
+
+        binding.tvTodayEmoCalendar.setOnClickListener {
+            val intent= Intent(requireContext(),DialogEmoActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Glide.with(requireContext()).load(G.saveEmoImages).into(binding.ivTodayEmoCalendar)
     }
 }

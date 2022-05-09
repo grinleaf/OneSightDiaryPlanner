@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/calendar_todayemo_dialog_box"
+    tools:context=".DialogEmoActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_today_state_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/layout_emo_dialog"
+            android:layout_centerInParent="true"
+            android:text="Today is ..."
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/layout_emo_dialog"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/tv_today_state_calendar"
+            android:layout_centerInParent="true"
+            android:background="@drawable/timeline_lifecycle_box"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/emo_01_dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_emo_01" />
+
+            <ImageView
+                android:id="@+id/emo_02_dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_emo_02" />
+
+            <ImageView
+                android:id="@+id/emo_03_dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_emo_03" />
+
+            <ImageView
+                android:id="@+id/emo_04_dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_emo_04" />
+
+            <ImageView
+                android:id="@+id/emo_05_dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_emo_05" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

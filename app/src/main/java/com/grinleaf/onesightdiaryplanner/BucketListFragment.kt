@@ -50,12 +50,12 @@ class BucketListFragment:Fragment() {
         }
 
         binding.recyclerBucketlist.adapter= adapter
+        adapter.notifyDataSetChanged()
     }
 
     override fun onResume() {
         super.onResume()
 
-        adapter.notifyDataSetChanged()
     }
 
 }

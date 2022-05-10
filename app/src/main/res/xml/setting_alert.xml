@@ -34,11 +34,14 @@
             android:summary="수면 시간에 맞춰 Today's Emoticon 메시지 받기"
             app:iconSpaceReserved="false"
             app:defaultValue="true"/>
-        <SwitchPreference
+        <Preference
             android:key="time_sleep"
             android:title="수면 시간"
             android:summary="00 시 00 분"
             app:iconSpaceReserved="false"
-            app:dependency="message_sleep"/>
+            app:dependency="message_sleep"
+            app:icon="@drawable/ic_timeline">
+
+        </Preference>
     </PreferenceCategory>
 </PreferenceScreen>

@@ -79,6 +79,8 @@ class DialogEmoActivity: AppCompatActivity() {
             }
         }
     }
+
+    //다이얼로그에서 표정 더블클릭 시 이미지가 선택되는 함수
     var clickTime: Long= 0L
     private fun setDialog(){
             if(System.currentTimeMillis()>clickTime+2000){
@@ -88,8 +90,6 @@ class DialogEmoActivity: AppCompatActivity() {
             if(System.currentTimeMillis()<=clickTime+2000){
                 finish()
             }
-//        AlertDialog.Builder(baseContext).setTitle("이 표정을 선택하시겠습니까?").setPositiveButton("예", DialogInterface.OnClickListener { dialogInterface, i ->
-//            //마지막으로 선택된 이모티콘을 G.emo에 저장 --> calendar 프래그먼트 표정 반영
             if(binding.emo01Dialog.colorFilter==null){
                 G.saveEmoImages= G.loadEmoImages[0]
             }else if(binding.emo02Dialog.colorFilter==null){
@@ -101,8 +101,7 @@ class DialogEmoActivity: AppCompatActivity() {
             }else if(binding.emo05Dialog.colorFilter==null){
                 G.saveEmoImages= G.loadEmoImages[4]
             }
-            Log.i("aaa",G.saveEmoImages)
-//        }).setNegativeButton("아니오", DialogInterface.OnClickListener { dialogInterface, i ->  }).create().show()
+            Log.i("aaa","G.saveEmoImages: ${G.saveEmoImages}")
     }
 }
 

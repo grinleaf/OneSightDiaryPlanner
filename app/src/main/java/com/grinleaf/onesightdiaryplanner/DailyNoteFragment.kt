@@ -66,7 +66,6 @@ class DailyNoteFragment:Fragment() {
         }else{
             binding.firstAddDateDailynote.visibility= View.GONE
         }
-        adapter.notifyDataSetChanged()
     }
 
     override fun onPause() {

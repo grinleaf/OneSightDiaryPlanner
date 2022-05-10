@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import com.applikeysolutions.cosmocalendar.dialog.CalendarDialog
@@ -26,11 +27,14 @@ import java.util.*
 
 class CalendarFragment:Fragment() {
     val binding by lazy { FragmentCalendarMainBinding.inflate(layoutInflater) }
+    lateinit var selectedDay:String
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        binding.ivTodayEmoCalendar.visibility= View.GONE //시작시 숨겨뒀다가 날짜 클릭 시 visible 되도록
 
         binding.calendarView.isShowDaysOfWeekTitle= false
         binding.calendarView.selectionManager= SingleSelectionManager(OnDaySelectedListener {
@@ -60,24 +64,29 @@ class CalendarFragment:Fragment() {
                 "Dec" -> "12"
                 else -> ""
             }
-            val selectedDay= "$year-$month-$dayMultiWord"
+            selectedDay= "$year-$month-$dayMultiWord"
             Log.i("aaa", "selectedDay: $selectedDay")
             Log.i("aaa", "dayOfWeek : $dayOfWeek  month: $month  day: $daySingleWord  year: $year")
-            if(selectedDay==G.dayOfCalendar){
-                binding.tvTodayStateCalendar.visibility= View.VISIBLE
+            //DB 에서 day 리스트를 다운로드하고(이거 튜토리얼 페이지에서 하자) selectedDay 와 비교, 그에 맞는 이모티콘 번호를 가져오기. 해당 번호에 따른 이미지 glide(when 절)
+            if(selectedDay==G.dayOfCalendar){ //요걸 비교하면 안된당
+                binding.cardviewTodayStateCalendar.visibility= View.VISIBLE
             }else{
-                binding.tvTodayStateCalendar.visibility= View.GONE
+                binding.cardviewTodayStateCalendar.visibility= View.GONE
             }
         })
-
         binding.tvTodayEmoCalendar.setOnClickListener {
             val intent= Intent(requireContext(),DialogEmoActivity::class.java)
+            //resultLauncher로 결과값 가져오기
             startActivity(intent)
         }
     }
 
     override fun onResume() {
         super.onResume()
-        Glide.with(requireContext()).load(G.saveEmoImages).into(binding.ivTodayEmoCalendar)
+        if(G.saveEmoImages=="") Glide.with(requireContext()).load(R.drawable.ic_question_mark).into(binding.ivTodayEmoCalendar)
+        else Glide.with(requireContext()).load(G.saveEmoImages).into(binding.ivTodayEmoCalendar)
+
+        //G.saveEmo + 선택된 날짜와 함께 DB에 업로드, 날짜 클릭 시 해당 이모티콘과 todayis 레이아웃 visible 되도록 코드
+        val emoUploadList= SelectedDayEmo(G.userEmail, selectedDay,G.saveEmoImages)
     }
 }

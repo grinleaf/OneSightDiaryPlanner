@@ -1,6 +1,8 @@
 package com.grinleaf.onesightdiaryplanner
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,6 +36,9 @@ class MypageFragment:Fragment() {
             startActivity(intent)
         }
 
+        binding.tvLevelExamIconLevelinfoMypage.setOnClickListener { clickExamLevel() }
+        binding.ivLevelExamIconLevelinfoMypage.setOnClickListener { clickExamLevel() }
+
         mypageGridItems.add(MypageGridItem(R.drawable.ic_alert_grid,"알림 설정"))
         mypageGridItems.add(MypageGridItem(R.drawable.ic_theme_grid,"테마 설정"))
         mypageGridItems.add(MypageGridItem(R.drawable.ic_award_leaf_star,"업적 현황"))
@@ -64,6 +69,15 @@ class MypageFragment:Fragment() {
                 }
             }
         })
+    }
+
+    private fun clickExamLevel(){
+        AlertDialog.Builder(context)
+            .setTitle("등급이란")
+            .setMessage("\n무엇일까용 깔깔깔")
+            .setIcon(R.drawable.ic_alert)
+            .setPositiveButton("확인", DialogInterface.OnClickListener { dialogInterface, i -> })
+            .create().show()
     }
 
 

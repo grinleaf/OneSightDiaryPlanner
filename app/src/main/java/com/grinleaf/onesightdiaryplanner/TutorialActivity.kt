@@ -56,10 +56,10 @@ class TutorialActivity : AppCompatActivity() {
         val retrofit= RetrofitHelper.getRetrofitInstance()
         val retrofitService= retrofit.create(RetrofitService::class.java)
         val call= retrofitService.getemoImage()
-        call.enqueue(object : Callback<ArrayList<emoImage>>{
+        call.enqueue(object : Callback<ArrayList<EmoImage>>{
             override fun onResponse(
-                call: retrofit2.Call<ArrayList<emoImage>>,
-                response: Response<ArrayList<emoImage>>
+                call: retrofit2.Call<ArrayList<EmoImage>>,
+                response: Response<ArrayList<EmoImage>>
             ) {
                 G.loadEmoImages.clear()
                 val list= response.body()
@@ -71,7 +71,7 @@ class TutorialActivity : AppCompatActivity() {
                 Log.i("aaa",G.loadEmoImages[0])
             }
 
-            override fun onFailure(call: retrofit2.Call<ArrayList<emoImage>>, t: Throwable) {
+            override fun onFailure(call: retrofit2.Call<ArrayList<EmoImage>>, t: Throwable) {
                 Log.i("aaa","error: ${t.message}")
             }
         })

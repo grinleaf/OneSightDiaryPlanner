@@ -28,5 +28,7 @@ class AchievementActivity : AppCompatActivity() {
             val intent= Intent(this@AchievementActivity, RewardActivity::class.java)
             startActivity(intent)
         }
+
+        binding.backpressAchievement.setOnClickListener { finish() }
     }
 }

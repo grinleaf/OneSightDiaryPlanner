@@ -23,10 +23,6 @@ interface RetrofitService {
     @GET("OneSightDiaryPlanner/bucketlistDownload.php")
     fun getBucketlistDownload(): Call<ArrayList<BucketlistItem>>
 
-//    //timeline 데이터 다운로드
-//    @GET("OneSightDiaryPlanner/timelineDownload.php")
-//    fun getTimelineDownload(): Call<ArrayList<TimelineItem>>
-
     //dailyNote 데이터 업로드
     @GET("OneSightDiaryPlanner/dailyNoteUpload.php")
     fun getDailyNoteItem(
@@ -76,11 +72,18 @@ interface RetrofitService {
     @POST("OneSightDiaryPlanner/attachImages.php")
     fun uploadImage(@PartMap dataPart:Map<String, String>, @Part filePart:MultipartBody.Part):Call<String>
 
+    @GET("OneSightDiaryPlanner/selectedEmoUpload.php")
+    fun uploadSelectedEmo(
+        @Query("email") email:String,
+        @Query("day") day:String,
+        @Query("emo") emo:String
+    )
+
     //카테고리 이미지 다운로드
     @GET("OneSightDiaryPlanner/loadCategory.php")
     fun getCategoryImage(): Call<ArrayList<CategoryImage>>
 
     //today's emo 이미지 다운로드
     @GET("OneSightDiaryPlanner/loadEmoImage.php")
-    fun getemoImage(): Call<ArrayList<emoImage>>
+    fun getemoImage(): Call<ArrayList<EmoImage>>
 }

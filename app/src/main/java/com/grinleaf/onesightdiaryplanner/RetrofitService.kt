@@ -77,7 +77,7 @@ interface RetrofitService {
         @Query("email") email:String,
         @Query("day") day:String,
         @Query("emo") emo:String
-    )
+    ):Call<String>
 
     //카테고리 이미지 다운로드
     @GET("OneSightDiaryPlanner/loadCategory.php")

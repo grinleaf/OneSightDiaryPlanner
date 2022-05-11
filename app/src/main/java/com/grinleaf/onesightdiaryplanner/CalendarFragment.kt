@@ -1,33 +1,26 @@
 package com.grinleaf.onesightdiaryplanner
 
-import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.core.view.size
 import androidx.fragment.app.Fragment
-import com.applikeysolutions.cosmocalendar.dialog.CalendarDialog
-import com.applikeysolutions.cosmocalendar.dialog.OnDaysSelectionListener
 import com.applikeysolutions.cosmocalendar.selection.OnDaySelectedListener
-import com.applikeysolutions.cosmocalendar.selection.RangeSelectionManager
 import com.applikeysolutions.cosmocalendar.selection.SingleSelectionManager
 import com.bumptech.glide.Glide
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentCalendarMainBinding
-import java.text.SimpleDateFormat
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 
 class CalendarFragment:Fragment() {
     val binding by lazy { FragmentCalendarMainBinding.inflate(layoutInflater) }
-    lateinit var selectedDay:String
+    var selectedDay:String= ""
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return binding.root
     }
@@ -68,15 +61,14 @@ class CalendarFragment:Fragment() {
             Log.i("aaa", "selectedDay: $selectedDay")
             Log.i("aaa", "dayOfWeek : $dayOfWeek  month: $month  day: $daySingleWord  year: $year")
             //DB 에서 day 리스트를 다운로드하고(이거 튜토리얼 페이지에서 하자) selectedDay 와 비교, 그에 맞는 이모티콘 번호를 가져오기. 해당 번호에 따른 이미지 glide(when 절)
-            if(selectedDay==G.dayOfCalendar){ //요걸 비교하면 안된당
-                binding.cardviewTodayStateCalendar.visibility= View.VISIBLE
-            }else{
-                binding.cardviewTodayStateCalendar.visibility= View.GONE
-            }
+//            if(selectedDay==G.dayOfCalendar){ //요걸 비교하면 안된당
+//                binding.cardviewTodayStateCalendar.visibility= View.VISIBLE
+//            }else{
+//                binding.cardviewTodayStateCalendar.visibility= View.GONE
+//            }
         })
         binding.tvTodayEmoCalendar.setOnClickListener {
             val intent= Intent(requireContext(),DialogEmoActivity::class.java)
-            //resultLauncher로 결과값 가져오기
             startActivity(intent)
         }
     }
@@ -85,8 +77,29 @@ class CalendarFragment:Fragment() {
         super.onResume()
         if(G.saveEmoImages=="") Glide.with(requireContext()).load(R.drawable.ic_question_mark).into(binding.ivTodayEmoCalendar)
         else Glide.with(requireContext()).load(G.saveEmoImages).into(binding.ivTodayEmoCalendar)
+        uploadEmo()
+    }
 
+    fun uploadEmo(){
         //G.saveEmo + 선택된 날짜와 함께 DB에 업로드, 날짜 클릭 시 해당 이모티콘과 todayis 레이아웃 visible 되도록 코드
-        val emoUploadList= SelectedDayEmo(G.userEmail, selectedDay,G.saveEmoImages)
+        val retrofit= RetrofitHelper.getRetrofitInstance()
+        val retrofitService= retrofit.create(RetrofitService::class.java)
+        val call= retrofitService.uploadSelectedEmo(G.userEmail, selectedDay,G.saveEmoImages)
+        call.enqueue(object: Callback<String>{
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                val list= response.body()
+                Log.i("aaa","uploadEmo call 객체 : "+list?.get(0).toString())
+                selectedDay= ""
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.i("aaa","error: "+t.message)
+            }
+
+        })
+    }
+
+    fun downloadEmo(){
+
     }
 }

@@ -29,6 +29,7 @@ class G {
         var categoryImages= mutableListOf<String>()
         var loadEmoImages= mutableListOf<String>()
         var saveEmoImages:String= ""
+//        var selectedDayCalendar:String= ""
 
         var selectedCategoryImage:String= ""
         var selectedattachImage:String= ""

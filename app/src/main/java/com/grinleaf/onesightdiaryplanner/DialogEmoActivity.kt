@@ -83,25 +83,25 @@ class DialogEmoActivity: AppCompatActivity() {
     //다이얼로그에서 표정 더블클릭 시 이미지가 선택되는 함수
     var clickTime: Long= 0L
     private fun setDialog(){
-            if(System.currentTimeMillis()>clickTime+2000){
-                clickTime= System.currentTimeMillis()
-                return
-            }
-            if(System.currentTimeMillis()<=clickTime+2000){
-                finish()
-            }
-            if(binding.emo01Dialog.colorFilter==null){
-                G.saveEmoImages= G.loadEmoImages[0]
-            }else if(binding.emo02Dialog.colorFilter==null){
-                G.saveEmoImages= G.loadEmoImages[1]
-            }else if(binding.emo03Dialog.colorFilter==null){
-                G.saveEmoImages= G.loadEmoImages[2]
-            }else if(binding.emo04Dialog.colorFilter==null){
-                G.saveEmoImages= G.loadEmoImages[3]
-            }else if(binding.emo05Dialog.colorFilter==null){
-                G.saveEmoImages= G.loadEmoImages[4]
-            }
-            Log.i("aaa","G.saveEmoImages: ${G.saveEmoImages}")
+        if(System.currentTimeMillis()>clickTime+2000){
+            clickTime= System.currentTimeMillis()
+            return
+        }
+        if(System.currentTimeMillis()<=clickTime+2000){
+            finish()
+        }
+        if(binding.emo01Dialog.colorFilter==null){
+            G.saveEmoImages= G.loadEmoImages[0]
+        }else if(binding.emo02Dialog.colorFilter==null){
+            G.saveEmoImages= G.loadEmoImages[1]
+        }else if(binding.emo03Dialog.colorFilter==null){
+            G.saveEmoImages= G.loadEmoImages[2]
+        }else if(binding.emo04Dialog.colorFilter==null){
+            G.saveEmoImages= G.loadEmoImages[3]
+        }else if(binding.emo05Dialog.colorFilter==null){
+            G.saveEmoImages= G.loadEmoImages[4]
+        }
+        Log.i("aaa","G.saveEmoImages: ${G.saveEmoImages}")
     }
 }
 

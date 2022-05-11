@@ -59,7 +59,7 @@ data class CategoryImage(var no:String, var image:String)
 
 data class EmoImage(var no:String, var image:String)
 
-data class SelectedDayEmo(var email:String,var day:String, var emo:String)
+data class SelectedDayEmo(var no:String, var email:String,var day:String, var emo:String)
 
 //공통 데이터 클래스(Base)상속
 //0. base       : 일정 날짜, 일정 내용, 카테고리 이미지

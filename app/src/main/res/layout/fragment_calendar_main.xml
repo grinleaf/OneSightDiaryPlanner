@@ -110,4 +110,28 @@
             </LinearLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+    <RelativeLayout
+        android:id="@+id/layout_alter_emo_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_alter_emo_calendar"
+            android:layout_alignBottom="@id/iv_alter_emo_calendar"
+            android:layout_toLeftOf="@id/iv_alter_emo_calendar"
+            android:gravity="center_vertical"
+            android:layout_marginRight="16dp"
+            android:text="오늘의 표정 변경하기" />
+        <ImageView
+            android:id="@+id/iv_alter_emo_calendar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_emo_01" />
+    </RelativeLayout>
 </LinearLayout>

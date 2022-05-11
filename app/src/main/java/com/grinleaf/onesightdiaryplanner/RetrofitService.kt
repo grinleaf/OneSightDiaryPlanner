@@ -79,11 +79,15 @@ interface RetrofitService {
         @Query("emo") emo:String
     ):Call<String>
 
-    //카테고리 이미지 다운로드
+    //카테고리 이미지 다운로드(default)
     @GET("OneSightDiaryPlanner/loadCategory.php")
     fun getCategoryImage(): Call<ArrayList<CategoryImage>>
 
-    //today's emo 이미지 다운로드
+    //today's emo 이미지 다운로드(default)
     @GET("OneSightDiaryPlanner/loadEmoImage.php")
     fun getemoImage(): Call<ArrayList<EmoImage>>
+
+    //캘린더 날짜 선택 시 emo 이미지 다운로드 + useremail, day
+    @GET("OneSightDiaryPlanner/selectedEmoDownload.php")
+    fun getSelectedEmoImage(): Call<ArrayList<SelectedDayEmo>>
 }

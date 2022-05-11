@@ -25,7 +25,8 @@ class TutorialActivity : AppCompatActivity() {
 
         loadCategoryImage()
         loadEmoImage()
-        loadData()
+        loadSelectedEmo()
+        loadDateData()
 
         //샘플 튜토리얼 이미지
         imgIds.add(TutorialImage(R.drawable.tutorial_sample01))
@@ -102,7 +103,28 @@ class TutorialActivity : AppCompatActivity() {
         })
     }
 
-    fun loadData(){
+    fun loadSelectedEmo(){
+        val retrofit= RetrofitHelper.getRetrofitInstance()
+        val retrofitService= retrofit.create(RetrofitService::class.java)
+        val call= retrofitService.getSelectedEmoImage()
+        call.enqueue(object:Callback<ArrayList<SelectedDayEmo>>{
+            override fun onResponse(
+                call: retrofit2.Call<ArrayList<SelectedDayEmo>>,
+                response: Response<ArrayList<SelectedDayEmo>>
+            ) {
+                G.loadSelectedEmoImages.clear()
+                val list= response.body()
+                for(i in list!!) G.loadSelectedEmoImages.add(SelectedDayEmo(i.no,i.email,i.day,i.emo))
+                Log.i("aaa","DB -> 선택되었던 이모티콘에 해당하는 유저이메일, 날짜, 이미지 가져오기 성공!")
+                Log.i("aaa",G.loadSelectedEmoImages[0].email+", "+G.loadSelectedEmoImages[0].day+", "+G.loadSelectedEmoImages[0].emo)
+            }
+            override fun onFailure(call: retrofit2.Call<ArrayList<SelectedDayEmo>>, t: Throwable) {
+                Log.i("aaa","downloadEmo error: "+t.message)
+            }
+        })
+    }
+
+    fun loadDateData(){
         dailyCallback()
         checklistCallback()
         lifecycleCallback()

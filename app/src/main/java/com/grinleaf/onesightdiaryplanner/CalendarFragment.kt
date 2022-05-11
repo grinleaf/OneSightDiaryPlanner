@@ -16,6 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class CalendarFragment:Fragment() {
@@ -27,10 +28,12 @@ class CalendarFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.ivTodayEmoCalendar.visibility= View.GONE //시작시 숨겨뒀다가 날짜 클릭 시 visible 되도록
+        binding.cardviewTodayStateCalendar.visibility= View.GONE //시작시 숨겨뒀다가 날짜 클릭 시 visible 되도록
 
         binding.calendarView.isShowDaysOfWeekTitle= false
         binding.calendarView.selectionManager= SingleSelectionManager(OnDaySelectedListener {
+            binding.cardviewTodayStateCalendar.visibility= View.VISIBLE
+            loadSelectedEmo()
 
             val selectedDaytoString= binding.calendarView.selectedDays[0].toString()
             val dateFormat= selectedDaytoString.replace("Day{day=","").replace("}","")
@@ -61,23 +64,39 @@ class CalendarFragment:Fragment() {
             Log.i("aaa", "selectedDay: $selectedDay")
             Log.i("aaa", "dayOfWeek : $dayOfWeek  month: $month  day: $daySingleWord  year: $year")
             //DB 에서 day 리스트를 다운로드하고(이거 튜토리얼 페이지에서 하자) selectedDay 와 비교, 그에 맞는 이모티콘 번호를 가져오기. 해당 번호에 따른 이미지 glide(when 절)
-//            if(selectedDay==G.dayOfCalendar){ //요걸 비교하면 안된당
-//                binding.cardviewTodayStateCalendar.visibility= View.VISIBLE
-//            }else{
-//                binding.cardviewTodayStateCalendar.visibility= View.GONE
-//            }
+            if(G.loadSelectedEmoImages.size!=0) {
+                loop@for(i in G.loadSelectedEmoImages) {
+                    if (selectedDay == i.day && G.userEmail == i.email) {
+                        binding.layoutAlterEmoCalendar.visibility= View.GONE
+                        binding.cardviewTodayStateCalendar.visibility = View.VISIBLE
+                        Glide.with(requireContext()).load(i.emo).into(binding.ivTodayEmoCalendar)
+                        Log.i("aaa", i.emo)
+                        break@loop
+                    } else {
+                        binding.layoutAlterEmoCalendar.visibility= View.VISIBLE
+                        binding.cardviewTodayStateCalendar.visibility = View.GONE
+                    }
+                }
+            }
         })
         binding.tvTodayEmoCalendar.setOnClickListener {
             val intent= Intent(requireContext(),DialogEmoActivity::class.java)
             startActivity(intent)
         }
+        binding.ivAlterEmoCalendar.setOnClickListener {
+            Glide.with(requireContext()).load(R.drawable.ic_question_mark).into(binding.ivTodayEmoCalendar)
+            binding.cardviewTodayStateCalendar.visibility= View.VISIBLE
+            binding.layoutAlterEmoCalendar.visibility= View.GONE
+        }
     }
 
     override fun onResume() {
         super.onResume()
+        if(selectedDay!=""&&G.saveEmoImages!="") uploadEmo()
+
         if(G.saveEmoImages=="") Glide.with(requireContext()).load(R.drawable.ic_question_mark).into(binding.ivTodayEmoCalendar)
         else Glide.with(requireContext()).load(G.saveEmoImages).into(binding.ivTodayEmoCalendar)
-        uploadEmo()
+
     }
 
     fun uploadEmo(){
@@ -88,18 +107,34 @@ class CalendarFragment:Fragment() {
         call.enqueue(object: Callback<String>{
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 val list= response.body()
-                Log.i("aaa","uploadEmo call 객체 : "+list?.get(0).toString())
-                selectedDay= ""
+                Log.i("aaa", "uploadEmo call 객체 : $list")
             }
-
             override fun onFailure(call: Call<String>, t: Throwable) {
-                Log.i("aaa","error: "+t.message)
+                Log.i("aaa","uploadEmo error: "+t.message)
             }
-
         })
     }
 
-    fun downloadEmo(){
-
+    fun loadSelectedEmo(){
+        val retrofit= RetrofitHelper.getRetrofitInstance()
+        val retrofitService= retrofit.create(RetrofitService::class.java)
+        val call= retrofitService.getSelectedEmoImage()
+        call.enqueue(object:Callback<ArrayList<SelectedDayEmo>>{
+            override fun onResponse(
+                call: retrofit2.Call<ArrayList<SelectedDayEmo>>,
+                response: Response<ArrayList<SelectedDayEmo>>
+            ) {
+                G.loadSelectedEmoImages.clear()
+                val list= response.body()
+                for(i in list!!) G.loadSelectedEmoImages.add(SelectedDayEmo(i.no,i.email,i.day,i.emo))
+                Log.i("aaa","DB -> 선택되었던 이모티콘에 해당하는 유저이메일, 날짜, 이미지 가져오기 성공!")
+                Log.i("aaa",G.loadSelectedEmoImages[0].email+", "+G.loadSelectedEmoImages[0].day+", "+G.loadSelectedEmoImages[0].emo)
+            }
+            override fun onFailure(call: retrofit2.Call<ArrayList<SelectedDayEmo>>, t: Throwable) {
+                Log.i("aaa","downloadEmo error: "+t.message)
+            }
+        })
     }
+
+
 }

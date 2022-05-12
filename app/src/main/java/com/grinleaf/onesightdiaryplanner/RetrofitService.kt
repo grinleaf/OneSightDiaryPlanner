@@ -41,7 +41,8 @@ interface RetrofitService {
         @Query("day") day: String,
         @Query("content") content: String,
         @Query("categoryImage") categoryImage:String,
-        @Query("detailContent") detailContent:String
+        @Query("detailContent") detailContent:String,
+        @Query("isChecked") isChecked:String
     ): Call<String>
 
     //lifecycle 데이터 업로드
@@ -53,7 +54,8 @@ interface RetrofitService {
         @Query("endday") endday: String,
         @Query("cycle") cycle: String,
         @Query("categoryImage") categoryImage:String,
-        @Query("exportother") isBucket: String
+        @Query("exportother") isBucket: String,
+        @Query("isChecked") isChecked:String
     ): Call<String>
 
     //bucketlist 데이터 업로드
@@ -78,6 +80,12 @@ interface RetrofitService {
         @Query("day") day:String,
         @Query("emo") emo:String
     ):Call<String>
+
+    //디바이스토큰값 업로드
+    @GET("OneSightDiaryPlanner/userDeviceTokenUpload.php")
+    fun userDeviceTokenUpload(
+        @Query("token") token:String
+    ): Call<String>
 
     //카테고리 이미지 다운로드(default)
     @GET("OneSightDiaryPlanner/loadCategory.php")

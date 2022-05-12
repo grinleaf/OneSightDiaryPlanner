@@ -47,13 +47,13 @@ class TutorialActivity : AppCompatActivity() {
         }
     }
 
-    fun skipActivity(){
+    private fun skipActivity(){
         val intent= Intent(this@TutorialActivity,LoginActivity::class.java)
         startActivity(intent)
         finish()
     }
 
-    fun loadEmoImage(){
+    private fun loadEmoImage(){
         val retrofit= RetrofitHelper.getRetrofitInstance()
         val retrofitService= retrofit.create(RetrofitService::class.java)
         val call= retrofitService.getemoImage()
@@ -78,7 +78,7 @@ class TutorialActivity : AppCompatActivity() {
         })
     }
 
-    fun loadCategoryImage(){
+    private fun loadCategoryImage(){
         val retrofit= RetrofitHelper.getRetrofitInstance()
         val retrofitService= retrofit.create(RetrofitService::class.java)
         val call= retrofitService.getCategoryImage()
@@ -103,7 +103,7 @@ class TutorialActivity : AppCompatActivity() {
         })
     }
 
-    fun loadSelectedEmo(){
+    private fun loadSelectedEmo(){
         val retrofit= RetrofitHelper.getRetrofitInstance()
         val retrofitService= retrofit.create(RetrofitService::class.java)
         val call= retrofitService.getSelectedEmoImage()
@@ -124,14 +124,14 @@ class TutorialActivity : AppCompatActivity() {
         })
     }
 
-    fun loadDateData(){
+    private fun loadDateData(){
         dailyCallback()
         checklistCallback()
         lifecycleCallback()
         bucketlistCallback()
     }
 
-    fun dailyCallback(){
+    private fun dailyCallback(){
         lateinit var noDailyNote:String
         lateinit var emailDailyNote:String
         lateinit var titleDailyNote:String
@@ -175,13 +175,14 @@ class TutorialActivity : AppCompatActivity() {
         })
     }
 
-    fun checklistCallback(){
+    private fun checklistCallback(){
         lateinit var noChecklist:String
         lateinit var emailChecklist:String
         lateinit var titleCheckList:String
         lateinit var dayChecklist:String
         lateinit var categoryCheckList:String
         lateinit var contentCheckList:String
+        lateinit var isCheckedCheckList:String
 //        lateinit var subContentCheckList:String
         val retrofit= RetrofitHelper.getRetrofitInstance()
         val retrofitService= retrofit.create(RetrofitService::class.java)
@@ -201,9 +202,10 @@ class TutorialActivity : AppCompatActivity() {
                         dayChecklist= list.get(i).day
                         categoryCheckList= list.get(i).categoryImage
                         contentCheckList= list.get(i).detailContent
+                        isCheckedCheckList= list.get(i).isChecked
                         if(emailChecklist == G.userEmail) {
                             G.checklistItems.add(ChecklistItem(
-                                    noChecklist,emailChecklist,dayChecklist,titleCheckList,categoryCheckList,contentCheckList
+                                    noChecklist,emailChecklist,dayChecklist,titleCheckList,categoryCheckList,contentCheckList,isCheckedCheckList
                                 )
                             )
                         }
@@ -218,7 +220,7 @@ class TutorialActivity : AppCompatActivity() {
         })
     }
 
-    fun lifecycleCallback(){
+    private fun lifecycleCallback(){
         lateinit var noLifecycle:String
         lateinit var emailLifecycle:String
         var titleLifecycle:String= "Abcd"
@@ -227,6 +229,7 @@ class TutorialActivity : AppCompatActivity() {
         lateinit var repeatCycle:String
         lateinit var categoryLifecycle:String
         lateinit var exportOther:String
+        var isChecked:String
         val retrofit= RetrofitHelper.getRetrofitInstance()
         val retrofitService= retrofit.create(RetrofitService::class.java)
         val call= retrofitService.getLifecycleDownload()
@@ -248,10 +251,11 @@ class TutorialActivity : AppCompatActivity() {
                         repeatCycle= list.get(i).repeatCycle
                         categoryLifecycle= list.get(i).categoryImage
                         exportOther= list.get(i).isBucket
+                        isChecked= list.get(i).isChecked
                         if(emailLifecycle == G.userEmail) {
                             G.lifecycleItems.add(
                                 LifecycleItem(
-                                    noLifecycle,emailLifecycle,startDayLifecycle,titleLifecycle,categoryLifecycle,repeatCycle,endDayLifecycle,exportOther
+                                    noLifecycle,emailLifecycle,startDayLifecycle,titleLifecycle,categoryLifecycle,repeatCycle,endDayLifecycle,exportOther,isChecked
                                 )
                             )
                         }
@@ -266,7 +270,7 @@ class TutorialActivity : AppCompatActivity() {
         })
     }
 
-    fun bucketlistCallback(){
+    private fun bucketlistCallback(){
         lateinit var noBucketlist:String
         lateinit var emailBucketlist:String
         lateinit var titleBucketlist:String

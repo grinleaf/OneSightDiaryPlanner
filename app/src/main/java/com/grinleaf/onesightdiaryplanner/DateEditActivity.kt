@@ -143,13 +143,14 @@ class DateEditActivity:AppCompatActivity() {
         val categoryImage= G.selectedCategoryImage
         //세부항목 내용 데이터 가져오는 코드 영역
         val detailContent= binding.dateEditContainer.findViewById<TextView>(R.id.et_content_detail_dailynote_date_edit).text.toString()
+        val isChecked= false.toString()
 
         if(binding.tvTitleMainDateEdit.text.isBlank()&&binding.dateEditContainer.findViewById<TextView>(R.id.tv_today_auto_checklist_date_edit).text==null) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
         }else{
             val retrofit = RetrofitHelper.getRetrofitInstance()
             val retrofitService = retrofit.create(RetrofitService::class.java)
-            val call = retrofitService.getCheckListItem(email,day,content,categoryImage,detailContent)
+            val call = retrofitService.getCheckListItem(email,day,content,categoryImage,detailContent,isChecked)
             call.enqueue(object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     val item = response.body()
@@ -159,7 +160,7 @@ class DateEditActivity:AppCompatActivity() {
                     Log.i("aaa", "error: ${t.message}")
                 }
             })
-            G.checklistItems.add(ChecklistItem("",email,day, content,categoryImage,detailContent))
+            G.checklistItems.add(ChecklistItem("",email,day, content,categoryImage,detailContent,isChecked))
             //하위리스트 추가할 것
 //            G.checklistSubItems.add(
 //                ChecklistSubItem(binding.dateEditContainer.findViewById<RecyclerView>(R.id.recycler_checklist_dateedit)
@@ -192,6 +193,7 @@ class DateEditActivity:AppCompatActivity() {
                 true -> "true"
                 false -> "false"
         }
+        val isChecked= false.toString()
 
         if(binding.tvTitleMainDateEdit.text.isBlank()) {
             Toast.makeText(this, "일정의 제목을 입력하세요.", Toast.LENGTH_SHORT).show()
@@ -202,7 +204,7 @@ class DateEditActivity:AppCompatActivity() {
         }else{
             val retrofit = RetrofitHelper.getRetrofitInstance()
             val retrofitService = retrofit.create(RetrofitService::class.java)
-            val call = retrofitService.getLifecycleItem(email,content,startday,endday,cycle,categoryImage,isBucket)
+            val call = retrofitService.getLifecycleItem(email,content,startday,endday,cycle,categoryImage,isBucket,isChecked)
             call.enqueue(object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     val item = response.body()
@@ -214,7 +216,7 @@ class DateEditActivity:AppCompatActivity() {
                     Log.i("aaa", "error: ${t.message}")
                 }
             })
-            G.lifecycleItems.add(LifecycleItem("",email,startday, content,categoryImage,cycle,endday,isBucket))
+            G.lifecycleItems.add(LifecycleItem("",email,startday, content,categoryImage,cycle,endday,isBucket,isChecked))
             finish()
         }
     }

@@ -65,6 +65,23 @@
             android:exported="true"
             android:theme="@style/Theme.OneSightDiaryPlanner_sub02" />
 
+        <!-- 클라우드메시징 서비스 클래스 추가 -->
+        <service
+            android:name=".TodayEmoPushService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- 클라우드메시징 서비스 아이콘, 색상 설정 -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_leaf" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/checklist_color" />
+
     </application>
 
 </manifest>

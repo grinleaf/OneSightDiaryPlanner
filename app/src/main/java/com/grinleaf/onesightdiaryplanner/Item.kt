@@ -21,7 +21,8 @@ data class ChecklistItem(
     var day:String,
     @SerializedName("title") var content:String,
     var categoryImage:String,
-    @SerializedName("content") var detailContent:String
+    @SerializedName("content") var detailContent:String,
+    var isChecked:String
     )
 
 data class ChecklistSubItem(var subContent:String)
@@ -34,7 +35,8 @@ data class LifecycleItem(
     var categoryImage:String,
     @SerializedName("cycle") var repeatCycle:String,
     @SerializedName("endday") var endDay:String,
-    @SerializedName("exportother") var isBucket:String
+    @SerializedName("exportother") var isBucket:String,
+    var isChecked:String
     )
 
 data class BucketlistItem(

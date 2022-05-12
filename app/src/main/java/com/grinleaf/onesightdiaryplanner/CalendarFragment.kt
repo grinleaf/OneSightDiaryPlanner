@@ -27,7 +27,7 @@ class CalendarFragment:Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.layoutAlterEmoCalendar.visibility= View.GONE
         binding.cardviewTodayStateCalendar.visibility= View.GONE //시작시 숨겨뒀다가 날짜 클릭 시 visible 되도록
 
         binding.calendarView.isShowDaysOfWeekTitle= false

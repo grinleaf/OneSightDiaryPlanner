@@ -58,6 +58,8 @@ class CheckListFragment:Fragment() {
 
         binding.tvAddDateChecklist.setOnClickListener { clickAddDate() }
 
+//        binding.recyclerChecklist.
+
 //        val rvItem:RecyclerView= requireActivity().findViewById(R.id.recycler_checklist)
 //        val layoutManager= LinearLayoutManager(requireContext())
 //        val mainAdapterMain?= MainCheckListAdapter(mainCheckListItems())
@@ -69,8 +71,13 @@ class CheckListFragment:Fragment() {
         adapter.notifyDataSetChanged()
     }
 
-    fun clickAddDate(){
+    private fun clickAddDate(){
         val intent= Intent(requireContext(), DateEditActivity::class.java)
         startActivity(intent)
     }
+
+    private fun isChecked(){
+
+    }
+
 }

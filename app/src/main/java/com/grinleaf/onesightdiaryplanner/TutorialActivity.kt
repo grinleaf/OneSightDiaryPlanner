@@ -28,6 +28,8 @@ class TutorialActivity : AppCompatActivity() {
         loadSelectedEmo()
         loadDateData()
 
+        G.isNotEmptyRecyclerItem= 0
+
         //샘플 튜토리얼 이미지
         imgIds.add(TutorialImage(R.drawable.tutorial_sample01))
         imgIds.add(TutorialImage(R.drawable.tutorial_sample02))

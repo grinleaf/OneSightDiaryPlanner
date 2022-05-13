@@ -8,7 +8,7 @@ class DateAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(frag
     val fragments: MutableList<Fragment> by lazy { mutableListOf() }
         init{
             fragments.add(DailyNoteFragment())
-            fragments.add(CheckListFragment())
+            fragments.add(TodoListFragment())
             fragments.add(LifecycleFragment())
             fragments.add(BucketListFragment())
     }

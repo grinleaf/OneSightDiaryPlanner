@@ -40,6 +40,6 @@ class G {
         var dayOfTimeline= ""
         var dayOfCalendar= ""
 
-
+        var isNotEmptyRecyclerItem= 0
     }
 }

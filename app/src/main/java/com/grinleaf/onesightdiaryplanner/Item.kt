@@ -1,7 +1,5 @@
 package com.grinleaf.onesightdiaryplanner
 
-import android.widget.Adapter
-import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.annotations.SerializedName
 
 data class DailyItem(
@@ -13,7 +11,6 @@ data class DailyItem(
     @SerializedName("attachImage") var dayImage:String,
     @SerializedName("content") var detailContent:String,
     )
-//    :Base(day,content,categoryImage2)
 
 data class ChecklistItem(
     var no: String,
@@ -52,9 +49,8 @@ data class MypageGridItem(var mypageImage:Int, var mypageContent:String)
 
 data class RewardGridItem(var rewardImage:Int, var rewardContent:String, var isComplete:Boolean)
 
-data class UserInformationItem(var userLank:Int, var profileImage:String, var userNickname:String){
+data class UserInformationItem(var userLank:Int, var profileImage:String, var userNickname:String)
 
-}
 data class TutorialImage constructor(var imgId:Int)
 
 data class CategoryImage(var no:String, var image:String)

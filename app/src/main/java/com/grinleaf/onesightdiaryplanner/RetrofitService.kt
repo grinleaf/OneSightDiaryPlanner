@@ -98,4 +98,26 @@ interface RetrofitService {
     //캘린더 날짜 선택 시 emo 이미지 다운로드 + useremail, day
     @GET("OneSightDiaryPlanner/selectedEmoDownload.php")
     fun getSelectedEmoImage(): Call<ArrayList<SelectedDayEmo>>
+
+    //checklist isChecked 상태 업데이트
+    @GET("OneSightDiaryPlanner/checklistCheckedStateUpdate.php")
+    fun updateCheckedState(
+        @Query("email") email:String,
+        @Query("day") day: String,
+        @Query("content") content: String,
+        @Query("categoryImage") categoryImage:String,
+        @Query("detailContent") detailContent:String,
+        @Query("isChecked") isChecked:String
+    ): Call<String>
+    
+    //checklist 일정 삭제
+    @GET("OneSightDiaryPlanner/checklistDelete.php")
+    fun deleteChecklistDate(
+        @Query("email") email:String,
+        @Query("day") day: String,
+        @Query("content") content: String,
+        @Query("categoryImage") categoryImage:String,
+        @Query("detailContent") detailContent:String,
+        @Query("isChecked") isChecked:String
+    ): Call<String>
 }

@@ -43,7 +43,7 @@
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_frame.xml" value="0.184375" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_main.xml" value="0.1171875" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar_week.xml" value="0.184375" />
-        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_checklist.xml" value="0.25" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_checklist.xml" value="0.22" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_dailynote.xml" value="0.19074074074074074" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_date.xml" value="0.19091751621872105" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_dateedit_bucketlist.xml" value="0.1962962962962963" />
@@ -53,6 +53,7 @@
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_lifecycle.xml" value="0.22" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_mypage.xml" value="0.19074074074074074" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_timeline.xml" value="0.1962962962962963" />
+        <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_todolist.xml" value="0.13408820023837903" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_bucket.xml" value="0.19074074074074074" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_checklist_maincontent.xml" value="0.17239583333333333" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_checklist_subcontent.xml" value="0.17239583333333333" />

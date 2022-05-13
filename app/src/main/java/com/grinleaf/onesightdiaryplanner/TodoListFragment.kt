@@ -4,23 +4,26 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.core.view.get
+import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
-import com.grinleaf.onesightdiaryplanner.databinding.FragmentChecklistBinding
+import com.grinleaf.onesightdiaryplanner.databinding.FragmentTodolistBinding
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
 
 
-class CheckListFragment:Fragment() {
+class TodoListFragment:Fragment() {
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return binding.root
     }
-    val binding by lazy { FragmentChecklistBinding.inflate(layoutInflater) }
-    val adapter by lazy { CheckListMainAdapter(requireContext(),G.checklistItems) }
+    val binding by lazy { FragmentTodolistBinding.inflate(layoutInflater) }
+    val adapter by lazy { TodoListMainAdapter(requireContext(),G.checklistItems) }
     var subContents= mutableListOf<ChecklistSubItem>()
 
 //    @RequiresApi(Build.VERSION_CODES.O)
@@ -53,8 +56,13 @@ class CheckListFragment:Fragment() {
             }
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }
-
+        G.isNotEmptyRecyclerItem= 0 //리사이클러뷰가 아무 뷰도 VISIBLE 상태로 만들지 못했을 때
         binding.recyclerChecklist.adapter= adapter
+
+        adapter.notifyDataSetChanged()
+        if(G.isNotEmptyRecyclerItem==0) binding.tvNoDate01.visibility= View.VISIBLE
+        else binding.tvNoDate01.visibility= View.GONE
+
 
         binding.tvAddDateChecklist.setOnClickListener { clickAddDate() }
 
@@ -68,6 +76,14 @@ class CheckListFragment:Fragment() {
 
     override fun onResume() {
         super.onResume()
+
+        adapter.notifyDataSetChanged()
+        if(G.isNotEmptyRecyclerItem==0) binding.tvNoDate01.visibility= View.VISIBLE
+        else binding.tvNoDate01.visibility= View.GONE
+        Log.i("aaa","G.isNotEmptyRecyclerItem: ${G.isNotEmptyRecyclerItem}")
+
+        if(binding.recyclerTodoLifecycle.isEmpty()) binding.tvNoDate02.visibility= View.VISIBLE
+        else binding.tvNoDate02.visibility= View.GONE
         adapter.notifyDataSetChanged()
     }
 

@@ -101,7 +101,7 @@ interface RetrofitService {
 
     //checklist isChecked 상태 업데이트
     @GET("OneSightDiaryPlanner/checklistCheckedStateUpdate.php")
-    fun updateCheckedState(
+    fun updateCheckedStateChecklist(
         @Query("email") email:String,
         @Query("day") day: String,
         @Query("content") content: String,
@@ -118,6 +118,32 @@ interface RetrofitService {
         @Query("content") content: String,
         @Query("categoryImage") categoryImage:String,
         @Query("detailContent") detailContent:String,
+        @Query("isChecked") isChecked:String
+    ): Call<String>
+
+    //lifecycle isChecked 상태 업데이트
+    @GET("OneSightDiaryPlanner/lifecycleCheckedStateUpdate.php")
+    fun updateCheckedStateLifecycle(
+        @Query("email") email:String,
+        @Query("content") content: String,
+        @Query("startday") startday: String,
+        @Query("endday") endday: String,
+        @Query("cycle") cycle: String,
+        @Query("categoryImage") categoryImage:String,
+        @Query("exportother") isBucket: String,
+        @Query("isChecked") isChecked:String
+    ): Call<String>
+
+    //lifecycle 일정 삭제
+    @GET("OneSightDiaryPlanner/lifecycleDelete.php")
+    fun deleteLifecycleDate(
+        @Query("email") email:String,
+        @Query("content") content: String,
+        @Query("startday") startday: String,
+        @Query("endday") endday: String,
+        @Query("cycle") cycle: String,
+        @Query("categoryImage") categoryImage:String,
+        @Query("exportother") isBucket: String,
         @Query("isChecked") isChecked:String
     ): Call<String>
 }

@@ -21,7 +21,6 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
         val day:TextView by lazy { itemView.findViewById(R.id.tv_day_checklist_theme)}
         val categoryImage:ImageView by lazy { itemView.findViewById(R.id.iv_category_checklist_theme) }
         val deleteBtn:ImageView by lazy { itemView.findViewById(R.id.iv_delete_icon_maincontent_checklist_theme) }
-        val checkbox:CheckBox by lazy { itemView.findViewById(R.id.checkbox_maincontent_checklist_theme) }
         val layout:LinearLayout by lazy { itemView.findViewById(R.id.layout_visible) }
 //        val recycler:RecyclerView by lazy { itemView.findViewById(R.id.recycler_sub) }
     }
@@ -37,8 +36,8 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
     override fun onBindViewHolder(holder: VH, position: Int) {
         val checklistItem = checkListItems.get(position)
         holder.day.text= checklistItem.day
-        if (G.dayOfCheckList == holder.day.text) {
-            G.isNotEmptyRecyclerItem++
+        if (G.dayOfTodolist == holder.day.text) {
+            G.isNotEmptyChecklistRecyclerItem++
             holder.layout.visibility= View.VISIBLE
             holder.content.text = checklistItem.content
             Glide.with(context).load(checklistItem.categoryImage).into(holder.categoryImage)
@@ -46,21 +45,21 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
                 if(checkListItems.isNotEmpty()) {
                     deleteChecklistDate(position)
                     checkListItems.remove(checkListItems[position])
-                    Log.i("aaa","G.isNotEmptyRecyclerItem: ${G.isNotEmptyRecyclerItem}")
+                    Log.i("aaa","G.isNotEmptyRecyclerItem: ${G.isNotEmptyChecklistRecyclerItem}")
                 }
                 notifyDataSetChanged()
             }
-            holder.checkbox.setOnCheckedChangeListener { compoundButton, b ->
+            holder.content.setOnCheckedChangeListener { compoundButton, b ->
                 if(b) {
                     checkListItems.get(position).isChecked= true.toString()
-                    Log.i("aaa", "isChecked : ${holder.checkbox.isChecked}")
+                    Log.i("aaa", "isChecked : ${holder.content.isChecked}")
                     Log.i("aaa", "checkListItems[position]: ${checkListItems[position]}")
                     //여기서 수정된 데이터를 DB로 업데이트하는 코드 필요함
                     updateCheckedState(position)
                 }
                 else if(!b) {
                     checkListItems.get(position).isChecked= false.toString()
-                    Log.i("aaa", "isNotChecked : ${holder.checkbox.isChecked}")
+                    Log.i("aaa", "isNotChecked : ${holder.content.isChecked}")
                     Log.i("aaa", "checkListItems[position]: ${checkListItems[position]}")
                     updateCheckedState(position)
                 }
@@ -69,7 +68,7 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
         }else{
             holder.layout.visibility= View.GONE
             Log.i("aaa", "checklistmain bindviewholder else")
-            Log.i("aaa","G.checklistmain: "+G.dayOfCheckList+"   holder.day.text: "+holder.day.text)
+            Log.i("aaa","G.checklistmain: "+G.dayOfTodolist+"   holder.day.text: "+holder.day.text)
         }
         //if subcontent 내용이 있을 경우 recycler 의 visibility= visible 로 바꾸는 코드 영역
 //            holder.layout.visibility= View.GONE
@@ -83,7 +82,7 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
     private fun updateCheckedState(position: Int){
         val retrofit= RetrofitHelper.getRetrofitInstance()
         val retrofitService= retrofit.create(RetrofitService::class.java)
-        val call= retrofitService.updateCheckedState(
+        val call= retrofitService.updateCheckedStateChecklist(
             checkListItems.get(position).email,
             checkListItems.get(position).day,
             checkListItems.get(position).content,
@@ -122,6 +121,6 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
                 Log.i("aaa", "delete failed : ${t.message}")
             }
         })
-        G.isNotEmptyRecyclerItem--
+        G.isNotEmptyChecklistRecyclerItem--
     }
 }

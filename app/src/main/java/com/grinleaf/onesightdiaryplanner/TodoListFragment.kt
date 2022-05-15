@@ -23,18 +23,9 @@ class TodoListFragment:Fragment() {
         return binding.root
     }
     val binding by lazy { FragmentTodolistBinding.inflate(layoutInflater) }
-    val adapter by lazy { TodoListMainAdapter(requireContext(),G.checklistItems) }
+    val adapterChecklist by lazy { TodoListMainAdapter(requireContext(),G.checklistItems) }
+    val adapterLifecycle by lazy { TodoListLifecycleAdapter(requireContext(),G.lifecycleItems) }
     var subContents= mutableListOf<ChecklistSubItem>()
-
-//    @RequiresApi(Build.VERSION_CODES.O)
-//    private fun mainCheckListItems(): List<ChecklistItem> {
-//        val mainList: MutableList<ChecklistItem> = mutableListOf()
-//        for (i in 0..9) {
-//            val item = ChecklistItem(""+LocalDate.now(), subCheckListItems())
-//            mainList.add(item)
-//        }
-//        return mainList
-//    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,25 +35,24 @@ class TodoListFragment:Fragment() {
         val nowDate:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(now)
         now= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(nowDate)
         binding.tvChecklistDay.text= now
-        G.dayOfCheckList= now
+        G.dayOfTodolist= now
         binding.ivDatepickerChecklist.setOnClickListener{
             val cal= Calendar.getInstance()
             val dateSetListener = DatePickerDialog.OnDateSetListener{
-                    view, year, month, dayOfMonth -> G.dayOfCheckList = "${year}-${month+1}-${dayOfMonth}"
-                val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(G.dayOfCheckList)
-                G.dayOfCheckList= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(date)
-                binding.tvChecklistDay.text = G.dayOfCheckList
-                adapter.notifyDataSetChanged()
+                    view, year, month, dayOfMonth -> G.dayOfTodolist = "${year}-${month+1}-${dayOfMonth}"
+                val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(G.dayOfTodolist)
+                G.dayOfTodolist= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(date)
+                binding.tvChecklistDay.text = G.dayOfTodolist
+                adapterChecklist.notifyDataSetChanged()
+                adapterLifecycle.notifyDataSetChanged()
             }
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }
-        G.isNotEmptyRecyclerItem= 0 //리사이클러뷰가 아무 뷰도 VISIBLE 상태로 만들지 못했을 때
-        binding.recyclerChecklist.adapter= adapter
 
-        adapter.notifyDataSetChanged()
-        if(G.isNotEmptyRecyclerItem==0) binding.tvNoDate01.visibility= View.VISIBLE
-        else binding.tvNoDate01.visibility= View.GONE
-
+//        G.isNotEmptyRecyclerItem= 0 //리사이클러뷰가 아무 뷰도 VISIBLE 상태로 만들지 못했을 때
+        binding.recyclerChecklist.adapter= adapterChecklist
+        binding.recyclerTodoLifecycle.adapter= adapterLifecycle
+        isNotEmptyRecyclerItem()
 
         binding.tvAddDateChecklist.setOnClickListener { clickAddDate() }
 
@@ -76,15 +66,7 @@ class TodoListFragment:Fragment() {
 
     override fun onResume() {
         super.onResume()
-
-        adapter.notifyDataSetChanged()
-        if(G.isNotEmptyRecyclerItem==0) binding.tvNoDate01.visibility= View.VISIBLE
-        else binding.tvNoDate01.visibility= View.GONE
-        Log.i("aaa","G.isNotEmptyRecyclerItem: ${G.isNotEmptyRecyclerItem}")
-
-        if(binding.recyclerTodoLifecycle.isEmpty()) binding.tvNoDate02.visibility= View.VISIBLE
-        else binding.tvNoDate02.visibility= View.GONE
-        adapter.notifyDataSetChanged()
+        isNotEmptyRecyclerItem()
     }
 
     private fun clickAddDate(){
@@ -92,8 +74,24 @@ class TodoListFragment:Fragment() {
         startActivity(intent)
     }
 
-    private fun isChecked(){
+    private fun isNotEmptyRecyclerItem(){
+        if(G.isNotEmptyChecklistRecyclerItem==0) {
+            binding.tvNoDate01.visibility= View.VISIBLE
+            adapterChecklist.notifyDataSetChanged()
+        }else {
+            binding.tvNoDate01.visibility= View.GONE
+            adapterChecklist.notifyDataSetChanged()
+        }
+        Log.i("aaa","G.isNotEmptyChecklistRecyclerItem: ${G.isNotEmptyChecklistRecyclerItem}")
 
+        if(G.isNotEmptyLifecycleRecyclerItem==0){
+            binding.tvNoDate02.visibility= View.VISIBLE
+            adapterLifecycle.notifyDataSetChanged()
+        }
+        else {
+            binding.tvNoDate02.visibility= View.GONE
+            adapterLifecycle.notifyDataSetChanged()
+        }
+        Log.i("aaa","G.isNotEmptyLifecycleRecyclerItem: ${G.isNotEmptyLifecycleRecyclerItem}")
     }
-
 }

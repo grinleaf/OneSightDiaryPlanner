@@ -30,16 +30,16 @@ class G {
         var loadEmoImages= mutableListOf<String>()
         var loadSelectedEmoImages= mutableListOf<SelectedDayEmo>()
         var saveEmoImages:String= ""
-//        var selectedDayCalendar:String= ""
 
         var selectedCategoryImage:String= ""
         var selectedattachImage:String= ""
 
         var dayOfDailyNote= ""
-        var dayOfCheckList= ""
+        var dayOfTodolist= ""
         var dayOfTimeline= ""
         var dayOfCalendar= ""
 
-        var isNotEmptyRecyclerItem= 0
+        var isNotEmptyChecklistRecyclerItem= 0
+        var isNotEmptyLifecycleRecyclerItem= 0
     }
 }

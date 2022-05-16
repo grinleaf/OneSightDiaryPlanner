@@ -36,10 +36,15 @@ class G {
 
         var dayOfDailyNote= ""
         var dayOfTodolist= ""
-        var dayOfTimeline= ""
+        var dayOfTimeline= ""   //기존
+        var dayOfTimelines= mutableListOf<String>() //타임라인용
         var dayOfCalendar= ""
 
         var isNotEmptyChecklistRecyclerItem= 0
         var isNotEmptyLifecycleRecyclerItem= 0
+
+        var visibleCountDaily= 0
+        var visibleCountCheck= 0
+        var visibleCountLife= 0
     }
 }

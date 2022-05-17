@@ -37,8 +37,8 @@ class TimelineFragment:Fragment() {
         val nowDate: Date = SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(now) //date 파싱
         now= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(nowDate) //date -> 오늘날짜(String)
         G.dayOfTimeline= now
-        //이전 날짜들 구해서 dayOfTimelines 리스트에 add 하기(1년치)
-        loop@ for(i in 0..20) {
+        //이전 날짜들 구해서 dayOfTimelines 리스트에 add 하기(해당 지난 일수만큼 반복)
+        loop@ for(i in 0..LocalDate.now().dayOfMonth) {
             val calendar = Calendar.getInstance()
             calendar.time = nowDate
             calendar.add(Calendar.DATE,-i)

@@ -26,6 +26,8 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
     }
     val subItems= mutableListOf<ChecklistSubItem>()
     val adapter= TodoListSubAdapter(context, subItems)
+    val TRUECOUNT= 1
+    val FALSECOUNT= 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         var itemView:View = LayoutInflater.from(context).inflate(R.layout.recycler_checklist_maincontent, parent, false)
@@ -35,9 +37,10 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: VH, position: Int) {
         val checklistItem = checkListItems.get(position)
+        G.isNotEmptyChecklistRecyclerItem= FALSECOUNT
         holder.day.text= checklistItem.day
         if (G.dayOfTodolist == holder.day.text) {
-            G.isNotEmptyChecklistRecyclerItem++
+            G.isNotEmptyChecklistRecyclerItem= TRUECOUNT
             holder.layout.visibility= View.VISIBLE
             holder.content.text = checklistItem.content
             Glide.with(context).load(checklistItem.categoryImage).into(holder.categoryImage)
@@ -64,10 +67,9 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
                     updateCheckedState(position)
                 }
             }
-            Log.i("aaa", "checklistmain bindviewholder if")
         }else{
             holder.layout.visibility= View.GONE
-            Log.i("aaa", "checklistmain bindviewholder else")
+            G.isNotEmptyChecklistRecyclerItem= FALSECOUNT
             Log.i("aaa","G.checklistmain: "+G.dayOfTodolist+"   holder.day.text: "+holder.day.text)
         }
         //if subcontent 내용이 있을 경우 recycler 의 visibility= visible 로 바꾸는 코드 영역
@@ -121,6 +123,5 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
                 Log.i("aaa", "delete failed : ${t.message}")
             }
         })
-        G.isNotEmptyChecklistRecyclerItem--
     }
 }

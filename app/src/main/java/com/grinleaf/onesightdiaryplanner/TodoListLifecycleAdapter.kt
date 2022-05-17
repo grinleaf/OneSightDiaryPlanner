@@ -52,7 +52,6 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
                 if(lifecycleItems.isNotEmpty()) {
                     deleteChecklistDate(position)
                     lifecycleItems.remove(lifecycleItems[position])
-                    Log.i("aaa","G.isNotEmptyLifecycleRecyclerItem: ${G.isNotEmptyLifecycleRecyclerItem}")
                 }
                 notifyDataSetChanged()
             }
@@ -71,10 +70,8 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
                     updateCheckedState(position)
                 }
             }
-            Log.i("aaa", "lifecycle bindviewholder if")
         }else{
             holder.layout.visibility= View.GONE
-            Log.i("aaa", "lifecycle bindviewholder else")
             Log.i("aaa","G.dayOfTodolist: "+G.dayOfTodolist+"   holder.endday.text: "+holder.endday.text)
         }
     }

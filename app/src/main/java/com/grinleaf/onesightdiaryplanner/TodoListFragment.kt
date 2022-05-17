@@ -4,6 +4,8 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -52,11 +54,24 @@ class TodoListFragment:Fragment() {
 //        G.isNotEmptyRecyclerItem= 0 //리사이클러뷰가 아무 뷰도 VISIBLE 상태로 만들지 못했을 때
         binding.recyclerChecklist.adapter= adapterChecklist
         binding.recyclerTodoLifecycle.adapter= adapterLifecycle
-        isNotEmptyRecyclerItem()
 
+//        if(!G.visibleCountDaily.contains(holder.dayDailyNote.text)) G.visibleCountDaily.add(holder.dayDailyNote.text.toString())
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            if(G.visibleCountDaily.contains(holder.dayOfTimeline.text.toString())||
+//                G.visibleCountCheck.contains(holder.dayOfTimeline.text.toString())||
+//                G.visibleCountLife.contains(holder.dayOfTimeline.text.toString())){
+////                    Log.i("aaa", "holder.dayOfTimeline.text : ${holder.dayOfTimeline.text}")
+////                    Log.i("aaa", "G.visibleCountDaily : ${G.visibleCountDaily}+${G.visibleCountCheck}+${G.visibleCountLife}")
+//                G.lastVisibilityDaily= HAVE_ITEM
+//            }else{
+//                G.lastVisibilityDaily= EMPTY_ITEM
+//            }
+//            when(G.lastVisibilityDaily){
+//                HAVE_ITEM-> holder.layout.visibility= View.VISIBLE
+//                EMPTY_ITEM-> holder.layout.visibility= View.GONE
+//            }
+//        }, 0) //1초 후 실행
         binding.tvAddDateChecklist.setOnClickListener { clickAddDate() }
-
-//        binding.recyclerChecklist.
 
 //        val rvItem:RecyclerView= requireActivity().findViewById(R.id.recycler_checklist)
 //        val layoutManager= LinearLayoutManager(requireContext())

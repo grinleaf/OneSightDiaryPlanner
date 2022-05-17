@@ -1,13 +1,18 @@
 package com.grinleaf.onesightdiaryplanner
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+
 
 class TimelineTotalAdapter(val context:Context, val totalItems:MutableList<String>):RecyclerView.Adapter<TimelineTotalAdapter.VH>(){
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
@@ -26,6 +31,7 @@ class TimelineTotalAdapter(val context:Context, val totalItems:MutableList<Strin
         return VH(itemView)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: VH, position: Int) {
         val totalItem = totalItems.get(position)
         holder.dayOfTimeline.text= totalItem
@@ -34,34 +40,24 @@ class TimelineTotalAdapter(val context:Context, val totalItems:MutableList<Strin
         holder.checkRecycler.adapter= checkAdapter
         holder.lifeRecycler.adapter= lifeAdapter
 
-        if(true){
-//            G.visibleCountDaily.contains(holder.dayOfTimeline.text.toString())||
-//                    G.visibleCountCheck.contains(holder.dayOfTimeline.text.toString())||
-//                    G.visibleCountLife.contains(holder.dayOfTimeline.text.toString())
-//                G.lastVisibilityDaily.add(i)
-            G.lastVisibilityDaily= HAVEITEM
-            Log.i("aaa", "G.visibleCountLife.contains(holder.dayOfTimeline.text) : ${G.visibleCountLife.contains(holder.dayOfTimeline.text)} - ${holder.dayOfTimeline.text}")
-        }else{
-//            G.lastVisibilityDaily.add(j)
-            G.lastVisibilityDaily= EMPTYITEM
-        }
-        Log.i("aaa","G.lastVisibilityDaily: ${G.lastVisibilityDaily}")
-        when(G.lastVisibilityDaily){
-            HAVEITEM-> holder.layout.visibility= View.VISIBLE
-            EMPTYITEM-> holder.layout.visibility= View.GONE
-        }
-//        dailyAdapter.notifyDataSetChanged()
-//        checkAdapter.notifyDataSetChanged()
-//        lifeAdapter.notifyDataSetChanged()
+        Handler(Looper.getMainLooper()).postDelayed({
+            if(G.visibleCountDaily.contains(holder.dayOfTimeline.text.toString())||
+                G.visibleCountCheck.contains(holder.dayOfTimeline.text.toString())||
+                G.visibleCountLife.contains(holder.dayOfTimeline.text.toString())){
+//                    Log.i("aaa", "holder.dayOfTimeline.text : ${holder.dayOfTimeline.text}")
+//                    Log.i("aaa", "G.visibleCountDaily : ${G.visibleCountDaily}+${G.visibleCountCheck}+${G.visibleCountLife}")
+                G.lastVisibilityDaily= HAVE_ITEM
+            }else{
+                G.lastVisibilityDaily= EMPTY_ITEM
+            }
+            when(G.lastVisibilityDaily){
+                HAVE_ITEM-> holder.layout.visibility= View.VISIBLE
+                EMPTY_ITEM-> holder.layout.visibility= View.GONE
+            }
+        }, 0) //1초 후 실행
     }
-    val HAVEITEM= 1
-    val EMPTYITEM= 0
-
-
-    override fun onViewRecycled(holder: VH) {
-        super.onViewRecycled(holder)
-
-    }
+    val HAVE_ITEM= 1
+    val EMPTY_ITEM= 0
 
     override fun getItemCount(): Int { return totalItems.size }
 }

@@ -38,7 +38,6 @@ class TimelineCheckAdapter(val context:Context, val checklistItems:MutableList<C
             holder.contentCheckList.text = checklistItem.detailContent
             holder.dayCheckList.text = checklistItem.day
             Glide.with(context).load(checklistItem.categoryImage).into(holder.categoryCheckList)
-            Log.i("aaa", "G.visibleCountDaily if문 add : ${G.visibleCountCheck}")
         }else holder.layout.visibility= View.GONE
 //        holder.subContentCheckList.text= timelineItem.subContentCheckList
     }

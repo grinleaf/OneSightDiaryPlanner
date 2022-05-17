@@ -97,7 +97,7 @@ class TutorialActivity : AppCompatActivity() {
                     G.categoryImages.add(fileUri)
                 }
                 Log.i("aaa","DB -> 카테고리 이미지 가져오기 성공!")
-                Log.i("aaa",G.categoryImages[0])
+                Log.i("aaa",G.categoryImages[13])
             }
 
             override fun onFailure(call: retrofit2.Call<ArrayList<CategoryImage>>, t: Throwable) {

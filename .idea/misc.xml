@@ -84,6 +84,9 @@
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/theme_daily_05.xml" value="0.25" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/layout/theme_lifecycle.xml" value="0.22" />
         <entry key="..\:/Android/Projects/OneSightDiaryPlanner/app/src/main/res/xml/setting_alert.xml" value="0.22" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/activity_category.xml" value="0.25" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/activity_date_edit.xml" value="0.1872103799814643" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/activity_intro.xml" value="0.15291936978683968" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/activity_main.xml" value="0.11030354852501069" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_bucketlist.xml" value="0.1527777777777778" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_calendar.xml" value="0.30416666666666664" />
@@ -112,6 +115,10 @@
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_timeline_life.xml" value="0.23471569046601112" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_timeline_total.xml" value="0.23471569046601112" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/theme_daily_01.xml" value="0.16018518518518518" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1055" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1055" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/mipmap-anydpi-v26/ic_test_icon01.xml" value="0.1055" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/mipmap-anydpi-v26/ic_test_icon01_round.xml" value="0.1055" />
       </map>
     </option>
   </component>

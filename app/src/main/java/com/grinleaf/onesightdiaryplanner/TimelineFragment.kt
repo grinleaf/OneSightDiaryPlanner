@@ -50,32 +50,7 @@ class TimelineFragment:Fragment() {
             }else break@loop
         }
         binding.recyclerTimelineTotal.adapter= totalAdapter
-        Log.i("aaa","G.visibleCountDaily : ${G.visibleCountDaily}")
-        Log.i("aaa","G.visibleCountCheck : ${G.visibleCountCheck}")
-        Log.i("aaa","G.visibleCountLife : ${G.visibleCountLife}")
-
-        //아래 totalAdapter 로 옮겨야 함
-//        binding.todayOfTimeline.setOnClickListener{
-//            val cal= Calendar.getInstance()
-//            val dateSetListener = DatePickerDialog.OnDateSetListener{
-//                    view, year, month, dayOfMonth -> G.dayOfTimeline = "${year}-${month+1}-${dayOfMonth}"
-//                val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(G.dayOfTimeline)
-//                G.dayOfTimeline= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(date)
-//                binding.todayOfTimeline.text = G.dayOfTimeline
-//                dailyAdapter.notifyDataSetChanged()
-//                checkAdapter.notifyDataSetChanged()
-//                lifeAdapter.notifyDataSetChanged()
-//            }
-//            DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(
-//                Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
-//        }
-//
-//        //구분선의 날짜와 동일한 날짜에 등록된 일정만 daily/check/life 순으로 보여주기 ( recycler adapter 3개 )
-//        binding.recyclerTimelineDaily.adapter= dailyAdapter
-//        binding.recyclerTimelineCheck.adapter= checkAdapter
-//        binding.recyclerTimelineLife.adapter= lifeAdapter
-
-
+        totalAdapter.notifyDataSetChanged()
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -83,9 +58,5 @@ class TimelineFragment:Fragment() {
         super.onResume()
 
         totalAdapter.notifyDataSetChanged()
-
-//        dailyAdapter.notifyDataSetChanged()
-//        checkAdapter.notifyDataSetChanged()
-//        lifeAdapter.notifyDataSetChanged()
     }
 }

@@ -29,20 +29,38 @@ class TimelineTotalAdapter(val context:Context, val totalItems:MutableList<Strin
     override fun onBindViewHolder(holder: VH, position: Int) {
         val totalItem = totalItems.get(position)
         holder.dayOfTimeline.text= totalItem
-        G.dayOfTimeline= totalItem
+        G.dayOfTimeline= totalItem  //day 바의 해당 날짜
         holder.dailyRecycler.adapter= dailyAdapter
         holder.checkRecycler.adapter= checkAdapter
         holder.lifeRecycler.adapter= lifeAdapter
+
+        if(true){
+//            G.visibleCountDaily.contains(holder.dayOfTimeline.text.toString())||
+//                    G.visibleCountCheck.contains(holder.dayOfTimeline.text.toString())||
+//                    G.visibleCountLife.contains(holder.dayOfTimeline.text.toString())
+//                G.lastVisibilityDaily.add(i)
+            G.lastVisibilityDaily= HAVEITEM
+            Log.i("aaa", "G.visibleCountLife.contains(holder.dayOfTimeline.text) : ${G.visibleCountLife.contains(holder.dayOfTimeline.text)} - ${holder.dayOfTimeline.text}")
+        }else{
+//            G.lastVisibilityDaily.add(j)
+            G.lastVisibilityDaily= EMPTYITEM
+        }
+        Log.i("aaa","G.lastVisibilityDaily: ${G.lastVisibilityDaily}")
+        when(G.lastVisibilityDaily){
+            HAVEITEM-> holder.layout.visibility= View.VISIBLE
+            EMPTYITEM-> holder.layout.visibility= View.GONE
+        }
+//        dailyAdapter.notifyDataSetChanged()
+//        checkAdapter.notifyDataSetChanged()
+//        lifeAdapter.notifyDataSetChanged()
     }
+    val HAVEITEM= 1
+    val EMPTYITEM= 0
+
 
     override fun onViewRecycled(holder: VH) {
         super.onViewRecycled(holder)
-        if(G.visibleCountDaily==0) holder.dailyRecycler.visibility= View.GONE
-        else holder.dailyRecycler.visibility= View.VISIBLE
-        if(G.visibleCountCheck==0) holder.checkRecycler.visibility= View.GONE
-        else holder.checkRecycler.visibility= View.VISIBLE
-        if(G.visibleCountLife==0) holder.lifeRecycler.visibility= View.GONE
-        else holder.lifeRecycler.visibility= View.VISIBLE
+
     }
 
     override fun getItemCount(): Int { return totalItems.size }

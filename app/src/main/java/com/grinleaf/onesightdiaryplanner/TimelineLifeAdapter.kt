@@ -1,6 +1,7 @@
 package com.grinleaf.onesightdiaryplanner
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,15 +29,16 @@ class TimelineLifeAdapter(val context:Context, val lifecycleItems:MutableList<Li
     override fun onBindViewHolder(holder: VH, position: Int) {
         val lifecycleItem = lifecycleItems.get(position)
         holder.startDayLifecycle.text= lifecycleItem.day
+        holder.layout.visibility= View.GONE
+        if(!G.visibleCountLife.contains(holder.startDayLifecycle.text)) G.visibleCountLife.add(holder.startDayLifecycle.text.toString())
         if (G.dayOfTimeline == holder.startDayLifecycle.text) {
             holder.layout.visibility= View.VISIBLE
             holder.titleLifecycle.text = lifecycleItem.content
             holder.endDayLifecycle.text = lifecycleItem.endDay
             holder.repeatCycle.text = lifecycleItem.repeatCycle
             Glide.with(context).load(lifecycleItem.categoryImage).into(holder.categoryLifecycle)
-        }else{
-            holder.layout.visibility = View.GONE
-        }
+            Log.i("aaa", "G.visibleCountDaily if문 add : ${G.visibleCountLife}")
+        }else holder.layout.visibility= View.GONE
     }
 
     override fun getItemCount(): Int { return lifecycleItems.size }

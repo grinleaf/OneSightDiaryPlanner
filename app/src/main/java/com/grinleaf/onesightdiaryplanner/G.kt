@@ -43,8 +43,11 @@ class G {
         var isNotEmptyChecklistRecyclerItem= 0
         var isNotEmptyLifecycleRecyclerItem= 0
 
-        var visibleCountDaily= 0
-        var visibleCountCheck= 0
-        var visibleCountLife= 0
+        var visibleCountDaily= mutableListOf<String>()
+        var visibleCountCheck= mutableListOf<String>()
+        var visibleCountLife= mutableListOf<String>()
+
+//        var lastVisibilityDaily= mutableListOf<Int>()
+        var lastVisibilityDaily= 0
     }
 }

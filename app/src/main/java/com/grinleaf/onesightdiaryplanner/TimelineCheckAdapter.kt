@@ -1,6 +1,7 @@
 package com.grinleaf.onesightdiaryplanner
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,15 +30,16 @@ class TimelineCheckAdapter(val context:Context, val checklistItems:MutableList<C
     override fun onBindViewHolder(holder: VH, position: Int) {
         val checklistItem = checklistItems.get(position)
         holder.dayCheckList.text= checklistItem.day
+        holder.layout.visibility= View.GONE
+        if(!G.visibleCountCheck.contains(holder.dayCheckList.text)) G.visibleCountCheck.add(holder.dayCheckList.text.toString())
         if (G.dayOfTimeline == holder.dayCheckList.text) { //상단 선택날짜와 day 값이 동일한 경우 출력
             holder.layout.visibility= View.VISIBLE
             holder.titleCheckList.text = checklistItem.content
             holder.contentCheckList.text = checklistItem.detailContent
             holder.dayCheckList.text = checklistItem.day
             Glide.with(context).load(checklistItem.categoryImage).into(holder.categoryCheckList)
-        }else{
-            holder.layout.visibility= View.GONE
-        }
+            Log.i("aaa", "G.visibleCountDaily if문 add : ${G.visibleCountCheck}")
+        }else holder.layout.visibility= View.GONE
 //        holder.subContentCheckList.text= timelineItem.subContentCheckList
     }
 

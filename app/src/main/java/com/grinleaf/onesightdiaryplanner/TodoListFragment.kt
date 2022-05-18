@@ -10,10 +10,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import androidx.annotation.RequiresApi
 import androidx.core.view.get
 import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentTodolistBinding
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -51,26 +54,19 @@ class TodoListFragment:Fragment() {
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }
 
-//        G.isNotEmptyRecyclerItem= 0 //리사이클러뷰가 아무 뷰도 VISIBLE 상태로 만들지 못했을 때
         binding.recyclerChecklist.adapter= adapterChecklist
         binding.recyclerTodoLifecycle.adapter= adapterLifecycle
 
-//        if(!G.visibleCountDaily.contains(holder.dayDailyNote.text)) G.visibleCountDaily.add(holder.dayDailyNote.text.toString())
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            if(G.visibleCountDaily.contains(holder.dayOfTimeline.text.toString())||
-//                G.visibleCountCheck.contains(holder.dayOfTimeline.text.toString())||
-//                G.visibleCountLife.contains(holder.dayOfTimeline.text.toString())){
-////                    Log.i("aaa", "holder.dayOfTimeline.text : ${holder.dayOfTimeline.text}")
-////                    Log.i("aaa", "G.visibleCountDaily : ${G.visibleCountDaily}+${G.visibleCountCheck}+${G.visibleCountLife}")
-//                G.lastVisibilityDaily= HAVE_ITEM
-//            }else{
-//                G.lastVisibilityDaily= EMPTY_ITEM
-//            }
-//            when(G.lastVisibilityDaily){
-//                HAVE_ITEM-> holder.layout.visibility= View.VISIBLE
-//                EMPTY_ITEM-> holder.layout.visibility= View.GONE
-//            }
-//        }, 0) //1초 후 실행
+        binding.recyclerChecklist.viewTreeObserver.addOnGlobalLayoutListener { object: ViewTreeObserver.OnGlobalLayoutListener{
+            override fun onGlobalLayout() {
+//                Handler(Looper.getMainLooper()).postDelayed({
+//                    isNotEmptyRecyclerItem()
+//                },0)
+                binding.recyclerChecklist.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        }}
+//        val checkLayoutmanager= LinearLayoutManager(context).onLayoutCompleted(RecyclerView.State())
+
         binding.tvAddDateChecklist.setOnClickListener { clickAddDate() }
 
 //        val rvItem:RecyclerView= requireActivity().findViewById(R.id.recycler_checklist)
@@ -81,7 +77,10 @@ class TodoListFragment:Fragment() {
 
     override fun onResume() {
         super.onResume()
-        isNotEmptyRecyclerItem()
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            isNotEmptyRecyclerItem()
+//        },100)
+
     }
 
     private fun clickAddDate(){
@@ -90,23 +89,14 @@ class TodoListFragment:Fragment() {
     }
 
     private fun isNotEmptyRecyclerItem(){
-        if(G.isNotEmptyChecklistRecyclerItem==0) {
-            binding.tvNoDate01.visibility= View.VISIBLE
-            adapterChecklist.notifyDataSetChanged()
-        }else {
-            binding.tvNoDate01.visibility= View.GONE
-            adapterChecklist.notifyDataSetChanged()
-        }
-        Log.i("aaa","G.isNotEmptyChecklistRecyclerItem: ${G.isNotEmptyChecklistRecyclerItem}")
-
-        if(G.isNotEmptyLifecycleRecyclerItem==0){
-            binding.tvNoDate02.visibility= View.VISIBLE
-            adapterLifecycle.notifyDataSetChanged()
-        }
-        else {
-            binding.tvNoDate02.visibility= View.GONE
-            adapterLifecycle.notifyDataSetChanged()
-        }
-        Log.i("aaa","G.isNotEmptyLifecycleRecyclerItem: ${G.isNotEmptyLifecycleRecyclerItem}")
+//        if(G.isNotEmptyChecklistRecyclerItem[G.isNotEmptyChecklistRecyclerItem.size-1]=="") binding.tvNoDate01.visibility= View.VISIBLE
+//        else binding.tvNoDate01.visibility= View.GONE
+//        adapterChecklist.notifyDataSetChanged()
+//        Log.i("aaa","G.isNotEmptyChecklistRecyclerItem frag if: ${G.isNotEmptyChecklistRecyclerItem}")
+//
+//        if(G.isNotEmptyLifecycleRecyclerItem==0) binding.tvNoDate02.visibility= View.VISIBLE
+//        else binding.tvNoDate02.visibility= View.GONE
+//        adapterLifecycle.notifyDataSetChanged()
+//        Log.i("aaa","G.isNotEmptyLifecycleRecyclerItem frag else: ${G.isNotEmptyLifecycleRecyclerItem}")
     }
 }

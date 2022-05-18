@@ -28,8 +28,7 @@ class TutorialActivity : AppCompatActivity() {
         loadSelectedEmo()
         loadDateData()
 
-        G.isNotEmptyChecklistRecyclerItem= 0
-        G.isNotEmptyLifecycleRecyclerItem= 0
+        reset()
 
         //샘플 튜토리얼 이미지
         imgIds.add(TutorialImage(R.drawable.tutorial_sample01))
@@ -314,5 +313,14 @@ class TutorialActivity : AppCompatActivity() {
 
             }
         })
+    }
+
+    private fun reset(){
+        G.isNotEmptyChecklistRecyclerItem.clear()
+        G.isNotEmptyLifecycleRecyclerItem.clear()
+
+        G.visibleCountDaily.clear()
+        G.visibleCountCheck.clear()
+        G.visibleCountLife.clear()
     }
 }

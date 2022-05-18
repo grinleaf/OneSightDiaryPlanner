@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.properties.Delegates
 
 class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<ChecklistItem>):RecyclerView.Adapter<TodoListMainAdapter.VH>() {
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
@@ -26,8 +27,6 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
     }
     val subItems= mutableListOf<ChecklistSubItem>()
     val adapter= TodoListSubAdapter(context, subItems)
-    val TRUECOUNT= 1
-    val FALSECOUNT= 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         var itemView:View = LayoutInflater.from(context).inflate(R.layout.recycler_checklist_maincontent, parent, false)
@@ -37,10 +36,10 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: VH, position: Int) {
         val checklistItem = checkListItems.get(position)
-        G.isNotEmptyChecklistRecyclerItem= FALSECOUNT
         holder.day.text= checklistItem.day
+        if(!G.isNotEmptyChecklistRecyclerItem.contains(holder.layout.visibility.toString())) G.isNotEmptyChecklistRecyclerItem.add(holder.layout.visibility.toString())
         if (G.dayOfTodolist == holder.day.text) {
-            G.isNotEmptyChecklistRecyclerItem= TRUECOUNT
+            Log.i("aaa","G.isNotEmptyRecyclerItem bindview if: ${G.isNotEmptyChecklistRecyclerItem}")
             holder.layout.visibility= View.VISIBLE
             holder.content.text = checklistItem.content
             Glide.with(context).load(checklistItem.categoryImage).into(holder.categoryImage)
@@ -48,7 +47,6 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
                 if(checkListItems.isNotEmpty()) {
                     deleteChecklistDate(position)
                     checkListItems.remove(checkListItems[position])
-                    Log.i("aaa","G.isNotEmptyRecyclerItem: ${G.isNotEmptyChecklistRecyclerItem}")
                 }
                 notifyDataSetChanged()
             }
@@ -69,14 +67,13 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
             }
         }else{
             holder.layout.visibility= View.GONE
-            G.isNotEmptyChecklistRecyclerItem= FALSECOUNT
-            Log.i("aaa","G.checklistmain: "+G.dayOfTodolist+"   holder.day.text: "+holder.day.text)
         }
         //if subcontent 내용이 있을 경우 recycler 의 visibility= visible 로 바꾸는 코드 영역
 //            holder.layout.visibility= View.GONE
 //            Log.i("aaa", "checklistmain bindviewholder else")
 //            holder.recycler.adapter= adapter
 //        }
+        Log.i("aaa","G.isnotemptycheck bindview : ${G.isNotEmptyChecklistRecyclerItem}")
     }
 
     override fun getItemCount(): Int { return checkListItems.size }

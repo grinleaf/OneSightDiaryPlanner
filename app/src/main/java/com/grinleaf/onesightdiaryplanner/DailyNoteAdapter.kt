@@ -58,13 +58,13 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
             holder.detailContent.text= dailyItem.detailContent
             Glide.with(context).load(dailyItem.categoryImage).into(holder.categoryImage)
             Glide.with(context).load(dailyItem.dayImage).into(holder.dayImage)
-            Log.i("aaa","dailynoteAdapter bindvh if 문")
-            Log.i("aaa","dayImage:"+dailyItem.dayImage)
+//            Log.i("aaa","dailynoteAdapter bindvh if 문")
+//            Log.i("aaa","dayImage:"+dailyItem.dayImage)
         }else{
             holder.layout.visibility= View.GONE
             holder.categoryLayout.visibility= View.GONE
-            Log.i("aaa","dailynoteAdapter bindvh else 문")
-            Log.i("aaa","G.dayOfDailyNote: "+G.dayOfDailyNote+"   holder.day.text: "+holder.day.text)
+//            Log.i("aaa","dailynoteAdapter bindvh else 문")
+//            Log.i("aaa","G.dayOfDailyNote: "+G.dayOfDailyNote+"   holder.day.text: "+holder.day.text)
         }
     }
 

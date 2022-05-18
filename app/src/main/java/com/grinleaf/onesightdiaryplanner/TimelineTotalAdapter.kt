@@ -54,7 +54,7 @@ class TimelineTotalAdapter(val context:Context, val totalItems:MutableList<Strin
                 HAVE_ITEM-> holder.layout.visibility= View.VISIBLE
                 EMPTY_ITEM-> holder.layout.visibility= View.GONE
             }
-        }, 0) //1초 후 실행
+        }, 5) //1000 = 1초 후 실행
     }
     val HAVE_ITEM= 1
     val EMPTY_ITEM= 0

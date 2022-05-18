@@ -44,7 +44,6 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
         val startDayOfLifecycle= format.parse(holder.startday.text as String)
         val endDayOfLifecycle= format.parse(holder.endday.text as String)
         if (localDayOfTodolist.after(startDayOfLifecycle)&&localDayOfTodolist.before(endDayOfLifecycle)) {
-            G.isNotEmptyLifecycleRecyclerItem++
             holder.layout.visibility= View.VISIBLE
             holder.content.text = lifecycleItem.content
             Glide.with(context).load(lifecycleItem.categoryImage).into(holder.categoryImage)
@@ -72,7 +71,7 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
             }
         }else{
             holder.layout.visibility= View.GONE
-            Log.i("aaa","G.dayOfTodolist: "+G.dayOfTodolist+"   holder.endday.text: "+holder.endday.text)
+//            Log.i("aaa","G.dayOfTodolist: "+G.dayOfTodolist+"   holder.endday.text: "+holder.endday.text)
         }
     }
 
@@ -124,6 +123,5 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
                 Log.i("aaa", "delete failed : ${t.message}")
             }
         })
-        G.isNotEmptyLifecycleRecyclerItem--
     }
 }

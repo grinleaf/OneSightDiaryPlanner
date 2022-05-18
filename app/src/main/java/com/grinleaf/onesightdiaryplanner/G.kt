@@ -40,8 +40,8 @@ class G {
         var dayOfTimelines= mutableListOf<String>() //타임라인용
         var dayOfCalendar= ""
 
-        var isNotEmptyChecklistRecyclerItem= 0
-        var isNotEmptyLifecycleRecyclerItem= 0
+        var isNotEmptyChecklistRecyclerItem= mutableListOf<String>()
+        var isNotEmptyLifecycleRecyclerItem= mutableListOf<String>()
 
         var visibleCountDaily= mutableListOf<String>()
         var visibleCountCheck= mutableListOf<String>()

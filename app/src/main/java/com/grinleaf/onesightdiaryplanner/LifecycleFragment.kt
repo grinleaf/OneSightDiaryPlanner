@@ -1,14 +1,12 @@
 package com.grinleaf.onesightdiaryplanner
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.drawable.toDrawable
+import androidx.annotation.IntDef
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentLifecycleBinding
 
@@ -19,6 +17,7 @@ class LifecycleFragment:Fragment() {
     }
     val binding by lazy { FragmentLifecycleBinding.inflate(layoutInflater) }
     val adapter by lazy { LifecycleAdapter(requireContext(), G.lifecycleItems) }
+    val indicator by lazy { binding.indicatorDate2 }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,8 +25,11 @@ class LifecycleFragment:Fragment() {
             binding.recyclerLifecycle.visibility = View.GONE
             binding.layoutCompleteCountMainLifecycle.visibility = View.GONE
         }
-
         binding.recyclerLifecycle.adapter= adapter
+        val snapHelper= PagerSnapHelper()
+        snapHelper.attachToRecyclerView(binding.recyclerLifecycle)
+        indicator.attachToRecyclerView(binding.recyclerLifecycle, snapHelper)
+
     }
 
     override fun onResume() {

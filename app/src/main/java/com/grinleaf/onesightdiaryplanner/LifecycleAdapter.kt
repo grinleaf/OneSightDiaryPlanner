@@ -28,4 +28,5 @@ class LifecycleAdapter(val context: Context, val lifecycleItems:MutableList<Life
     }
 
     override fun getItemCount(): Int { return lifecycleItems.size }
+
 }

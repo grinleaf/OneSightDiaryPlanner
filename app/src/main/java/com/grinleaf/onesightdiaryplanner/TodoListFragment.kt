@@ -43,11 +43,12 @@ class TodoListFragment:Fragment() {
         G.dayOfTodolist= now
         binding.ivDatepickerChecklist.setOnClickListener{
             val cal= Calendar.getInstance()
-            val dateSetListener = DatePickerDialog.OnDateSetListener{
-                    view, year, month, dayOfMonth -> G.dayOfTodolist = "${year}-${month+1}-${dayOfMonth}"
+            val dateSetListener = DatePickerDialog.OnDateSetListener{ view, year, month, dayOfMonth ->
+                G.dayOfTodolist = "${year}-${month+1}-${dayOfMonth}"
                 val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(G.dayOfTodolist)
                 G.dayOfTodolist= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(date)
                 binding.tvChecklistDay.text = G.dayOfTodolist
+                isNotEmptyRecyclerItem()
                 adapterChecklist.notifyDataSetChanged()
                 adapterLifecycle.notifyDataSetChanged()
             }
@@ -77,9 +78,6 @@ class TodoListFragment:Fragment() {
 
     override fun onResume() {
         super.onResume()
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            isNotEmptyRecyclerItem()
-//        },100)
 
     }
 
@@ -89,11 +87,11 @@ class TodoListFragment:Fragment() {
     }
 
     private fun isNotEmptyRecyclerItem(){
-//        if(G.isNotEmptyChecklistRecyclerItem[G.isNotEmptyChecklistRecyclerItem.size-1]=="") binding.tvNoDate01.visibility= View.VISIBLE
-//        else binding.tvNoDate01.visibility= View.GONE
-//        adapterChecklist.notifyDataSetChanged()
-//        Log.i("aaa","G.isNotEmptyChecklistRecyclerItem frag if: ${G.isNotEmptyChecklistRecyclerItem}")
-//
+        if(G.isNotEmptyChecklistRecyclerItem[G.isNotEmptyChecklistRecyclerItem.size-1]=="") binding.tvNoDate01.visibility= View.VISIBLE
+        else binding.tvNoDate01.visibility= View.GONE
+        adapterChecklist.notifyDataSetChanged()
+        Log.i("aaa","G.isNotEmptyChecklistRecyclerItem frag if: ${G.isNotEmptyChecklistRecyclerItem}")
+
 //        if(G.isNotEmptyLifecycleRecyclerItem==0) binding.tvNoDate02.visibility= View.VISIBLE
 //        else binding.tvNoDate02.visibility= View.GONE
 //        adapterLifecycle.notifyDataSetChanged()

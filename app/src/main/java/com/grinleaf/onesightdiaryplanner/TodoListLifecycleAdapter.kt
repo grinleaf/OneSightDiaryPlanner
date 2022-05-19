@@ -33,7 +33,7 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
         return VH(itemView)
     }
 
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint("SimpleDateFormat", "ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: VH, position: Int) {
         val lifecycleItem = lifecycleItems.get(position)
@@ -46,6 +46,7 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
         if (localDayOfTodolist.after(startDayOfLifecycle)&&localDayOfTodolist.before(endDayOfLifecycle)) {
             holder.layout.visibility= View.VISIBLE
             holder.content.text = lifecycleItem.content
+            holder.content.isChecked= lifecycleItem.isChecked=="true"
             Glide.with(context).load(lifecycleItem.categoryImage).into(holder.categoryImage)
             holder.deleteBtn.setOnClickListener {
                 if(lifecycleItems.isNotEmpty()) {
@@ -57,6 +58,7 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
             holder.content.setOnCheckedChangeListener { compoundButton, b ->
                 if(b) {
                     lifecycleItems.get(position).isChecked= true.toString()
+                    holder.content.setTextColor(R.color.inactivate_gray)
                     Log.i("aaa", "isChecked : ${holder.content.isChecked}")
                     Log.i("aaa", "lifecycleItems[position]: ${lifecycleItems[position]}")
                     //여기서 수정된 데이터를 DB로 업데이트하는 코드 필요함
@@ -64,6 +66,7 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
                 }
                 else if(!b) {
                     lifecycleItems.get(position).isChecked= false.toString()
+                    holder.content.setTextColor(R.color.black)
                     Log.i("aaa", "isNotChecked : ${holder.content.isChecked}")
                     Log.i("aaa", "lifecycleItems[position]: ${lifecycleItems[position]}")
                     updateCheckedState(position)

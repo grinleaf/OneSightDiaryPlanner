@@ -1,6 +1,8 @@
 package com.grinleaf.onesightdiaryplanner
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Paint
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -33,6 +35,7 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
         return VH(itemView)
     }
 
+    @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: VH, position: Int) {
         val checklistItem = checkListItems.get(position)
@@ -42,6 +45,7 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
             Log.i("aaa","G.isNotEmptyRecyclerItem bindview if: ${G.isNotEmptyChecklistRecyclerItem}")
             holder.layout.visibility= View.VISIBLE
             holder.content.text = checklistItem.content
+            holder.content.isChecked= checklistItem.isChecked=="true"
             Glide.with(context).load(checklistItem.categoryImage).into(holder.categoryImage)
             holder.deleteBtn.setOnClickListener {
                 if(checkListItems.isNotEmpty()) {
@@ -53,6 +57,8 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
             holder.content.setOnCheckedChangeListener { compoundButton, b ->
                 if(b) {
                     checkListItems.get(position).isChecked= true.toString()
+                    holder.content.setTextColor(R.color.inactivate_gray)
+//                    holder.content.text.paintFlags(holder.content.text.paintFlags|Paint.STRIKE_THRU_TEXT_FLAG)
                     Log.i("aaa", "isChecked : ${holder.content.isChecked}")
                     Log.i("aaa", "checkListItems[position]: ${checkListItems[position]}")
                     //여기서 수정된 데이터를 DB로 업데이트하는 코드 필요함
@@ -60,6 +66,7 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
                 }
                 else if(!b) {
                     checkListItems.get(position).isChecked= false.toString()
+                    holder.content.setTextColor(R.color.black)
                     Log.i("aaa", "isNotChecked : ${holder.content.isChecked}")
                     Log.i("aaa", "checkListItems[position]: ${checkListItems[position]}")
                     updateCheckedState(position)

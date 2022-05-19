@@ -6,13 +6,26 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_lifecycle"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
+        android:layout_height="200dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_lifecycle"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        <me.relex.circleindicator.CircleIndicator2
+            android:id="@+id/indicator_date2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true"
+            app:ci_drawable="@drawable/indicator_on2"
+            app:ci_drawable_unselected="@drawable/indicator_off2"
+            app:ci_height="2pt"
+            app:ci_width="2pt"/>
+    </RelativeLayout>
     <LinearLayout
         android:id="@+id/layout_complete_count_main_lifecycle"
         android:layout_width="match_parent"

@@ -22,6 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="일정내용"
+            android:textColor="@color/default_gray"
             android:textSize="16sp"
             android:paddingLeft="12dp"
             android:layout_marginLeft="16dp"

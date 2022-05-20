@@ -49,5 +49,8 @@ class G {
 
 //        var lastVisibilityDaily= mutableListOf<Int>()
         var lastVisibilityDaily= 0
+
+        var matchDateChecklistItem= mutableListOf<ChecklistItem>()
+        var matchDateLifecycleItem= mutableListOf<LifecycleItem>()
     }
 }

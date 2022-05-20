@@ -1,7 +1,9 @@
 package com.grinleaf.onesightdiaryplanner
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.IntDef
@@ -9,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentLifecycleBinding
+import kotlin.coroutines.coroutineContext
 
 
 class LifecycleFragment:Fragment() {
@@ -26,10 +29,23 @@ class LifecycleFragment:Fragment() {
             binding.layoutCompleteCountMainLifecycle.visibility = View.GONE
         }
         binding.recyclerLifecycle.adapter= adapter
+        
+        //리사이클러뷰에 페이저 효과
         val snapHelper= PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.recyclerLifecycle)
-        indicator.attachToRecyclerView(binding.recyclerLifecycle, snapHelper)
+        indicator.attachToRecyclerView(binding.recyclerLifecycle, snapHelper)   //인디케이터
 
+        binding.recyclerLifecycle.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
+            when(motionEvent.action){
+                MotionEvent.ACTION_SCROLL -> {
+                    view.requestFocus()
+//                    view.parent.
+                }
+//                MotionEvent.ACTION_OUTSIDE -> view.focusable=
+
+                else -> false
+            }
+        })
     }
 
     override fun onResume() {
@@ -42,4 +58,12 @@ class LifecycleFragment:Fragment() {
 
         adapter.notifyDataSetChanged()
     }
+    inner class DisallowInterceptTouchEventRecyclerView: RecyclerView(requireContext()) {
+
+        override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+            parent.requestDisallowInterceptTouchEvent(true)
+            return super.dispatchTouchEvent(ev)
+        }
+    }
 }
+

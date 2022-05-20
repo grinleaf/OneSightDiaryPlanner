@@ -39,42 +39,34 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
         val lifecycleItem = lifecycleItems.get(position)
         holder.startday.text= lifecycleItem.day
         holder.endday.text= lifecycleItem.endDay
-        val format= SimpleDateFormat("yyyy-MM-dd")
-        val localDayOfTodolist:Date= format.parse(G.dayOfTodolist) as Date
-        val startDayOfLifecycle= format.parse(holder.startday.text as String)
-        val endDayOfLifecycle= format.parse(holder.endday.text as String)
-        if (localDayOfTodolist.after(startDayOfLifecycle)&&localDayOfTodolist.before(endDayOfLifecycle)) {
-            holder.layout.visibility= View.VISIBLE
-            holder.content.text = lifecycleItem.content
-            holder.content.isChecked= lifecycleItem.isChecked=="true"
-            Glide.with(context).load(lifecycleItem.categoryImage).into(holder.categoryImage)
-            holder.deleteBtn.setOnClickListener {
-                if(lifecycleItems.isNotEmpty()) {
-                    deleteChecklistDate(position)
-                    lifecycleItems.remove(lifecycleItems[position])
-                }
-                notifyDataSetChanged()
+
+        holder.layout.visibility= View.VISIBLE
+        holder.content.text = lifecycleItem.content
+        holder.content.isChecked= lifecycleItem.isChecked=="true"
+        Glide.with(context).load(lifecycleItem.categoryImage).into(holder.categoryImage)
+        holder.deleteBtn.setOnClickListener {
+            if(lifecycleItems.isNotEmpty()) {
+                deleteChecklistDate(position)
+                lifecycleItems.remove(lifecycleItems[position])
             }
-            holder.content.setOnCheckedChangeListener { compoundButton, b ->
-                if(b) {
-                    lifecycleItems.get(position).isChecked= true.toString()
-                    holder.content.setTextColor(R.color.inactivate_gray)
-                    Log.i("aaa", "isChecked : ${holder.content.isChecked}")
-                    Log.i("aaa", "lifecycleItems[position]: ${lifecycleItems[position]}")
-                    //여기서 수정된 데이터를 DB로 업데이트하는 코드 필요함
-                    updateCheckedState(position)
-                }
-                else if(!b) {
-                    lifecycleItems.get(position).isChecked= false.toString()
-                    holder.content.setTextColor(R.color.black)
-                    Log.i("aaa", "isNotChecked : ${holder.content.isChecked}")
-                    Log.i("aaa", "lifecycleItems[position]: ${lifecycleItems[position]}")
-                    updateCheckedState(position)
-                }
+            notifyDataSetChanged()
+        }
+        holder.content.setOnCheckedChangeListener { compoundButton, b ->
+            if(b) {
+                lifecycleItems.get(position).isChecked= true.toString()
+                holder.content.setTextColor(R.color.inactivate_gray)
+                Log.i("aaa", "isChecked : ${holder.content.isChecked}")
+                Log.i("aaa", "lifecycleItems[position]: ${lifecycleItems[position]}")
+                //여기서 수정된 데이터를 DB로 업데이트하는 코드 필요함
+                updateCheckedState(position)
             }
-        }else{
-            holder.layout.visibility= View.GONE
-//            Log.i("aaa","G.dayOfTodolist: "+G.dayOfTodolist+"   holder.endday.text: "+holder.endday.text)
+            else if(!b) {
+                lifecycleItems.get(position).isChecked= false.toString()
+                holder.content.setTextColor(R.color.black)
+                Log.i("aaa", "isNotChecked : ${holder.content.isChecked}")
+                Log.i("aaa", "lifecycleItems[position]: ${lifecycleItems[position]}")
+                updateCheckedState(position)
+            }
         }
     }
 

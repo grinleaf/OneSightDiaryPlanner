@@ -28,7 +28,7 @@ class TodoListFragment:Fragment() {
         return binding.root
     }
     val binding by lazy { FragmentTodolistBinding.inflate(layoutInflater) }
-    val adapterChecklist by lazy { TodoListMainAdapter(requireContext(),G.checklistItems) }
+    val adapterChecklist by lazy { TodoListMainAdapter(requireContext(),G.matchDateChecklistItem) }
     val adapterLifecycle by lazy { TodoListLifecycleAdapter(requireContext(),G.lifecycleItems) }
     var subContents= mutableListOf<ChecklistSubItem>()
 
@@ -48,25 +48,19 @@ class TodoListFragment:Fragment() {
                 val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(G.dayOfTodolist)
                 G.dayOfTodolist= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(date)
                 binding.tvChecklistDay.text = G.dayOfTodolist
-                isNotEmptyRecyclerItem()
+
+                displayReset()
+
                 adapterChecklist.notifyDataSetChanged()
                 adapterLifecycle.notifyDataSetChanged()
             }
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }
 
+        displayReset()
+
         binding.recyclerChecklist.adapter= adapterChecklist
         binding.recyclerTodoLifecycle.adapter= adapterLifecycle
-
-        binding.recyclerChecklist.viewTreeObserver.addOnGlobalLayoutListener { object: ViewTreeObserver.OnGlobalLayoutListener{
-            override fun onGlobalLayout() {
-//                Handler(Looper.getMainLooper()).postDelayed({
-//                    isNotEmptyRecyclerItem()
-//                },0)
-                binding.recyclerChecklist.viewTreeObserver.removeOnGlobalLayoutListener(this)
-            }
-        }}
-//        val checkLayoutmanager= LinearLayoutManager(context).onLayoutCompleted(RecyclerView.State())
 
         binding.tvAddDateChecklist.setOnClickListener { clickAddDate() }
 
@@ -78,6 +72,7 @@ class TodoListFragment:Fragment() {
 
     override fun onResume() {
         super.onResume()
+        displayReset()
 
     }
 
@@ -86,15 +81,27 @@ class TodoListFragment:Fragment() {
         startActivity(intent)
     }
 
-    private fun isNotEmptyRecyclerItem(){
-        if(G.isNotEmptyChecklistRecyclerItem[G.isNotEmptyChecklistRecyclerItem.size-1]=="") binding.tvNoDate01.visibility= View.VISIBLE
-        else binding.tvNoDate01.visibility= View.GONE
-        adapterChecklist.notifyDataSetChanged()
-        Log.i("aaa","G.isNotEmptyChecklistRecyclerItem frag if: ${G.isNotEmptyChecklistRecyclerItem}")
-
-//        if(G.isNotEmptyLifecycleRecyclerItem==0) binding.tvNoDate02.visibility= View.VISIBLE
-//        else binding.tvNoDate02.visibility= View.GONE
-//        adapterLifecycle.notifyDataSetChanged()
-//        Log.i("aaa","G.isNotEmptyLifecycleRecyclerItem frag else: ${G.isNotEmptyLifecycleRecyclerItem}")
+    private fun displayReset(){
+        Handler(Looper.getMainLooper()).postDelayed({
+            adapterChecklist.notifyDataSetChanged()
+            G.matchDateChecklistItem.clear()
+            G.matchDateLifecycleItem.clear()
+            for(item in G.checklistItems) {
+                if (G.dayOfTodolist == item.day) G.matchDateChecklistItem.add(item)
+            }
+            val format= SimpleDateFormat("yyyy-MM-dd")
+            val localDayOfTodolist:Date= format.parse(G.dayOfTodolist) as Date
+            for(item in G.lifecycleItems) {
+                val startDayOfLifecycle= format.parse(item.day)
+                val endDayOfLifecycle= format.parse(item.endDay)
+                if (localDayOfTodolist.after(startDayOfLifecycle)&&
+                    localDayOfTodolist.before(endDayOfLifecycle)) G.matchDateLifecycleItem.add(item)
+                Log.i("aaa", "startDay: ${startDayOfLifecycle} + endday : ${endDayOfLifecycle} + localday : ${localDayOfTodolist} + G.matchitem : ${G.matchDateLifecycleItem}")
+            }
+            if(G.matchDateChecklistItem.size==0) binding.tvNoDate01.visibility= View.VISIBLE
+            else binding.tvNoDate01.visibility= View.GONE
+            if(G.matchDateLifecycleItem.size==0) binding.tvNoDate02.visibility= View.VISIBLE
+            else binding.tvNoDate02.visibility= View.GONE
+        },100)
     }
 }

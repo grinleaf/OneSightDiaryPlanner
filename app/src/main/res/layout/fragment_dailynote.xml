@@ -59,22 +59,17 @@
 
     </LinearLayout>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refresher_dailynote"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/layout_dailynote">
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_dailynote"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/refresher_dailynote"
+            android:layout_below="@id/layout_dailynote"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <ImageView
         android:id="@+id/first_add_date_dailynote"
         android:layout_width="wrap_content"

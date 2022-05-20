@@ -47,7 +47,7 @@
                 android:text="#날짜" />
 
             <TextView
-                android:id="@+id/tv_content_daily_theme1"
+                android:id="@+id/tv_title_daily_theme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="오늘 일기"

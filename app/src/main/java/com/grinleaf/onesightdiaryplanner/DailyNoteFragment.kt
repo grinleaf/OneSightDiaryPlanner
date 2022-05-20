@@ -55,10 +55,6 @@ class DailyNoteFragment:Fragment() {
 
         displayReset()
         binding.recyclerDailynote.adapter= adapter
-        binding.refresherDailynote.setOnRefreshListener {
-            binding.refresherDailynote.isRefreshing= false
-            adapter.notifyDataSetChanged()
-        }
     }
 
     override fun onResume() {
@@ -73,7 +69,7 @@ class DailyNoteFragment:Fragment() {
             for(item in G.dailyNoteItems) {
                 if (G.dayOfDailyNote == item.day) G.matchDateDailyNoteItem.add(item)
             }
-            if(G.matchDateChecklistItem.size==0) binding.firstAddDateDailynote.visibility= View.VISIBLE
+            if(G.matchDateDailyNoteItem.size==0) binding.firstAddDateDailynote.visibility= View.VISIBLE
             else binding.firstAddDateDailynote.visibility= View.GONE
         },100)
     }

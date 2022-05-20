@@ -27,10 +27,16 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
         val layout:RelativeLayout by lazy { itemView.findViewById(R.id.layout_daily_theme) }
         val categoryLayout:ImageView by lazy { itemView.findViewById(R.id.iv_category_daily_theme) }
     }
+    val TEXT_ITEM= 0
+    val IMAGE_ITEM= 1
+
+    override fun getItemViewType(position: Int): Int {
+        return if(dailyItems.get(position).dayImage=="") TEXT_ITEM else IMAGE_ITEM
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         lateinit var itemView:View
-        if(false) {  //이미지가 등록되지 않았을 때
+        if(viewType==TEXT_ITEM) {  //이미지가 등록되지 않았을 때
             val random = (0..3).random()
             when (random) {
                 0 -> { itemView = LayoutInflater.from(context).inflate(R.layout.recycler_theme_daily_01, parent, false) }

@@ -38,18 +38,14 @@ class G {
         var dayOfTodolist= ""
         var dayOfTimeline= ""   //기존
         var dayOfTimelines= mutableListOf<String>() //타임라인용
-        var dayOfCalendar= ""
-
-        var isNotEmptyChecklistRecyclerItem= mutableListOf<String>()
-        var isNotEmptyLifecycleRecyclerItem= mutableListOf<String>()
 
         var visibleCountDaily= mutableListOf<String>()
         var visibleCountCheck= mutableListOf<String>()
         var visibleCountLife= mutableListOf<String>()
 
-//        var lastVisibilityDaily= mutableListOf<Int>()
         var lastVisibilityDaily= 0
 
+        var matchDateDailyNoteItem= mutableListOf<DailyItem>()
         var matchDateChecklistItem= mutableListOf<ChecklistItem>()
         var matchDateLifecycleItem= mutableListOf<LifecycleItem>()
     }

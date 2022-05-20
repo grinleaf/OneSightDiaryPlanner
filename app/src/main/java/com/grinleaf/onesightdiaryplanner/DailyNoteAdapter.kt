@@ -51,21 +51,12 @@ class DailyNoteAdapter(val context:Context, val dailyItems:MutableList<DailyItem
     override fun onBindViewHolder(holder: VH, position: Int) {
         val dailyItem= dailyItems.get(position)
         holder.day.text= dailyItem.day
-        if (G.dayOfDailyNote == holder.day.text) { //상단 선택날짜와 day 값이 동일한 경우 출력
-            holder.layout.visibility= View.VISIBLE
-            holder.categoryLayout.visibility= View.VISIBLE
-            holder.content.text= dailyItem.content
-            holder.detailContent.text= dailyItem.detailContent
-            Glide.with(context).load(dailyItem.categoryImage).into(holder.categoryImage)
-            Glide.with(context).load(dailyItem.dayImage).into(holder.dayImage)
-//            Log.i("aaa","dailynoteAdapter bindvh if 문")
-//            Log.i("aaa","dayImage:"+dailyItem.dayImage)
-        }else{
-            holder.layout.visibility= View.GONE
-            holder.categoryLayout.visibility= View.GONE
-//            Log.i("aaa","dailynoteAdapter bindvh else 문")
-//            Log.i("aaa","G.dayOfDailyNote: "+G.dayOfDailyNote+"   holder.day.text: "+holder.day.text)
-        }
+        holder.layout.visibility= View.VISIBLE
+        holder.categoryLayout.visibility= View.VISIBLE
+        holder.content.text= dailyItem.content
+        holder.detailContent.text= dailyItem.detailContent
+        Glide.with(context).load(dailyItem.categoryImage).into(holder.categoryImage)
+        Glide.with(context).load(dailyItem.dayImage).into(holder.dayImage)
     }
 
     override fun getItemCount(): Int { return dailyItems.size }

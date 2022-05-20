@@ -59,4 +59,5 @@ class TimelineFragment:Fragment() {
 
         totalAdapter.notifyDataSetChanged()
     }
+
 }

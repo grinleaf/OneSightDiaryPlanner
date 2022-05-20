@@ -39,7 +39,6 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
         val lifecycleItem = lifecycleItems.get(position)
         holder.startday.text= lifecycleItem.day
         holder.endday.text= lifecycleItem.endDay
-
         holder.layout.visibility= View.VISIBLE
         holder.content.text = lifecycleItem.content
         holder.content.isChecked= lifecycleItem.isChecked=="true"

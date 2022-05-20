@@ -19,25 +19,36 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginBottom="8dp">
 
-                <com.google.android.material.divider.MaterialDivider
+<!--                <com.google.android.material.divider.MaterialDivider-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="2dp"-->
+<!--                    android:layout_weight="1"/>-->
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_weight="1"/>
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_line_02"/>
                 <TextView
                     android:id="@+id/today_of_timeline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="MM-dd"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:gravity="center"/>
-                <com.google.android.material.divider.MaterialDivider
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_weight="1"/>
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_line_02"/>
+<!--                <com.google.android.material.divider.MaterialDivider-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="2dp"-->
+<!--                    android:layout_weight="1"/>-->
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/layout_all_recycler_timeline"

@@ -40,7 +40,6 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
     override fun onBindViewHolder(holder: VH, position: Int) {
         val checklistItem = checkListItems.get(position)
         holder.day.text= checklistItem.day
-        Log.i("aaa","G.isNotEmptyRecyclerItem bindview if: ${G.isNotEmptyChecklistRecyclerItem}")
         holder.layout.visibility= View.VISIBLE
         holder.content.text = checklistItem.content
         holder.content.isChecked= checklistItem.isChecked=="true"
@@ -69,13 +68,6 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
                 updateCheckedState(position)
             }
         }
-
-//        G.isNotEmptyChecklistRecyclerItem.add(holder.layout.visibility.toString())
-//        if(position)
-        //position이 돌린 아이템 위치. 순차적으로 돌린다면 position-1 이 현재까지 반복한 횟수. ==G.isnot list 길이일 것!
-        //View.VISIBLE = 0 / View.GONE = 8
-        Log.i("aaa","G.isnotemptycheck bindview : ${G.isNotEmptyChecklistRecyclerItem}\n + Itemday : ${holder.day.text} + TODOday : ${G.dayOfTodolist}")
-
 
         //if subcontent 내용이 있을 경우 recycler 의 visibility= visible 로 바꾸는 코드 영역
 //            holder.layout.visibility= View.GONE

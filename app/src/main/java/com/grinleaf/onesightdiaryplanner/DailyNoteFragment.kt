@@ -8,6 +8,8 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +28,7 @@ class DailyNoteFragment:Fragment() {
         return binding.root
     }
     val binding by lazy { FragmentDailynoteBinding.inflate(layoutInflater) }
-    val adapter by lazy { DailyNoteAdapter(requireContext(),G.dailyNoteItems) }
+    val adapter by lazy { DailyNoteAdapter(requireContext(),G.matchDateDailyNoteItem) }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,11 +46,14 @@ class DailyNoteFragment:Fragment() {
                 val date:Date= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).parse(G.dayOfDailyNote)
                 G.dayOfDailyNote= SimpleDateFormat("yyyy-MM-dd", Locale("ko","KR")).format(date)
                 binding.tvDailynoteDay.text = G.dayOfDailyNote
+                displayReset()
                 adapter.notifyDataSetChanged()
             }
             DatePickerDialog(requireContext(),dateSetListener,cal.get(Calendar.YEAR),cal.get(
                 Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
         }
+
+        displayReset()
         binding.recyclerDailynote.adapter= adapter
         binding.refresherDailynote.setOnRefreshListener {
             binding.refresherDailynote.isRefreshing= false
@@ -58,18 +63,18 @@ class DailyNoteFragment:Fragment() {
 
     override fun onResume() {
         super.onResume()
-        if(G.dailyNoteItems.size==0) {
-            binding.firstAddDateDailynote.setOnClickListener {
-                val intent = Intent(requireContext(), DateEditActivity::class.java)
-                startActivity(intent)
-            }
-        }else{
-            binding.firstAddDateDailynote.visibility= View.GONE
-        }
+        displayReset()
     }
 
-    override fun onPause() {
-        super.onPause()
-
+    private fun displayReset(){
+        Handler(Looper.getMainLooper()).postDelayed({
+            adapter.notifyDataSetChanged()
+            G.matchDateDailyNoteItem.clear()
+            for(item in G.dailyNoteItems) {
+                if (G.dayOfDailyNote == item.day) G.matchDateDailyNoteItem.add(item)
+            }
+            if(G.matchDateChecklistItem.size==0) binding.firstAddDateDailynote.visibility= View.VISIBLE
+            else binding.firstAddDateDailynote.visibility= View.GONE
+        },100)
     }
 }

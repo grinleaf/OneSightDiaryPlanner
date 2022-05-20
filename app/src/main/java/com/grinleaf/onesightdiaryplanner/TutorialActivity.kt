@@ -316,9 +316,6 @@ class TutorialActivity : AppCompatActivity() {
     }
 
     private fun reset(){
-        G.isNotEmptyChecklistRecyclerItem.clear()
-        G.isNotEmptyLifecycleRecyclerItem.clear()
-
         G.visibleCountDaily.clear()
         G.visibleCountCheck.clear()
         G.visibleCountLife.clear()

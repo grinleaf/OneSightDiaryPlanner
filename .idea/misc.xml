@@ -99,7 +99,7 @@
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_dateedit_lifecycle.xml" value="0.15291936978683968" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_lifecycle.xml" value="0.15291936978683968" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_timeline.xml" value="0.18" />
-        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_todolist.xml" value="0.23471569046601112" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/fragment_todolist.xml" value="0.11030354852501069" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_checklist.xml" value="0.25" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_checklist_maincontent.xml" value="0.15291936978683968" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_checklist_subcontent.xml" value="0.16018518518518518" />
@@ -116,7 +116,7 @@
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_timeline_check.xml" value="0.23471569046601112" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_timeline_daily.xml" value="0.21" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_timeline_life.xml" value="0.23471569046601112" />
-        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_timeline_total.xml" value="0.23471569046601112" />
+        <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/recycler_timeline_total.xml" value="0.33" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/layout/theme_daily_01.xml" value="0.16018518518518518" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1055" />
         <entry key="..\:/Android/Projects/Projects/OneSightDiaryPlanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1055" />

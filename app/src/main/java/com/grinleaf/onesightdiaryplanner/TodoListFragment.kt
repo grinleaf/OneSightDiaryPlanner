@@ -29,7 +29,7 @@ class TodoListFragment:Fragment() {
     }
     val binding by lazy { FragmentTodolistBinding.inflate(layoutInflater) }
     val adapterChecklist by lazy { TodoListMainAdapter(requireContext(),G.matchDateChecklistItem) }
-    val adapterLifecycle by lazy { TodoListLifecycleAdapter(requireContext(),G.lifecycleItems) }
+    val adapterLifecycle by lazy { TodoListLifecycleAdapter(requireContext(),G.matchDateLifecycleItem) }
     var subContents= mutableListOf<ChecklistSubItem>()
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -84,6 +84,7 @@ class TodoListFragment:Fragment() {
     private fun displayReset(){
         Handler(Looper.getMainLooper()).postDelayed({
             adapterChecklist.notifyDataSetChanged()
+            adapterLifecycle.notifyDataSetChanged()
             G.matchDateChecklistItem.clear()
             G.matchDateLifecycleItem.clear()
             for(item in G.checklistItems) {
@@ -94,8 +95,7 @@ class TodoListFragment:Fragment() {
             for(item in G.lifecycleItems) {
                 val startDayOfLifecycle= format.parse(item.day)
                 val endDayOfLifecycle= format.parse(item.endDay)
-                if (localDayOfTodolist.after(startDayOfLifecycle)&&
-                    localDayOfTodolist.before(endDayOfLifecycle)) G.matchDateLifecycleItem.add(item)
+                if (localDayOfTodolist.after(startDayOfLifecycle)&&localDayOfTodolist.before(endDayOfLifecycle)) G.matchDateLifecycleItem.add(item)
                 Log.i("aaa", "startDay: ${startDayOfLifecycle} + endday : ${endDayOfLifecycle} + localday : ${localDayOfTodolist} + G.matchitem : ${G.matchDateLifecycleItem}")
             }
             if(G.matchDateChecklistItem.size==0) binding.tvNoDate01.visibility= View.VISIBLE

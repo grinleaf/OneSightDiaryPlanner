@@ -44,8 +44,6 @@ class TimelineTotalAdapter(val context:Context, val totalItems:MutableList<Strin
             if(G.visibleCountDaily.contains(holder.dayOfTimeline.text.toString())||
                 G.visibleCountCheck.contains(holder.dayOfTimeline.text.toString())||
                 G.visibleCountLife.contains(holder.dayOfTimeline.text.toString())){
-//                    Log.i("aaa", "holder.dayOfTimeline.text : ${holder.dayOfTimeline.text}")
-//                    Log.i("aaa", "G.visibleCountDaily : ${G.visibleCountDaily}+${G.visibleCountCheck}+${G.visibleCountLife}")
                 G.lastVisibilityDaily= HAVE_ITEM
             }else{
                 G.lastVisibilityDaily= EMPTY_ITEM
@@ -60,4 +58,6 @@ class TimelineTotalAdapter(val context:Context, val totalItems:MutableList<Strin
     val EMPTY_ITEM= 0
 
     override fun getItemCount(): Int { return totalItems.size }
+
+
 }

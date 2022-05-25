@@ -21,12 +21,17 @@
             android:id="@+id/checkbox_lifecycle_todolist_theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="일정내용"
-            android:textColor="@color/default_gray"
-            android:textSize="16sp"
             android:paddingLeft="12dp"
-            android:layout_marginLeft="16dp"
-            android:layout_weight="1"/>
+            android:layout_marginLeft="16dp" />
+        <TextView
+            android:id="@+id/content_lifecycle_todolist_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:textColor="@color/default_gray"
+            android:text="일정내용"/>
 
         <TextView
             android:id="@+id/tv_start_day_lifecycle_todolist_theme"

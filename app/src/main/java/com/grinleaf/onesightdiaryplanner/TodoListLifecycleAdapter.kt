@@ -2,6 +2,7 @@ package com.grinleaf.onesightdiaryplanner
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Paint
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,7 +21,8 @@ import java.util.*
 
 class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableList<LifecycleItem>):RecyclerView.Adapter<TodoListLifecycleAdapter.VH>() {
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
-        val content:CheckBox by lazy { itemView.findViewById(R.id.checkbox_lifecycle_todolist_theme) }
+        val checkBox:CheckBox by lazy { itemView.findViewById(R.id.checkbox_lifecycle_todolist_theme) }
+        val content:TextView by lazy { itemView.findViewById(R.id.content_lifecycle_todolist_theme) }
         val startday:TextView by lazy { itemView.findViewById(R.id.tv_start_day_lifecycle_todolist_theme)}
         val endday:TextView by lazy { itemView.findViewById(R.id.tv_end_day_lifecycle_todolist_theme)}
         val categoryImage:ImageView by lazy { itemView.findViewById(R.id.iv_category_lifecycle_theme) }
@@ -41,7 +43,8 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
         holder.endday.text= lifecycleItem.endDay
         holder.layout.visibility= View.VISIBLE
         holder.content.text = lifecycleItem.content
-        holder.content.isChecked= lifecycleItem.isChecked=="true"
+        holder.checkBox.isChecked= lifecycleItem.isChecked=="true"
+        if(lifecycleItem.isChecked=="true") holder.content.paintFlags= Paint.STRIKE_THRU_TEXT_FLAG
         Glide.with(context).load(lifecycleItem.categoryImage).into(holder.categoryImage)
         holder.deleteBtn.setOnClickListener {
             if(lifecycleItems.isNotEmpty()) {
@@ -50,11 +53,12 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
             }
             notifyDataSetChanged()
         }
-        holder.content.setOnCheckedChangeListener { compoundButton, b ->
+        holder.checkBox.setOnCheckedChangeListener { compoundButton, b ->
             if(b) {
                 lifecycleItems.get(position).isChecked= true.toString()
                 holder.content.setTextColor(R.color.inactivate_gray)
-                Log.i("aaa", "isChecked : ${holder.content.isChecked}")
+                holder.content.paintFlags= Paint.STRIKE_THRU_TEXT_FLAG
+                Log.i("aaa", "isChecked : ${holder.checkBox.isChecked}")
                 Log.i("aaa", "lifecycleItems[position]: ${lifecycleItems[position]}")
                 //여기서 수정된 데이터를 DB로 업데이트하는 코드 필요함
                 updateCheckedState(position)
@@ -62,7 +66,7 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
             else if(!b) {
                 lifecycleItems.get(position).isChecked= false.toString()
                 holder.content.setTextColor(R.color.black)
-                Log.i("aaa", "isNotChecked : ${holder.content.isChecked}")
+                Log.i("aaa", "isChecked : ${holder.checkBox.isChecked}")
                 Log.i("aaa", "lifecycleItems[position]: ${lifecycleItems[position]}")
                 updateCheckedState(position)
             }

@@ -20,7 +20,8 @@ import kotlin.properties.Delegates
 
 class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<ChecklistItem>):RecyclerView.Adapter<TodoListMainAdapter.VH>() {
     inner class VH(itemView: View):RecyclerView.ViewHolder(itemView){
-        val content:CheckBox by lazy { itemView.findViewById(R.id.checkbox_maincontent_checklist_theme) }
+        val checkBox:CheckBox by lazy { itemView.findViewById(R.id.checkbox_maincontent_checklist_theme) }
+        val content:TextView by lazy { itemView.findViewById(R.id.content_maincontent_checklist_theme) }
         val day:TextView by lazy { itemView.findViewById(R.id.tv_day_checklist_theme)}
         val categoryImage:ImageView by lazy { itemView.findViewById(R.id.iv_category_checklist_theme) }
         val deleteBtn:ImageView by lazy { itemView.findViewById(R.id.iv_delete_icon_maincontent_checklist_theme) }
@@ -42,7 +43,9 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
         holder.day.text= checklistItem.day
         holder.layout.visibility= View.VISIBLE
         holder.content.text = checklistItem.content
-        holder.content.isChecked= checklistItem.isChecked=="true"
+        holder.checkBox.isChecked= checklistItem.isChecked=="true"
+        if(checklistItem.isChecked=="true") holder.content.paintFlags= Paint.STRIKE_THRU_TEXT_FLAG
+        else holder.content.paintFlags= 0
         Glide.with(context).load(checklistItem.categoryImage).into(holder.categoryImage)
         holder.deleteBtn.setOnClickListener {
             if(checkListItems.isNotEmpty()) {
@@ -51,11 +54,12 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
             }
             notifyDataSetChanged()
         }
-        holder.content.setOnCheckedChangeListener { compoundButton, b ->
+        holder.checkBox.setOnCheckedChangeListener { compoundButton, b ->
             if(b) {
                 checkListItems.get(position).isChecked= true.toString()
                 holder.content.setTextColor(R.color.inactivate_gray)
-                Log.i("aaa", "isChecked : ${holder.content.isChecked}")
+                holder.content.paintFlags= Paint.STRIKE_THRU_TEXT_FLAG
+                Log.i("aaa", "isChecked : ${holder.checkBox.isChecked}")
                 Log.i("aaa", "checkListItems[position]: ${checkListItems[position]}")
                 //여기서 수정된 데이터를 DB로 업데이트하는 코드 필요함
                 updateCheckedState(position)
@@ -63,7 +67,8 @@ class TodoListMainAdapter(val context:Context, val checkListItems:MutableList<Ch
             else if(!b) {
                 checkListItems.get(position).isChecked= false.toString()
                 holder.content.setTextColor(R.color.black)
-                Log.i("aaa", "isNotChecked : ${holder.content.isChecked}")
+                holder.content.paintFlags= 0
+                Log.i("aaa", "isChecked : ${holder.checkBox.isChecked}")
                 Log.i("aaa", "checkListItems[position]: ${checkListItems[position]}")
                 updateCheckedState(position)
             }

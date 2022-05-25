@@ -42,9 +42,7 @@ class MypageFragment:Fragment() {
         mypageGridItems.add(MypageGridItem(R.drawable.ic_alert_grid,"알림 설정"))
         mypageGridItems.add(MypageGridItem(R.drawable.ic_theme_grid,"테마 설정"))
         mypageGridItems.add(MypageGridItem(R.drawable.ic_award_leaf_star,"업적 현황"))
-        mypageGridItems.add(MypageGridItem(R.drawable.ic_alert_grid,"알림 설정"))
-        mypageGridItems.add(MypageGridItem(R.drawable.ic_theme_grid,"테마 설정"))
-        mypageGridItems.add(MypageGridItem(R.drawable.ic_award_leaf_star,"업적 현황"))
+
 
         binding.recyclerMypage.adapter= adapter
         binding.recyclerMypage.layoutManager = GridLayoutManager(context,3)

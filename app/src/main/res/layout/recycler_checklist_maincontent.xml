@@ -21,19 +21,23 @@
             android:id="@+id/checkbox_maincontent_checklist_theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="일정내용"
-            android:textColor="@color/default_gray"
-            android:textSize="16sp"
             android:paddingLeft="12dp"
-            android:layout_marginLeft="16dp"
-            android:layout_weight="1"/>
+            android:layout_marginLeft="16dp"/>
+        <TextView
+            android:id="@+id/content_maincontent_checklist_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:textColor="@color/default_gray"
+            android:text="일정내용"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_category_checklist_theme"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/tutorial_sample01"
-            android:layout_marginRight="12dp"
             android:layout_marginVertical="4dp"/>
 
         <de.hdodenhof.circleimageview.CircleImageView

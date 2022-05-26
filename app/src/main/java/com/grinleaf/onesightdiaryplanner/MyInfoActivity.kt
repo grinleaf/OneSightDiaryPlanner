@@ -17,7 +17,6 @@ import com.grinleaf.onesightdiaryplanner.databinding.ActivityMyInfoBinding
 class MyInfoActivity : AppCompatActivity() {
     val binding by lazy { ActivityMyInfoBinding.inflate(layoutInflater) }
     lateinit var firebaseAuth: FirebaseAuth
-    lateinit var firebaseFirestore: FirebaseFirestore
     lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,10 +35,6 @@ class MyInfoActivity : AppCompatActivity() {
         }
 
         binding.btnLogoutMyinfo.setOnClickListener { clickLogout() }
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
     }
 
     fun clickLogout(){
@@ -61,6 +56,7 @@ class MyInfoActivity : AppCompatActivity() {
         firebaseAuth= FirebaseAuth.getInstance()
         firebaseAuth.signOut()
         val intent= Intent(this@MyInfoActivity, TutorialActivity::class.java)
+        finishAffinity()
         startActivity(intent)
         finish()
     }

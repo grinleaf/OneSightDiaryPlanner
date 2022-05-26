@@ -2,4 +2,6 @@
     <string name="app_name">첫눈</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="server_client_id">893247241219-3dki19ccp30i8roubfqoid9b8pf0b7l9.apps.googleusercontent.com</string>
+    <string name="signup_exception_already">com.google.firebase.auth.FirebaseAuthUserCollisionException: The email address is already in use by another account.</string>
+    <string name="signup_exception_bad_format">com.google.firebase.auth.FirebaseAuthInvalidCredentialsException: The email address is badly formatted.</string>
 </resources>

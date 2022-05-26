@@ -8,22 +8,22 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/et_login_id"
+        android:id="@+id/et_login_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="16"
-        android:hint="ID"
-        android:inputType="text"
-        android:maxLines="1"
-        android:maxEms="12"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"/>
+        android:layout_marginTop="80dp"
+        android:ems="16"
+        android:hint="Email"
+        android:inputType="text"
+        android:maxEms="12"
+        android:maxLines="1" />
 
     <EditText
         android:id="@+id/et_login_pw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/et_login_id"
+        android:layout_below="@id/et_login_email"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp"
         android:ems="16"
@@ -39,8 +39,8 @@
         android:id="@+id/btn_login_signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/et_login_id"
-        android:layout_alignRight="@id/et_login_id"
+        android:layout_alignLeft="@id/et_login_email"
+        android:layout_alignRight="@id/et_login_email"
         android:layout_below="@id/et_login_pw"
         android:text="로그인"/>
 

@@ -60,45 +60,41 @@ class LoginActivity : AppCompatActivity() {
                 G.userEmail = account.email.toString()
                 G.userId = account.id!!
                 G.userPassword = ""  //구글 로그인은 패스워드 지원 x
-                if (G.userNickname == "") {
-                    val userNicknameEdit = EditText(this)
-                    val userInfo = HashMap<String, Any>()
-
-
-                    AlertDialog.Builder(this@LoginActivity)
-                        .setTitle("사용하실 닉네임을 입력해주세요.\n\n")
-                        .setView(userNicknameEdit)
-                        .setPositiveButton(
-                            "완료",
-                            DialogInterface.OnClickListener { dialogInterface, i ->
-                                G.userNickname = userNicknameEdit.text.toString()
-                                userInfo.put("userId", G.userId)
-                                userInfo.put("userPw", G.userPassword)
-                                userInfo.put("userNickname", G.userNickname)
-                                userInfo.put("userEmail", G.userEmail)
-                                G.isLogin = true
-                                val firestore = FirebaseFirestore.getInstance()
-                                firestore.collection("user").document(G.userEmail).set(userInfo)
-
-                                val pref = getSharedPreferences("user", MODE_PRIVATE)
-                                var editor = pref.edit()
-                                editor.putString("userId", G.userId)
-                                editor.putString("userEmail", G.userEmail)
-                                editor.putString("userNickname", G.userNickname)
-                                editor.putString("userPw", G.userPassword)
-                                editor.commit()
-
-                                val intent =
-                                    Intent(this@LoginActivity, TutorialActivity::class.java)
-                                startActivity(intent)
-                                finish()
-                                Toast.makeText(
-                                    this,
-                                    "${G.userNickname} 님, 환영합니다.",
-                                    Toast.LENGTH_SHORT
-                                )
-                                    .show()
-                            }).show()
+                //Firestore 에서 검색하여 해당 userEmail 을 가져오기(G 클래스에 저장)
+                firebaseFirestore= FirebaseFirestore.getInstance()
+                val userRef= firebaseFirestore.collection("user")
+                val task= userRef.get()
+                task.addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        lateinit var userEmail: String
+                        lateinit var userPw: String
+                        lateinit var userNickname: String
+                        val userInfo= HashMap<String, Any>()
+                        val snapshots = it.result
+                        for (snapshot in snapshots) {
+                            val user = snapshot.data
+                            userEmail = user.get("userEmail").toString()
+                            userPw = user.get("userPw").toString()
+                            userNickname = user.get("userNickname").toString()
+                            if(G.userEmail==userEmail&&G.userPassword==userPw){
+                                if(userNickname==""){
+                                    val userNicknameEdit = EditText(this)
+                                    AlertDialog.Builder(this@LoginActivity)
+                                        .setTitle("사용하실 닉네임을 입력해주세요.\n\n")
+                                        .setView(userNicknameEdit)
+                                        .setPositiveButton(
+                                            "완료",
+                                            DialogInterface.OnClickListener { dialogInterface, i ->
+                                                G.userNickname = userNicknameEdit.text.toString()
+                                                userNicknameCheck(userInfo)
+                                            }).show()
+                                }else{
+                                    G.userNickname= userNickname
+                                    userNicknameCheck(userInfo)
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -114,6 +110,35 @@ class LoginActivity : AppCompatActivity() {
         binding.btnLoginNaver.setOnClickListener { clickNaverLogin() }
         binding.btnLoginGoogle.setOnClickListener { clickGoogleLogin() }
         binding.btnLoginKakao.setOnClickListener { clickKakaoLogin() }
+    }
+
+    fun userNicknameCheck(userInfo:HashMap<String, Any>){
+        userInfo.put("userId", G.userId)
+        userInfo.put("userPw", G.userPassword)
+        userInfo.put("userNickname", G.userNickname)
+        userInfo.put("userEmail", G.userEmail)
+        G.isLogin = true
+        val firestore = FirebaseFirestore.getInstance()
+        firestore.collection("user").document(G.userEmail).set(userInfo)
+
+        val pref = getSharedPreferences("user", MODE_PRIVATE)
+        var editor = pref.edit()
+        editor.putString("userId", G.userId)
+        editor.putString("userEmail", G.userEmail)
+        editor.putString("userNickname", G.userNickname)
+        editor.putString("userPw", G.userPassword)
+        editor.commit()
+
+        val intent =
+            Intent(this@LoginActivity, TutorialActivity::class.java)
+        startActivity(intent)
+        finish()
+        Toast.makeText(
+            this,
+            "${G.userNickname} 님, 환영합니다.",
+            Toast.LENGTH_SHORT
+        )
+            .show()
     }
 
     fun clickLogin(){

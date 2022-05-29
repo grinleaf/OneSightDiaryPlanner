@@ -25,6 +25,7 @@ class MyInfoActivity : AppCompatActivity() {
         resultLauncher= registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             if(it.resultCode!= RESULT_CANCELED){
                 val uri= it.data?.data
+                G.userProfileImage= uri.toString()
                 Glide.with(baseContext).load(uri).into(binding.ivUserprofileMyinfo)
             }
         }
@@ -42,7 +43,9 @@ class MyInfoActivity : AppCompatActivity() {
         G.userId= ""
         G.userEmail= ""
         G.userNickname= ""
+        G.userProfileImage= ""
         G.userPassword= ""
+
 
         val pref: SharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
         val editor= pref.edit()

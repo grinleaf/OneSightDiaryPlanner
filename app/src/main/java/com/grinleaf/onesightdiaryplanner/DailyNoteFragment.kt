@@ -55,6 +55,11 @@ class DailyNoteFragment:Fragment() {
 
         displayReset()
         binding.recyclerDailynote.adapter= adapter
+
+        binding.firstAddDateDailynote.setOnClickListener {
+            val intent= Intent(requireContext(), DateEditActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {

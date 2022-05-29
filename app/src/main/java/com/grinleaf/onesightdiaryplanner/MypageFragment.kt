@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.core.view.LayoutInflaterCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentMypageBinding
 import com.grinleaf.onesightdiaryplanner.databinding.FragmentTimelineBinding
 
@@ -31,6 +32,7 @@ class MypageFragment:Fragment() {
 
         binding.tvUseridUserinfoMypage.text= G.userNickname
         binding.tvUseremailUserinfoMypage.text= G.userEmail
+        if(G.userProfileImage!="") Glide.with(requireContext()).load(G.userProfileImage).into(binding.ivUserprofileUserinfoMypage)
         binding.layoutUserinfoMypage.setOnClickListener {
             val intent= Intent(requireContext(),MyInfoActivity::class.java)
             startActivity(intent)
@@ -78,5 +80,9 @@ class MypageFragment:Fragment() {
             .create().show()
     }
 
+    override fun onResume() {
+        super.onResume()
+        if(G.userProfileImage!="") Glide.with(requireContext()).load(G.userProfileImage).into(binding.ivUserprofileUserinfoMypage)
+    }
 
 }

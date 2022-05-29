@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -50,13 +52,11 @@ class TimelineFragment:Fragment() {
             }else break@loop
         }
         binding.recyclerTimelineTotal.adapter= totalAdapter
-        totalAdapter.notifyDataSetChanged()
     }
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
-
         totalAdapter.notifyDataSetChanged()
     }
 

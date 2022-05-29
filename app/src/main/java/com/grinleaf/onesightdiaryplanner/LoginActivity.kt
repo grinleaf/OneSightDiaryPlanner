@@ -54,50 +54,58 @@ class LoginActivity : AppCompatActivity() {
         resultLauncherGoogle= registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             val intent = it.data
             val task = GoogleSignIn.getSignedInAccountFromIntent(intent)
-            val account = task.result
-            Log.i("aaa","account.email : ${account.email}")
-            G.userEmail = account.email.toString()
-            G.userId = account.id!!
-            G.userPassword = ""  //구글 로그인은 패스워드 지원 x
-            if(G.userNickname=="") {
-                val userNicknameEdit = EditText(this)
-                val userInfo = HashMap<String, Any>()
-                AlertDialog.Builder(this@LoginActivity)
-                    .setTitle("사용하실 닉네임을 입력해주세요.\n\n")
-                    .setView(userNicknameEdit)
-                    .setPositiveButton("완료", DialogInterface.OnClickListener { dialogInterface, i ->
-                        G.userNickname = userNicknameEdit.text.toString()
-                        userInfo.put("userId", G.userId)
-                        userInfo.put("userPw", G.userPassword)
-                        userInfo.put("userNickname", G.userNickname)
-                        userInfo.put("userEmail", G.userEmail)
-                        G.isLogin = true
-                        val firestore = FirebaseFirestore.getInstance()
-                        firestore.collection("user").document(G.userEmail).set(userInfo)
+            if(task.isSuccessful) {
+                val account = task.result
+                Log.i("aaa", "account.email : ${account.email}")
+                G.userEmail = account.email.toString()
+                G.userId = account.id!!
+                G.userPassword = ""  //구글 로그인은 패스워드 지원 x
+                if (G.userNickname == "") {
+                    val userNicknameEdit = EditText(this)
+                    val userInfo = HashMap<String, Any>()
 
-                        val pref = getSharedPreferences("user", MODE_PRIVATE)
-                        var editor = pref.edit()
-                        editor.putString("userId", G.userId)
-                        editor.putString("userEmail", G.userEmail)
-                        editor.putString("userNickname", G.userNickname)
-                        editor.putString("userPw", G.userPassword)
-                        editor.commit()
 
-                        val intent = Intent(this@LoginActivity, TutorialActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                        Toast.makeText(this, "${G.userNickname} 님, 환영합니다.", Toast.LENGTH_SHORT)
-                            .show()
-                    }).show()
+                    AlertDialog.Builder(this@LoginActivity)
+                        .setTitle("사용하실 닉네임을 입력해주세요.\n\n")
+                        .setView(userNicknameEdit)
+                        .setPositiveButton(
+                            "완료",
+                            DialogInterface.OnClickListener { dialogInterface, i ->
+                                G.userNickname = userNicknameEdit.text.toString()
+                                userInfo.put("userId", G.userId)
+                                userInfo.put("userPw", G.userPassword)
+                                userInfo.put("userNickname", G.userNickname)
+                                userInfo.put("userEmail", G.userEmail)
+                                G.isLogin = true
+                                val firestore = FirebaseFirestore.getInstance()
+                                firestore.collection("user").document(G.userEmail).set(userInfo)
+
+                                val pref = getSharedPreferences("user", MODE_PRIVATE)
+                                var editor = pref.edit()
+                                editor.putString("userId", G.userId)
+                                editor.putString("userEmail", G.userEmail)
+                                editor.putString("userNickname", G.userNickname)
+                                editor.putString("userPw", G.userPassword)
+                                editor.commit()
+
+                                val intent =
+                                    Intent(this@LoginActivity, TutorialActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                                Toast.makeText(
+                                    this,
+                                    "${G.userNickname} 님, 환영합니다.",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                            }).show()
+                }
             }
         }
 
         //로그인 버튼
         binding.btnLoginSignin.setOnClickListener { clickLogin() }
-        binding.btnLoginDebug.setOnClickListener {
-            val intent= Intent(this@LoginActivity,MainActivity::class.java)
-            startActivity(intent)
-        }
+
         //앱이 처음이신가요? Text 클릭 시 회원가입 화면 전환
         binding.tvLoginToSignup.setOnClickListener{
             val intent= Intent(this@LoginActivity,SignUpActivity::class.java)
@@ -123,11 +131,11 @@ class LoginActivity : AppCompatActivity() {
                 lateinit var userPw:String
                 lateinit var userNickname:String
                 val snapshots= it.result
-                for(snapshot in snapshots){
-                    val user= snapshot.data
-                    userEmail= user.get("userEmail").toString()
-                    userPw= user.get("userPw").toString()
-                    userNickname= user.get("userNickname").toString()
+                for(snapshot in snapshots) {
+                    val user = snapshot.data
+                    userEmail = user.get("userEmail").toString()
+                    userPw = user.get("userPw").toString()
+                    userNickname = user.get("userNickname").toString()
                     if(userEmail.equals(inputEmail)&&userPw.equals(inputPw)) {
                         //DB에서 userEmail 을 파라미터로 넣어 Auth 에서 검증
                         firebaseAuth.signInWithEmailAndPassword(userEmail,inputPw)

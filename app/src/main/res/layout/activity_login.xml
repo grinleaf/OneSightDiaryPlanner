@@ -69,15 +69,6 @@
 <!--        android:layout_below="@id/tv_login_to_signup"-->
 <!--        android:layout_marginTop="24dp"/>-->
 
-    <!-- debug -->
-    <Button
-        android:id="@+id/btn_login_debug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="로그인 넘기기"
-        android:layout_above="@id/btn_login_naver"
-        android:layout_alignParentRight="true"/>
-
     <Button
         android:id="@+id/btn_login_naver"
         android:layout_width="match_parent"

@@ -26,8 +26,6 @@ class TutorialActivity : AppCompatActivity() {
         loadCategoryImage()
         loadEmoImage()
 
-        reset()
-
         //샘플 튜토리얼 이미지
         imgIds.add(TutorialImage(R.drawable.tutorial_sample01))
         imgIds.add(TutorialImage(R.drawable.tutorial_sample02))
@@ -105,9 +103,5 @@ class TutorialActivity : AppCompatActivity() {
 
 
 
-    private fun reset(){
-        G.visibleCountDaily.clear()
-        G.visibleCountCheck.clear()
-        G.visibleCountLife.clear()
-    }
+
 }

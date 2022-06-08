@@ -161,13 +161,13 @@ class LoginActivity : AppCompatActivity() {
                     userEmail = user.get("userEmail").toString()
                     userPw = user.get("userPw").toString()
                     userNickname = user.get("userNickname").toString()
-                    if(userEmail.equals(inputEmail)&&userPw.equals(inputPw)) {
+                    if(userEmail == inputEmail && userPw == inputPw) {
                         //DB에서 userEmail 을 파라미터로 넣어 Auth 에서 검증
-                        firebaseAuth.signInWithEmailAndPassword(userEmail,inputPw)
+                        firebaseAuth.signInWithEmailAndPassword(inputEmail,inputPw)
                             .addOnCompleteListener(this){
                                     task-> if(task.isSuccessful){
-                                G.userEmail= userEmail
-                                G.userPassword= userPw
+                                G.userEmail= inputEmail
+                                G.userPassword= inputPw
                                 G.userNickname= userNickname
                                 G.isLogin= true
 
@@ -187,6 +187,7 @@ class LoginActivity : AppCompatActivity() {
                                 Toast.makeText(this, "로그인 에러", Toast.LENGTH_SHORT).show()
                             }
                             }
+                        return@addOnCompleteListener
                     }else{
                         AlertDialog.Builder(this)
                             .setTitle("이메일과 비밀번호를 다시 확인해주세요")

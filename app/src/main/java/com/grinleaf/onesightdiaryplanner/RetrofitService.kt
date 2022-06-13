@@ -81,11 +81,11 @@ interface RetrofitService {
         @Query("emo") emo:String
     ):Call<String>
 
-    //디바이스토큰값 업로드
-    @GET("OneSightDiaryPlanner/userDeviceTokenUpload.php")
-    fun userDeviceTokenUpload(
-        @Query("token") token:String
-    ): Call<String>
+//    //디바이스토큰값 업로드
+//    @GET("OneSightDiaryPlanner/userDeviceTokenUpload.php")
+//    fun userDeviceTokenUpload(
+//        @Query("token") token:String
+//    ): Call<String>
 
     //카테고리 이미지 다운로드(default)
     @GET("OneSightDiaryPlanner/loadCategory.php")

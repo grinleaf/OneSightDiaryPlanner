@@ -1,49 +1,33 @@
 {
   "project_info": {
-    "project_number": "893247241219",
-    "project_id": "onesightdiaryplannergrinleaf",
-    "storage_bucket": "onesightdiaryplannergrinleaf.appspot.com"
+    "project_number": "1027703890605",
+    "project_id": "asdfwefasdbxcc",
+    "storage_bucket": "asdfwefasdbxcc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:893247241219:android:bae2670e661308efd8a236",
+        "mobilesdk_app_id": "1:1027703890605:android:2d13f23d97b1bce62a1c24",
         "android_client_info": {
           "package_name": "com.grinleaf.onesightdiaryplanner"
         }
       },
       "oauth_client": [
         {
-          "client_id": "893247241219-167srqrndabf595kkb4b9ic4ts2rjkan.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.grinleaf.onesightdiaryplanner",
-            "certificate_hash": "0d5c49510f5c6346cd93495d457a8b3d5c5a8d3c"
-          }
-        },
-        {
-          "client_id": "893247241219-i3fgpg74u1avlagujo75233np373gj1v.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.grinleaf.onesightdiaryplanner",
-            "certificate_hash": "c77592b967cc7874754b1e0c261cdd08e9d18534"
-          }
-        },
-        {
-          "client_id": "893247241219-3dki19ccp30i8roubfqoid9b8pf0b7l9.apps.googleusercontent.com",
+          "client_id": "1027703890605-tcce3qnafi0l1valulfqdd74d81uov9c.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAqULIbK5l9AhkVuzX4D4dZLW5Jr8c7obo"
+          "current_key": "AIzaSyBkXN6Cg-J30w_h_cQdE-iCQGaeHt7_6XQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "893247241219-3dki19ccp30i8roubfqoid9b8pf0b7l9.apps.googleusercontent.com",
+              "client_id": "1027703890605-tcce3qnafi0l1valulfqdd74d81uov9c.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

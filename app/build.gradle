@@ -11,7 +11,7 @@ android {
         applicationId "com.grinleaf.onesightdiaryplanner"
         minSdk 23
         targetSdk 32
-        versionCode 8
+        versionCode 9
         versionName "1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

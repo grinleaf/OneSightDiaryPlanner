@@ -26,14 +26,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        //1. 외부저장소 사용에 대한 동적퍼미션 + 퍼미션을 허가받은 상태인지 여부 확인(받지 않았을 경우 다이얼로그를 띄우는 requestPermissions();
+        val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (checkSelfPermission(permissions[0]) == PackageManager.PERMISSION_DENIED) requestPermissions(permissions,0)
+
         //계정별 데이터 로드
         loadDateData()
         loadSelectedEmo()
         reset()
-
-        //1. 외부저장소 사용에 대한 동적퍼미션 + 퍼미션을 허가받은 상태인지 여부 확인(받지 않았을 경우 다이얼로그를 띄우는 requestPermissions();
-        val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        if (checkSelfPermission(permissions[0]) == PackageManager.PERMISSION_DENIED) requestPermissions(permissions,0)
 
         fragments.add(TimelineFragment())
         fragments.add(DateFragment())

@@ -256,7 +256,7 @@ class MainActivity : AppCompatActivity() {
     private fun lifecycleCallback(){
         lateinit var noLifecycle:String
         lateinit var emailLifecycle:String
-        var titleLifecycle:String
+        lateinit var titleLifecycle:String
         lateinit var startDayLifecycle:String
         lateinit var endDayLifecycle:String
         lateinit var repeatCycle:String

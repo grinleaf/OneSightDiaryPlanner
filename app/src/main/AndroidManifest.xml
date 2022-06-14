@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_onesight_diary_planner_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OneSightDiaryPlanner"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true">
         <activity
             android:name=".DialogEmoActivity"
             android:exported="false"

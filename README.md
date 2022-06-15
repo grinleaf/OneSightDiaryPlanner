@@ -4,10 +4,10 @@
 * <strong>앱 배포 마켓 주소 : http://kkpk.dothome.co.kr/KuKuKuPuTeamProject/ </strong>
 
 ## 🛠 <strong>주요 구현기술</strong>
-1. 동적 퍼미션 허가 요청 작업
-2. 네트워크 작업 – Retrofit2 라이브러리 활용, 백엔드 구현 및 DB 연동
-3. 중첩 RecyclerView, ActionBar, BottomNavigationView, FloatingButton 등을 활용한 레이아웃 구성
-4. Firebase Storage, Firestore 를 이용한 사용자 계정 관리
+* 동적 퍼미션 허가 요청 작업
+* 네트워크 작업 – Retrofit2 라이브러리 활용, 백엔드 구현 및 DB 연동
+* 중첩 RecyclerView, ActionBar, BottomNavigationView, FloatingButton 등을 활용한 레이아웃 구성
+* Firebase Storage, Firestore 를 이용한 사용자 계정 관리
 
 ## 📌 사용된 라이브러리
 * 원형 이미지뷰 라이브러리 : CircleImageView(hdodenhof)

@@ -1,4 +1,4 @@
-# [ 첫눈 OneSightDiaryPlanner (Android Native App) ] 📅
+# 📅 [ 첫눈 OneSightDiaryPlanner (Android Native App) ] 
 ### 🎯 안드로이드 네이티브 앱 1인 제작 프로젝트<br>
 * 일상 기록용 다이어리와 기간별 일정 플래너를 한 눈에 볼 수 있도록 통합하여 만든 일정 관리 앱 제작
 * <strong>앱 배포 마켓 주소 : http://kkpk.dothome.co.kr/KuKuKuPuTeamProject/ </strong>

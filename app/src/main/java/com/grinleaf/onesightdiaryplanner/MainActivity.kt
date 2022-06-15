@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        //1. 외부저장소 사용에 대한 동적퍼미션 + 퍼미션을 허가받은 상태인지 여부 확인(받지 않았을 경우 다이얼로그를 띄우는 requestPermissions();
+        //외부저장소 사용에 대한 동적퍼미션 + 퍼미션을 허가받은 상태인지 여부 확인(받지 않았을 경우 다이얼로그를 띄우는 requestPermissions();
         val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         if (checkSelfPermission(permissions[0]) == PackageManager.PERMISSION_DENIED) requestPermissions(permissions,0)
 
@@ -199,7 +199,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     Log.i("aaa", "데일리 사이즈: " + G.dailyNoteItems.size)
-                    Log.i("aaa", "emailDailyNote: $emailDailyNote   G.userEmail: ${G.userEmail}")
+//                    Log.i("aaa", "emailDailyNote: $emailDailyNote   G.userEmail: ${G.userEmail}")
                 }
             }
             override fun onFailure(call: retrofit2.Call<ArrayList<DailyItem>>, t: Throwable) {
@@ -244,7 +244,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     Log.i("aaa","체크 사이즈: "+G.checklistItems.size)
-                    Log.i("aaa", "emailChecklist: $emailChecklist   G.userEmail: ${G.userEmail}")
+//                    Log.i("aaa", "emailChecklist: $emailChecklist   G.userEmail: ${G.userEmail}")
                 }
             }
             override fun onFailure(call: retrofit2.Call<ArrayList<ChecklistItem>>, t: Throwable) {
@@ -294,7 +294,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     Log.i("aaa","라이프 사이즈: "+G.lifecycleItems.size)
-                    Log.i("aaa", "emailLifecycle: $emailLifecycle   G.userEmail: ${G.userEmail}")
+//                    Log.i("aaa", "emailLifecycle: $emailLifecycle   G.userEmail: ${G.userEmail}")
                 }
             }
             override fun onFailure(call: retrofit2.Call<ArrayList<LifecycleItem>>, t: Throwable) {
@@ -337,7 +337,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     Log.i("aaa","버킷 사이즈: "+G.bucketlistItems.size)
-                    Log.i("aaa", "emailBucketlist: $emailBucketlist   G.userEmail: ${G.userEmail}")
+//                    Log.i("aaa", "emailBucketlist: $emailBucketlist   G.userEmail: ${G.userEmail}")
                 }
             }
             override fun onFailure(call: retrofit2.Call<ArrayList<BucketlistItem>>, t: Throwable) {

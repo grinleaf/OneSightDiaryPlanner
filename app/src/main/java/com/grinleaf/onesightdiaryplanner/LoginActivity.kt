@@ -47,7 +47,6 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this@LoginActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
-            Toast.makeText(this, "${G.userNickname} 님, 환영합니다.", Toast.LENGTH_SHORT).show()
         }
         firebaseAuth= FirebaseAuth.getInstance()
         //구글로그인 런처

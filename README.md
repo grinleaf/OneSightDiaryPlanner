@@ -36,12 +36,12 @@
 ## 📱  <strong>앱 주요 실행화면</strong>
 |로그인 화면|메인 화면 (타임라인)|일정화면|
 |---|---|---|
-|<img src="./app/src/main/readme_02.png" height="300px">|<img src="./app/src/main/readme_01.png" height="300px">|<img src="./app/src/main/readme_04.png" height="300px">|
+|<img src="./app/src/main/readme_02.png" height="280px">|<img src="./app/src/main/readme_01.png" height="280px">|<img src="./app/src/main/readme_04.png" height="280px">|
 
 |일정 등록화면|캘린더 화면|
 |---|---|
-|<img src="./app/src/main/readme_06.png" height="300px">|<img src="./app/src/main/readme_03.png" height="300px">|
+|<img src="./app/src/main/readme_06.png" height="280px">|<img src="./app/src/main/readme_03.png" height="280px">|
 
 |업적 화면|설정 화면|
 |---|---|
-|<img src="./app/src/main/readme_05.png" height="300px">|<img src="./app/src/main/readme_07.png" height="300px">|
+|<img src="./app/src/main/readme_05.png" height="280px">|<img src="./app/src/main/readme_07.png" height="280px">|

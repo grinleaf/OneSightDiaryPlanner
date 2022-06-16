@@ -8,8 +8,8 @@
 2. 개발 기간 : 2022.04.11 ~ 05.22 (6주)
 3. 개발 인원 : 1인
 4. 개발 목표
-* 사용자에게 받은 데이터를 멤버로 가지는 클래스를 기반으로 하여, 다양한 방법으로 데이터를 활용하는 연습
-* 백엔드 연동 및 네트워크 작업 연습
+   * 사용자에게 받은 데이터를 멤버로 가지는 클래스를 기반으로 하여, 다양한 방법으로 데이터를 활용하는 연습
+   * 백엔드 연동 및 네트워크 작업 연습
 6. 담당 역할 : 기획, 디자인, 레이아웃 설계, 기능 개발
 7. 개발 환경
 
@@ -33,6 +33,18 @@
 
 # ⛏ <strong>작업 코드 및 실행화면 🔨</strong>
 
+## 📱  <strong>앱 주요 실행화면</strong>
+|로그인 화면|메인 화면 (타임라인)|일정화면|
+|---|---|---|
+|<img src="./app/src/main/readme_02.png" height="300px">|<img src="./app/src/main/readme_01.png" height="300px">|<img src="./app/src/main/readme_04.png" height="300px">|
 
+|일정 등록화면|캘린더 화면|
+|---|---|
+|<img src="./app/src/main/readme_06.png" height="300px">|<img src="./app/src/main/readme_03.png" height="300px">|
 
+|업적 화면|설정 화면|
+|---|---|
+|<img src="./app/src/main/readme_05.png" height="300px">|<img src="./app/src/main/readme_07.png" height="300px">|
+
+## 🗃  <strong>백엔드 작업 코드</strong>
 

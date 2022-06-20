@@ -16,6 +16,7 @@ class TodayEmoPushService:FirebaseMessagingService() {
     override fun onNewToken(token: String) {    //디바이스 별 고유 식별 토큰 가져오기 (앱 설치시 최초 한번만 실행)
         super.onNewToken(token)
         Log.i("TOKEN",token)
+        //닷홈 db에서 디바이스 토큰 리스트 다운로드 --> newToken 과 비교하여 contains 되지 않았을 경우, 다음줄 실행
         //토큰 값을 닷홈 DB 에 업로드
         userDeviceTokenUpload(token)
     }

@@ -27,10 +27,10 @@ class TutorialActivity : AppCompatActivity() {
         loadEmoImage()
 
         //샘플 튜토리얼 이미지
-        imgIds.add(TutorialImage(R.drawable.tutorial_sample01))
-        imgIds.add(TutorialImage(R.drawable.tutorial_sample02))
-        imgIds.add(TutorialImage(R.drawable.tutorial_sample03))
-        imgIds.add(TutorialImage(R.drawable.tutorial_sample04))
+        imgIds.add(TutorialImage(R.drawable.ic_flower))
+        imgIds.add(TutorialImage(R.drawable.ic_leaf))
+        imgIds.add(TutorialImage(R.drawable.ic_bff))
+        imgIds.add(TutorialImage(R.drawable.ic_dog_02))
 
         binding.pagerTutorial.adapter= TutorialAdapter(this, imgIds)
 

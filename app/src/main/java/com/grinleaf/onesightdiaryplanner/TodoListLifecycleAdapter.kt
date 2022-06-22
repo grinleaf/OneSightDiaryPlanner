@@ -66,6 +66,7 @@ class TodoListLifecycleAdapter(val context:Context, val lifecycleItems:MutableLi
             else if(!b) {
                 lifecycleItems.get(position).isChecked= false.toString()
                 holder.content.setTextColor(R.color.black)
+                holder.content.paintFlags= holder.content.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
                 Log.i("aaa", "isChecked : ${holder.checkBox.isChecked}")
                 Log.i("aaa", "lifecycleItems[position]: ${lifecycleItems[position]}")
                 updateCheckedState(position)

@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         if (checkSelfPermission(permissions[0]) == PackageManager.PERMISSION_DENIED) requestPermissions(permissions,0)
 
-        //계정별 데이터 로드
+        //계정별 데이터 로드 : 코루틴 (Dispatchers.Main == 메인스레드 / Dispatchers.IO == 별도 스레드(데이터 전달용)
         CoroutineScope(Dispatchers.Main).launch {
 
             loadDateData()
